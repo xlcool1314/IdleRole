@@ -11,3 +11,9 @@ public class Role
     public int Hp { get => hp; set => hp = value; }
     public int MaxHp { get => maxHp; set => maxHp = value; }
 }
+
+
+public class UserAssetManager:SingletonMono<UserAssetManager>{
+
+    
+}

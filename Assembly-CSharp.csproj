@@ -45,11 +45,11 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Script\Framework\SingletonMono.cs" />
      <Compile Include="Assets\Script\GameMain.cs" />
      <Compile Include="Assets\Script\Manager\GameManager.cs" />
-     <Compile Include="Assets\Script\Manager\SingletonMono.cs" />
      <Compile Include="Assets\Script\Manager\UiManager.cs" />
-     <Compile Include="Assets\Script\Roles\Role.cs" />
+     <Compile Include="Assets\Script\Manager\UserAssetManager.cs" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>F:/IdleRole/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
