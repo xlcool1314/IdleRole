@@ -2,17 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Role : MonoBehaviour
+public class Role 
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private int hp;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    private int maxHp;
+
+    public int Hp { get => hp; set => hp = value; }
+    public int MaxHp { get => maxHp; set => maxHp = value; }
 }
