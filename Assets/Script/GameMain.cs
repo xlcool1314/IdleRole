@@ -2,12 +2,16 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 public class GameMain : SingletonMono<GameMain>
 {
-
-    public override Task Init()
+    private async void Awake()
     {
-        return base.Init();
+       await Oda();
+    }
+    public async Task Oda()
+    {
+        var go = await Addressables.InstantiateAsync("LogoUi", transform).Task;
     }
 }

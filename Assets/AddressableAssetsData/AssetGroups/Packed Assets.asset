@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: UiPrefab
+  m_Name: Packed Assets
   m_EditorClassIdentifier: 
-  m_GroupName: UiPrefab
+  m_GroupName: Packed Assets
   m_Data:
     m_SerializedData: []
-  m_GUID: a6adab3bc5960e64eb1c20a3798f2b45
+  m_GUID: 67cc28c8b5581f84fadef8b33bc4a714
   m_SerializeEntries:
-  - m_GUID: b7de09c77b0f7e94db0c7afad0ad79e6
-    m_Address: ShopCanvas
+  - m_GUID: 806bd27048b11cd4baf057fa601e660a
+    m_Address: LogoUi
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 79cf9d5d978994a70885bb783a1ef7f5, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: a61e6ecb5ac82c243b8b709d8a2cc6ac, type: 2}
-    - {fileID: 11400000, guid: c1a71807a6de3cd41a205059fa8ca67c, type: 2}
+    - {fileID: 11400000, guid: 10871e3aa21cb3843b8835ff210896d9, type: 2}
+    - {fileID: 11400000, guid: 112b38e48c55764429b40939fbfaa03a, type: 2}

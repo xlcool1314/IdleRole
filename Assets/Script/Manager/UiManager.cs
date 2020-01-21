@@ -5,8 +5,10 @@ using UnityEngine;
 
 public class UiManager : SingletonMono<UiManager>
 {
-    public override Task Init()
+    public override Task StartGame()
     {
-        return base.Init();
+        return base.StartGame();
     }
+
+
 }
