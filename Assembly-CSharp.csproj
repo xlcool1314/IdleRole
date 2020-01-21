@@ -66,6 +66,7 @@
     <Compile Include="Assets\Script\GameData\LevelData.cs" />
     <Compile Include="Assets\Script\GameMain.cs" />
     <Compile Include="Assets\Script\Manager\GameManager.cs" />
+    <Compile Include="Assets\Script\Manager\UIBaseBehaviour.cs" />
     <Compile Include="Assets\Script\Manager\UiManager.cs" />
     <Compile Include="Assets\Script\Manager\UserAssetManager.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
