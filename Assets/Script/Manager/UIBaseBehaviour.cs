@@ -15,7 +15,7 @@ public abstract class UIBaseBehaviour : MonoBehaviour
         gameObject.SetActive(true);
     }
 
-    public abstract Task Init();
+    public abstract void Init();
     public abstract void UpdateInfo(float deltaTime);
     public abstract void Clean();
 }

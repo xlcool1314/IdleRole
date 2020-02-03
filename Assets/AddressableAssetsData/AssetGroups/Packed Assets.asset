@@ -21,6 +21,14 @@ MonoBehaviour:
     m_Address: LogoUi
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: c1b33b99e0da2b147aefd92c56f7177d
+    m_Address: FightUi
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d310f192ee3e2ea4f8290e59c4815d91
+    m_Address: HomeUi
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 79cf9d5d978994a70885bb783a1ef7f5, type: 2}
   m_SchemaSet:
