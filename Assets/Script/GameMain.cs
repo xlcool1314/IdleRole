@@ -8,10 +8,13 @@ public class GameMain : SingletonMono<GameMain>
 {
     private async void Awake()
     {
-       await Oda();
+       await GameInit();
     }
-    public async Task Oda()
+
+    private async Task GameInit()
     {
-        var go = await Addressables.InstantiateAsync("LogoUi", transform).Task;
+       await UserAssetManager.Instance.Init();
+       await Addressables.InstantiateAsync("LogoUi", transform).Task;
+
     }
 }

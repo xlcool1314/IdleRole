@@ -285,8 +285,9 @@ GameObject:
   - component: {fileID: 213263798090970429}
   - component: {fileID: 213263798090970430}
   - component: {fileID: 213263798090970431}
+  - component: {fileID: 689050656140631321}
   m_Layer: 5
-  m_Name: HomeCanvas
+  m_Name: HomeUi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -372,3 +373,16 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &689050656140631321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 213263798090970400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2445f0374ba8df499a257d2ae6fc95c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shopButton: {fileID: 213263796976281280}

@@ -21,6 +21,10 @@ MonoBehaviour:
     m_Address: LogoUi
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: b7de09c77b0f7e94db0c7afad0ad79e6
+    m_Address: ShopUi
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   - m_GUID: c1b33b99e0da2b147aefd92c56f7177d
     m_Address: FightUi
     m_ReadOnly: 0

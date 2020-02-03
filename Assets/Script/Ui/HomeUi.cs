@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.AddressableAssets;
 
 public class HomeUi : UIBaseBehaviour
 {
@@ -30,6 +31,6 @@ public class HomeUi : UIBaseBehaviour
 
     public void CreatShopUi()
     {
-
+        Addressables.InstantiateAsync("ShopUi", transform.parent);
     }
 }

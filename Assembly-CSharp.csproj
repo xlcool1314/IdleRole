@@ -62,8 +62,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Script\Config\LevelData.cs" />
+    <Compile Include="Assets\Script\Config\MyRoleData.cs" />
     <Compile Include="Assets\Script\Framework\SingletonMono.cs" />
-    <Compile Include="Assets\Script\GameData\LevelData.cs" />
     <Compile Include="Assets\Script\GameMain.cs" />
     <Compile Include="Assets\Script\Manager\GameManager.cs" />
     <Compile Include="Assets\Script\Manager\UIBaseBehaviour.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="Assets\Script\Ui\FightUi.cs" />
     <Compile Include="Assets\Script\Ui\HomeUi.cs" />
     <Compile Include="Assets\Script\Ui\LogoUi.cs" />
+    <Compile Include="Assets\Script\Ui\MyRoleBuilder.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />

@@ -12,6 +12,8 @@ public class LevelData : ScriptableObject
 [System.Serializable]
 public class LevelDesc
 {
-    public int level;
+    public int levelNumber;
+
+    public int EnmeysNumber;
 }
 
