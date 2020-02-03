@@ -9,8 +9,11 @@ public class UserAsset
 
     private int haveRoles;
 
+    private int level;
+
     public int HaveRoles { get => haveRoles; set => haveRoles = value; }
     public int Gold { get => gold; set => gold = value; }
+    public int Level { get => level; set => level = value; }
 
     public void Save()
     {
@@ -39,6 +42,15 @@ public class UserAssetManager:SingletonMono<UserAssetManager>{
         Debug.Log("Load " + json);
         asset = JsonUtility.FromJson<UserAsset>(json);
         inited = true;
+    }
+
+    public int AddLevel(int thisLevel)
+    {
+        if (thisLevel == 0)
+        {
+            return 0;
+        }
+        return asset.Level = thisLevel + 1;
     }
 
 }

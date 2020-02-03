@@ -62,6 +62,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Script\Config\EnemysData.cs" />
     <Compile Include="Assets\Script\Config\LevelData.cs" />
     <Compile Include="Assets\Script\Config\MyRoleData.cs" />
     <Compile Include="Assets\Script\Framework\SingletonMono.cs" />

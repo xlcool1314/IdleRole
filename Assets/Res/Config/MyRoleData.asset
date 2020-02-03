@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 123bf90bf421a0649bbd86cad74d3310, type: 3}
-  m_Name: My Role Data
+  m_Name: MyRoleData
   m_EditorClassIdentifier: 
   myRoles:
   - myRole: {fileID: 0}
