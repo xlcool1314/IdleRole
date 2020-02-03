@@ -307,6 +307,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5462896364815966036}
   - component: {fileID: 5462896364815966037}
+  - component: {fileID: 914885451572729812}
   m_Layer: 5
   m_Name: EnemysPlane
   m_TagString: Untagged
@@ -357,6 +358,19 @@ MonoBehaviour:
   m_Spacing: {x: 20, y: 20}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!114 &914885451572729812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5462896364815966035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25509095b50d61d4596d307903478742, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemysData: {fileID: 0}
 --- !u!1 &5462896365100795946
 GameObject:
   m_ObjectHideFlags: 0
