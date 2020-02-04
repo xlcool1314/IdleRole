@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Threading.Tasks;
 using UnityEngine.AddressableAssets;
+using TMPro;
 
 
 public class Shop : SingletonMono<Shop>
@@ -11,6 +12,9 @@ public class Shop : SingletonMono<Shop>
 
     public GameObject roleCell;
 
+    public TextMeshProUGUI howMuchRoleMoney;
+
+    
     private async Task LoadSomeConfigs()
     {
         var task = Addressables.LoadAssetAsync<MyRoleData>("MyRoleData").Task;
@@ -26,11 +30,9 @@ public class Shop : SingletonMono<Shop>
                 var go = rolesData.myRoles[i];
                 if (go.isUnlock==true)
                 {
-                    Addressables.InstantiateAsync("ShopRoleCell", transform);
-                    go.howMuchMoney = 1000;
-
+                  Addressables.InstantiateAsync("ShopRoleCell", transform);
+                  ShopRoleCell.Instance.myRole = go.myRole;
                 }
-                
                 
             }
         }

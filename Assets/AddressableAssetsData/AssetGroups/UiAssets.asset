@@ -21,6 +21,10 @@ MonoBehaviour:
     m_Address: ShopRoleCell
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 7b5ae1909256d9d4da62cc68adaf8137
+    m_Address: BuyRoleUi
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   - m_GUID: 806bd27048b11cd4baf057fa601e660a
     m_Address: LogoUi
     m_ReadOnly: 0

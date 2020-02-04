@@ -71,12 +71,15 @@
     <Compile Include="Assets\Script\Manager\UIBaseBehaviour.cs" />
     <Compile Include="Assets\Script\Manager\UiManager.cs" />
     <Compile Include="Assets\Script\Manager\UserAssetManager.cs" />
+    <Compile Include="Assets\Script\Ui\BuyRoleUi.cs" />
     <Compile Include="Assets\Script\Ui\EnemysBuilder.cs" />
     <Compile Include="Assets\Script\Ui\FightUi.cs" />
     <Compile Include="Assets\Script\Ui\HomeUi.cs" />
     <Compile Include="Assets\Script\Ui\LogoUi.cs" />
     <Compile Include="Assets\Script\Ui\MyRoleBuilder.cs" />
     <Compile Include="Assets\Script\Ui\Shop.cs" />
+    <Compile Include="Assets\Script\Ui\ShopRoleCell.cs" />
+    <Compile Include="Assets\Script\Ui\ShopUi.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
