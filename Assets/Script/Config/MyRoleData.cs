@@ -6,11 +6,17 @@ using UnityEngine;
 public class MyRoleData : ScriptableObject
 {
     public List<MyRole> myRoles;
-
+    
 }
 
 [System.Serializable]
 public class MyRole
 {
+    public bool isUnlock;
+
     public GameObject myRole;
+
+    public int howMuchMoney;
+    
 }
+

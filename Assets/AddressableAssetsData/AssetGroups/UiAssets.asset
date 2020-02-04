@@ -17,6 +17,10 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 67cc28c8b5581f84fadef8b33bc4a714
   m_SerializeEntries:
+  - m_GUID: 19582455479070243bee373a000a58da
+    m_Address: ShopRoleCell
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   - m_GUID: 806bd27048b11cd4baf057fa601e660a
     m_Address: LogoUi
     m_ReadOnly: 0

@@ -1,18 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MyRoleBuilder : MonoBehaviour
+public class MyRoleBuilder : SingletonMono<MyRoleBuilder>
 {
-    // Start is called before the first frame update
-    void Start()
+    
+    private void CreatRole(GameObject thisRole)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Instantiate(thisRole, transform);
     }
 }

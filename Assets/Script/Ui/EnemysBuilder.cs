@@ -8,23 +8,21 @@ public class EnemysBuilder : MonoBehaviour
 {
     public EnemysData enemysData;
 
-    public GameObject[] enemysgameObjects;
+    public string enemysDataName;
 
     private async Task LoadSomeConfigs()
     {
-        var task = Addressables.LoadAssetAsync<EnemysData>("EnemysData001").Task;
+        var task = Addressables.LoadAssetAsync<EnemysData>(enemysDataName).Task;
         enemysData = await task;
-        Debug.Log(enemysData.enemys.Count);
     }
 
-    public void CreatEnemys()
+    public void CreatEnemys(EnemysData enemyData)
     {
-        if (enemysData != null)
+        if (enemyData != null)
         {
-            for (int i = 0; i < enemysData.enemys.Count; i++)
+            for (int i = 0; i < enemyData.enemys.Count; i++)
             {
-                enemysgameObjects[i] = enemysData.enemys[i].enemy;
-                Instantiate(enemysgameObjects[i], transform.parent);
+                Instantiate(enemyData.enemys[i].enemy, transform);
             }
         }
         
@@ -32,7 +30,8 @@ public class EnemysBuilder : MonoBehaviour
 
     private async void Awake()
     {
+        enemysDataName = "EnemysData001";
         await LoadSomeConfigs();
-        CreatEnemys();
+        CreatEnemys(enemysData);
     }
 }

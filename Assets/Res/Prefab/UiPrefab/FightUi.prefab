@@ -159,6 +159,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5462896364543652605}
   - component: {fileID: 5462896364543652606}
+  - component: {fileID: 2884984350739628947}
   m_Layer: 5
   m_Name: MyRolePlane
   m_TagString: Untagged
@@ -209,6 +210,18 @@ MonoBehaviour:
   m_Spacing: {x: 20, y: 20}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!114 &2884984350739628947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5462896364543652604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: beab01e075f9cf645ba501d7e204bf34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5462896364761119063
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,6 +384,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemysData: {fileID: 0}
+  enemysDataName: 
 --- !u!1 &5462896365100795946
 GameObject:
   m_ObjectHideFlags: 0
