@@ -21,7 +21,7 @@ public class Shop : SingletonMono<Shop>
         rolesData = await task;
     }
 
-    public void CreatAllShopRoles()
+    public async void CreatAllShopRoles()
     {
         if (rolesData.myRoles != null)
         {
@@ -30,8 +30,8 @@ public class Shop : SingletonMono<Shop>
                 var go = rolesData.myRoles[i];
                 if (go.isUnlock==true)
                 {
-                  Addressables.InstantiateAsync("ShopRoleCell", transform);
-                  ShopRoleCell.Instance.myRole = go.myRole;
+                  var go2= await Addressables.InstantiateAsync("ShopRoleCell", transform).Task;
+                  go2.GetComponent<ShopRoleCell>().myRole=go.myRole;
                 }
                 
             }

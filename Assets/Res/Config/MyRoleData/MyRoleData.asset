@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MyRoleData
   m_EditorClassIdentifier: 
   myRoles:
-  - isUnlock: 1
+  - isUnlock: 0
     myRole: {fileID: 3387293902721485025, guid: f2c44e05725ecfb45a263a8686d93f9d,
       type: 3}
     howMuchMoney: 3
@@ -39,7 +39,7 @@ MonoBehaviour:
   - isUnlock: 0
     myRole: {fileID: 925634877339603358, guid: 645da2048ac02514486b173e16408957, type: 3}
     howMuchMoney: 0
-  - isUnlock: 0
+  - isUnlock: 1
     myRole: {fileID: 8358096965460402446, guid: d2001a3137f459444bfc075c0d743549,
       type: 3}
     howMuchMoney: 8
