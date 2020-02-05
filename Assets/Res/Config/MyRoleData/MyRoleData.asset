@@ -14,40 +14,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myRoles:
   - isUnlock: 0
-    myRole: {fileID: 3387293902721485025, guid: f2c44e05725ecfb45a263a8686d93f9d,
+    myRole: {fileID: 6012676052722955783, guid: 2d76ef8e2334d4cd49eaedc989647158,
       type: 3}
     howMuchMoney: 3
   - isUnlock: 1
-    myRole: {fileID: 5448158012723168350, guid: ce085aff742b57d4f8b39c8aa26c3581,
+    myRole: {fileID: 6012676052722955783, guid: d9ec6ec344e8948669b8971bb9ec7fcd,
       type: 3}
     howMuchMoney: 4
   - isUnlock: 1
-    myRole: {fileID: 4630773275417709178, guid: c945193247dd9d145b23758fe63116f1,
+    myRole: {fileID: 6012676052722955783, guid: 2d76ef8e2334d4cd49eaedc989647158,
       type: 3}
     howMuchMoney: 5
   - isUnlock: 1
-    myRole: {fileID: 8856660777931543225, guid: 99649ae39bc89f34f8ea20388ca9a4e7,
+    myRole: {fileID: 6012676052722955783, guid: d9ec6ec344e8948669b8971bb9ec7fcd,
       type: 3}
     howMuchMoney: 6
   - isUnlock: 1
-    myRole: {fileID: 5513051309633833647, guid: b905a90ee12bd194f8a5df846d308fce,
+    myRole: {fileID: 6012676052722955783, guid: 2d76ef8e2334d4cd49eaedc989647158,
       type: 3}
     howMuchMoney: 0
   - isUnlock: 0
-    myRole: {fileID: 701981920027871763, guid: cf08f19e24a1653418788adc27e0b48e, type: 3}
+    myRole: {fileID: 6012676052722955783, guid: f740b56bec40749ee8ee0b9fd075e2a1,
+      type: 3}
     howMuchMoney: 7
-  - isUnlock: 0
-    myRole: {fileID: 925634877339603358, guid: 645da2048ac02514486b173e16408957, type: 3}
+  - isUnlock: 1
+    myRole: {fileID: 6012676052722955783, guid: f740b56bec40749ee8ee0b9fd075e2a1,
+      type: 3}
     howMuchMoney: 0
   - isUnlock: 1
-    myRole: {fileID: 8358096965460402446, guid: d2001a3137f459444bfc075c0d743549,
+    myRole: {fileID: 6012676052722955783, guid: f740b56bec40749ee8ee0b9fd075e2a1,
       type: 3}
     howMuchMoney: 8
   - isUnlock: 0
-    myRole: {fileID: 2953593053338546804, guid: ea8862edc0a5aee43a1b11ee4c8e2e4d,
+    myRole: {fileID: 6012676052722955783, guid: 2d76ef8e2334d4cd49eaedc989647158,
       type: 3}
     howMuchMoney: 90
-  - isUnlock: 0
-    myRole: {fileID: 8457480597763419925, guid: 7976976683ec704418cb2f89f5a5e06d,
+  - isUnlock: 1
+    myRole: {fileID: 6012676052722955783, guid: f740b56bec40749ee8ee0b9fd075e2a1,
       type: 3}
     howMuchMoney: 100

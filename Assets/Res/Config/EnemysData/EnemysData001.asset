@@ -13,5 +13,13 @@ MonoBehaviour:
   m_Name: EnemysData001
   m_EditorClassIdentifier: 
   enemys:
-  - enemy: {fileID: 658561728226859390, guid: c8b369501d9b91441ae7b99b9be70533, type: 3}
-  - enemy: {fileID: 220455146807969834, guid: 77aed4e7ed49c0b4bb87ca82138936c2, type: 3}
+  - enemy: {fileID: 6012676052722955783, guid: d9ec6ec344e8948669b8971bb9ec7fcd, type: 3}
+  - enemy: {fileID: 6012676052722955783, guid: 2d76ef8e2334d4cd49eaedc989647158, type: 3}
+  - enemy: {fileID: 6012676052722955783, guid: d9ec6ec344e8948669b8971bb9ec7fcd, type: 3}
+  - enemy: {fileID: 6012676052722955783, guid: f740b56bec40749ee8ee0b9fd075e2a1, type: 3}
+  - enemy: {fileID: 6012676052722955783, guid: d9ec6ec344e8948669b8971bb9ec7fcd, type: 3}
+  - enemy: {fileID: 6012676052722955783, guid: f740b56bec40749ee8ee0b9fd075e2a1, type: 3}
+  - enemy: {fileID: 6012676052722955783, guid: d9ec6ec344e8948669b8971bb9ec7fcd, type: 3}
+  - enemy: {fileID: 6012676052722955783, guid: 2d76ef8e2334d4cd49eaedc989647158, type: 3}
+  - enemy: {fileID: 6012676052722955783, guid: d9ec6ec344e8948669b8971bb9ec7fcd, type: 3}
+  - enemy: {fileID: 6012676052722955783, guid: 2d76ef8e2334d4cd49eaedc989647158, type: 3}
