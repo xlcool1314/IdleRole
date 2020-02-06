@@ -8,6 +8,8 @@ public class BuyRoleUi : UIBaseBehaviour
     public Button yesButton;
     public Button noButton;
 
+    public ShopRoleCell buyMyRole;
+
     private void Awake()
     {
         Init();
@@ -24,22 +26,23 @@ public class BuyRoleUi : UIBaseBehaviour
         throw new System.NotImplementedException();
     }
 
-    public override void Clean()
+    public override void Clean()//清除所有的监听
     {
         yesButton.onClick.RemoveAllListeners();
         noButton.onClick.RemoveAllListeners();
     }
 
 
-    public void DetermineBuyRole()
+    public void DetermineBuyRole()//确定购买我的角色
     {
         Clean();
         MyRoleBuilder.Instance.CreatRole(ShopRoleCell.Instance.myRole);
+        BattlefieldMonitor.Instance.FindAllMyRole();
         ShopUi.Instance.CloseShopUi();
         Destroy(gameObject);
     }
 
-    public void CloseBuyRoleUi()
+    public void CloseBuyRoleUi()//关闭购买UI
     {
         Clean();
         Destroy(gameObject);

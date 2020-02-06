@@ -10,7 +10,6 @@ public class Shop : SingletonMono<Shop>
 {
     public MyRoleData rolesData;
 
-    public GameObject roleCell;
 
     public TextMeshProUGUI howMuchRoleMoney;
 
@@ -19,6 +18,7 @@ public class Shop : SingletonMono<Shop>
     {
         var task = Addressables.LoadAssetAsync<MyRoleData>("MyRoleData").Task;
         rolesData = await task;
+        Debug.Log(rolesData.myRoles.Count);
     }
 
     public async void CreatAllShopRoles()
@@ -40,8 +40,8 @@ public class Shop : SingletonMono<Shop>
 
     private async void Start()
     {
-       await LoadSomeConfigs();
-       CreatAllShopRoles();
+        await LoadSomeConfigs();
+        CreatAllShopRoles();
     }
 
 }

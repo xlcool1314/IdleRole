@@ -24,6 +24,8 @@ public class ShopRoleCell : SingletonMono<ShopRoleCell>
 
     public void CreatBuyRoleUi()
     {
+        ShopRoleCell.Instance.myRole=this.myRole;
+        ShopRoleCell.Instance.myRole.tag="MyRolePlane";
         Addressables.InstantiateAsync("BuyRoleUi");
     }
 }

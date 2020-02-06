@@ -22,7 +22,8 @@ public class EnemysBuilder : MonoBehaviour
         {
             for (int i = 0; i < enemyData.enemys.Count; i++)
             {
-                Instantiate(enemyData.enemys[i].enemy, transform);
+               var go= Instantiate(enemyData.enemys[i].enemy, transform);
+               go.tag="EnemysPlane";
             }
         }
         

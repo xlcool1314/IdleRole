@@ -26,7 +26,7 @@ MonoBehaviour:
       type: 3}
     howMuchMoney: 5
   - isUnlock: 1
-    myRole: {fileID: 6012676052722955783, guid: d9ec6ec344e8948669b8971bb9ec7fcd,
+    myRole: {fileID: 6012676052722955783, guid: f740b56bec40749ee8ee0b9fd075e2a1,
       type: 3}
     howMuchMoney: 6
   - isUnlock: 1
@@ -42,7 +42,7 @@ MonoBehaviour:
       type: 3}
     howMuchMoney: 0
   - isUnlock: 1
-    myRole: {fileID: 6012676052722955783, guid: f740b56bec40749ee8ee0b9fd075e2a1,
+    myRole: {fileID: 6012676052722955783, guid: d9ec6ec344e8948669b8971bb9ec7fcd,
       type: 3}
     howMuchMoney: 8
   - isUnlock: 0
