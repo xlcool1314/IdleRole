@@ -8,6 +8,7 @@ public class MyRoleBuilder : SingletonMono<MyRoleBuilder>
     
     public void CreatRole(GameObject thisRole)
     {
-        Instantiate(thisRole, transform);
+        var go= Instantiate(thisRole, transform);
+        go.tag="MyRolePlane";
     }
 }
