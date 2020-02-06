@@ -18,4 +18,10 @@ public class BattlefieldMonitor : SingletonMono<BattlefieldMonitor>
     {
         allMyRoles=GameObject.FindGameObjectsWithTag("MyRolePlane");
     }
+
+    public void FindAllEnemys()
+    {
+        allEnemys=GameObject.FindGameObjectsWithTag("EnemysPlane");
+
+    }
 }
