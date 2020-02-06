@@ -12,14 +12,15 @@ public class BattlefieldMonitor : SingletonMono<BattlefieldMonitor>
     void Update()
     {
         FindAllMyRole();
+        FindAllEnemys();
     }
 
-    public void FindAllMyRole()
+    public void FindAllMyRole()//找到所有的我方角色
     {
         allMyRoles=GameObject.FindGameObjectsWithTag("MyRolePlane");
     }
 
-    public void FindAllEnemys()
+    public void FindAllEnemys()//找到敌方所有角色
     {
         allEnemys=GameObject.FindGameObjectsWithTag("EnemysPlane");
 
