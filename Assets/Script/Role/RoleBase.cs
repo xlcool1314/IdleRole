@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RoleBase : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class RoleBase : MonoBehaviour
     public int damage;
 
     public float attackSpeed;
+
+    
 
     public void FindattackTarget(){
         if(this.gameObject.CompareTag("MyRolePlane"))
