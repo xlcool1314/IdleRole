@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RoleBase : MonoBehaviour
+public abstract class RoleBase : MonoBehaviour
 {
     public int hp;
+
+    public int maxHp;
 
     public int defense;
 
@@ -13,18 +15,10 @@ public class RoleBase : MonoBehaviour
 
     public float attackSpeed;
 
-    
 
-    public void FindattackTarget(){
-        if(this.gameObject.CompareTag("MyRolePlane"))
-        {
-          return;
-        }
-    
-       
+
+    public virtual void FindattackTarget()
+    {
+
     }
-    
-
-
-    
 }

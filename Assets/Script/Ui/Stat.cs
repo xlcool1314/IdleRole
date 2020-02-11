@@ -42,5 +42,9 @@ public class Stat : MonoBehaviour
         content=transform.GetComponent<Image>();
     }
 
+    private void Update() 
+    {
+      
+    }
 
 }
