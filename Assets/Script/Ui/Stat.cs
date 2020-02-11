@@ -32,6 +32,8 @@ public class Stat : MonoBehaviour
             {
               currentValue=value;
             }
+
+            currentfill=currentValue/MyMaxValue;
         }
     }
 
@@ -42,9 +44,16 @@ public class Stat : MonoBehaviour
         content=transform.GetComponent<Image>();
     }
 
-    private void Update() 
+    void Update()
     {
       
     }
+
+    public void Initialize(float currentVal,float maxValue)
+    {
+        MyMaxValue=maxValue;
+        currentValue=currentVal;
+    }
+
 
 }
