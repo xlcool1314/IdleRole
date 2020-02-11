@@ -19,6 +19,11 @@ public abstract class RoleBase : MonoBehaviour
 
     public virtual void FindattackTarget()
     {
+      
+    }
+
+    public virtual void Dead()
+    {
 
     }
 }

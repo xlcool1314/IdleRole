@@ -394,9 +394,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 5
+  maxHp: 10
   defense: 4
   damage: 2
-  attackSpeed: 0
+  attackSpeed: 3
 --- !u!1 &6099337797411169960
 GameObject:
   m_ObjectHideFlags: 0
