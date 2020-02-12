@@ -46,7 +46,7 @@ public class Stat : MonoBehaviour
 
     void Update()
     {
-      
+      content.fillAmount=currentfill;
     }
 
     public void Initialize(float currentVal,float maxValue)
