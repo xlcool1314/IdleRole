@@ -268,6 +268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d71921cae0c5f4abfb9a488ff05af018, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentfill: 0
 --- !u!1 &4046104803863409026
 GameObject:
   m_ObjectHideFlags: 0
@@ -397,10 +398,11 @@ MonoBehaviour:
   maxHp: 10
   defense: 2
   damage: 3
-  maxAttackSpeed: 4
+  maxAttackSpeed: 6
   myAnimator: {fileID: 5786937369007160211}
   attackEffects: {fileID: 0}
-  underAttack: {fileID: 0}
+  underAttackEffects: {fileID: 0}
+  deadEffects: {fileID: 0}
   hpBar: {fileID: 6163582316152066241}
   attackSpeed: {fileID: 3737439147865373123}
 --- !u!1 &6099337797411169960
@@ -489,6 +491,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d71921cae0c5f4abfb9a488ff05af018, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentfill: 0
 --- !u!1 &7968216641411356856
 GameObject:
   m_ObjectHideFlags: 0

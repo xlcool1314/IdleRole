@@ -23,9 +23,17 @@ public abstract class RoleBase : MonoBehaviour
 
     public GameObject deadEffects;//死亡特效
 
+    public BattlefieldMonitor allRoles;//所有角色
+
+    private void Start() 
+    {
+        allRoles=GameObject.FindObjectOfType<BattlefieldMonitor>();
+    }
+
     public virtual void Attack(Animator attackAnimator)
     {
         attackAnimator.SetTrigger("Attack");
+        
     }
 
     public void Dead()//角色死亡
@@ -33,7 +41,7 @@ public abstract class RoleBase : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    public IEnumerator AttackCountdown(float time,Stat myBar)//攻击计时器
+    public IEnumerator AttackCountdown(float time,Stat myBar)//攻击频率
     {   
         float tim=0;
         while (time>0)

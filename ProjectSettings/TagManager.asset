@@ -6,6 +6,7 @@ TagManager:
   tags:
   - MyRolePlane
   - EnemysPlane
+  - BattlefieldMonitor
   layers:
   - Default
   - TransparentFX
