@@ -23,13 +23,19 @@ public abstract class RoleBase : MonoBehaviour
 
     public GameObject deadEffects;//死亡特效
 
+    public virtual void Attack(Animator attackAnimator)
+    {
+        attackAnimator.SetTrigger("Attack");
+    }
+
     public void Dead()//角色死亡
     {
         Destroy(this.gameObject);
     }
 
     public IEnumerator AttackCountdown(float time,Stat myBar)//攻击计时器
-    {   float tim=0;
+    {   
+        float tim=0;
         while (time>0)
         {
             yield return new WaitForSeconds (1);
