@@ -13,7 +13,7 @@ public class Cactus : RoleBase
         attackSpeed.currentfill=0;
         hpBar.currentfill=1;
         hpBar.Initialize(maxHp,maxHp);
-        attackSpeed.Initialize(maxAttackSpeed,maxAttackSpeed); 
+        attackSpeed.Initialize(maxAttackSpeed,maxAttackSpeed);
         base.StartCoroutine(AttackCountdown(maxAttackSpeed,attackSpeed));
     }
 }

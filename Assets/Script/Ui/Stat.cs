@@ -7,11 +7,11 @@ public class Stat : MonoBehaviour
 {
     private Image content;//进度条的图片
 
-    public float currentfill;
+    public float currentfill;//进度条的float值
 
-    public float MyMaxValue{get;set;}
+    public float MyMaxValue{get;set;}//最大的进度条数值
 
-    private float currentValue;
+    private float currentValue;//当前进度数值
     public float CurrentValue 
     { 
         get 
@@ -33,7 +33,7 @@ public class Stat : MonoBehaviour
               currentValue=value;
             }
 
-            currentfill=currentValue/MyMaxValue;
+            currentfill=currentValue/MyMaxValue;//进度数值换算成小数
         }
     }
 
@@ -49,7 +49,7 @@ public class Stat : MonoBehaviour
         content.fillAmount=currentfill;
     }
 
-    public void Initialize(float currentVal,float maxValue)
+    public void Initialize(float currentVal,float maxValue)//初始化进度条
     {
         MyMaxValue=maxValue;
         currentValue=currentVal;
