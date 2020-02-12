@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: EnemysData001
   m_EditorClassIdentifier: 
   enemys:
-  - enemy: {fileID: 6012676052722955783, guid: d9ec6ec344e8948669b8971bb9ec7fcd, type: 3}
+  - enemy: {fileID: 6012676052722955783, guid: d70fc1d80e83ff04ab285ebc0142dbec, type: 3}
+  - enemy: {fileID: 6012676052722955783, guid: 2962c1eb344d38f40bfe97662ab07e6f, type: 3}
   - enemy: {fileID: 6012676052722955783, guid: 2d76ef8e2334d4cd49eaedc989647158, type: 3}
