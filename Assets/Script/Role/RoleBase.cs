@@ -33,7 +33,6 @@ public abstract class RoleBase : MonoBehaviour
     public virtual void Attack(Animator attackAnimator)
     {
         attackAnimator.SetTrigger("Attack");
-        
     }
 
     public void Dead()//角色死亡

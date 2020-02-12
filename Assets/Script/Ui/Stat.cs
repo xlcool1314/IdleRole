@@ -36,9 +36,6 @@ public class Stat : MonoBehaviour
             currentfill=currentValue/MyMaxValue;//进度数值换算成小数
         }
     }
-
-    
-
     private void Start() 
     {
        content=transform.GetComponent<Image>();
