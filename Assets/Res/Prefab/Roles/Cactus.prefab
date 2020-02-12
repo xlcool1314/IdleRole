@@ -315,7 +315,7 @@ GameObject:
   - component: {fileID: 6012676052722955780}
   - component: {fileID: 6012676052722955834}
   - component: {fileID: 6012676052722955781}
-  - component: {fileID: 3189976870571714476}
+  - component: {fileID: 1040236606015251461}
   m_Layer: 5
   m_Name: Cactus
   m_TagString: Untagged
@@ -381,7 +381,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3189976870571714476
+--- !u!114 &1040236606015251461
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -390,14 +390,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 6012676052722955783}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8365900be5379f42bea50a5af93d6e4, type: 3}
+  m_Script: {fileID: 11500000, guid: 13ac9d017e14b3c4a9120aa91a22e535, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 5
+  hp: 10
   maxHp: 10
-  defense: 4
-  damage: 2
-  attackSpeed: 3
+  defense: 2
+  damage: 3
+  maxAttackSpeed: 4
+  myAnimator: {fileID: 5786937369007160211}
+  attackEffects: {fileID: 0}
+  underAttack: {fileID: 0}
+  hpBar: {fileID: 6163582316152066241}
+  attackSpeed: {fileID: 3737439147865373123}
 --- !u!1 &6099337797411169960
 GameObject:
   m_ObjectHideFlags: 0
@@ -409,8 +414,9 @@ GameObject:
   - component: {fileID: 7064527225121793703}
   - component: {fileID: 1312445643142558099}
   - component: {fileID: 7623483976628083977}
+  - component: {fileID: 3737439147865373123}
   m_Layer: 5
-  m_Name: AttackSleep
+  m_Name: AttackSpeed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -471,6 +477,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3737439147865373123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6099337797411169960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d71921cae0c5f4abfb9a488ff05af018, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7968216641411356856
 GameObject:
   m_ObjectHideFlags: 0

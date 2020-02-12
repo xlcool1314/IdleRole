@@ -13,7 +13,13 @@ public abstract class RoleBase : MonoBehaviour
 
     public int damage;
 
-    public float attackSpeed;
+    public float maxAttackSpeed;
+
+    public Animator myAnimator;
+
+    public GameObject attackEffects;
+
+    public GameObject underAttack;
 
 
 
@@ -24,6 +30,19 @@ public abstract class RoleBase : MonoBehaviour
 
     public virtual void Dead()
     {
+        Destroy(gameObject);
 
+    }
+
+    public IEnumerator AttackCountdown(float time,Stat myBar)
+    {   float tim=0;
+        while (time>0)
+        {
+            yield return new WaitForSeconds (1);
+            tim++;
+            myBar.CurrentValue=tim;
+            Debug.Log(tim);
+            time--;
+        }
     }
 }

@@ -7,7 +7,7 @@ public class Stat : MonoBehaviour
 {
     private Image content;//进度条的图片
 
-    private float currentfill;
+    public float currentfill;
 
     public float MyMaxValue{get;set;}
 
@@ -41,12 +41,12 @@ public class Stat : MonoBehaviour
 
     private void Start() 
     {
-        content=transform.GetComponent<Image>();
+       content=transform.GetComponent<Image>();
     }
 
     void Update()
     {
-      content.fillAmount=currentfill;
+        content.fillAmount=currentfill;
     }
 
     public void Initialize(float currentVal,float maxValue)

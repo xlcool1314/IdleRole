@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class Cactus : RoleBase
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Stat hpBar;
 
-    // Update is called once per frame
-    void Update()
+    public Stat attackSpeed;
+
+    private void Start()
     {
-        
+        attackSpeed.currentfill=0;
+        hpBar.currentfill=1;
+        hpBar.Initialize(maxHp,maxHp);
+        attackSpeed.Initialize(maxAttackSpeed,maxAttackSpeed); 
+        base.StartCoroutine(AttackCountdown(maxAttackSpeed,attackSpeed));
     }
 }
