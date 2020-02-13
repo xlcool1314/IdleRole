@@ -32,15 +32,29 @@ public abstract class RoleBase : MonoBehaviour
 
     public virtual void Attack(Animator attackAnimator,GameObject attackEff,GameObject attackTarget)//攻击表现
     {
+        
         attackAnimator.SetTrigger("Attack");
         Instantiate(attackEff,transform);
     }
 
     public GameObject FindTheTarget()//随机锁定一个敌人
     {
+        GameObject go;
         if(gameObject.CompareTag("MyRolePlane"))
         {
-            
+            int randomNumber=Random.Range(0,allRoles.allEnemys.Length);
+            go=allRoles.allEnemys[randomNumber];
+            return go;
+        }
+        else if (gameObject.CompareTag("EnmysPlane"))
+        {
+            int randomNumber=Random.Range(0,allRoles.allMyRoles.Length);
+            go=allRoles.allMyRoles[randomNumber];
+            return go;
+        }
+        else
+        {
+            return null;
         }
     }
 
