@@ -30,15 +30,25 @@ public abstract class RoleBase : MonoBehaviour
         allRoles=GameObject.FindObjectOfType<BattlefieldMonitor>();
     }
 
-    public virtual void Attack(Animator attackAnimator,GameObject attackEff,GameObject attackTarget)
+    public virtual void Attack(Animator attackAnimator,GameObject attackEff,GameObject attackTarget)//攻击表现
     {
         attackAnimator.SetTrigger("Attack");
         Instantiate(attackEff,transform);
     }
 
-    public float DamageCalculation()
+    public GameObject FindTheTarget()//随机锁定一个敌人
     {
+        if(gameObject.CompareTag("MyRolePlane"))
+        {
+            
+        }
+    }
 
+    public int DamageCalculation(int myDamage,int yourDefense)//伤害计算
+    {
+        int damag;
+        damag=myDamage-yourDefense;
+        return damag;
     }
 
     public void Dead()//角色死亡
