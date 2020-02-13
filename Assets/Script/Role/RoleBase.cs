@@ -30,23 +30,23 @@ public abstract class RoleBase : MonoBehaviour
         allRoles=GameObject.FindObjectOfType<BattlefieldMonitor>();
     }
 
-    public virtual void Attack(Animator attackAnimator,GameObject attackEff,GameObject attackTarget)//攻击表现
+    public virtual void Attack(Animator attackAnimator)//攻击表现
     {
-        
+        GameObject go=FindTheTarget();
+        Debug.Log(go.name);
         attackAnimator.SetTrigger("Attack");
-        Instantiate(attackEff,transform);
     }
 
     public GameObject FindTheTarget()//随机锁定一个敌人
     {
         GameObject go;
-        if(gameObject.CompareTag("MyRolePlane"))
+        if(gameObject.CompareTag("MyRolePlane")&&allRoles.allEnemys!=null)
         {
             int randomNumber=Random.Range(0,allRoles.allEnemys.Length);
             go=allRoles.allEnemys[randomNumber];
             return go;
         }
-        else if (gameObject.CompareTag("EnmysPlane"))
+        else if (gameObject.CompareTag("EnemysPlane")&&allRoles.allMyRoles!=null)
         {
             int randomNumber=Random.Range(0,allRoles.allMyRoles.Length);
             go=allRoles.allMyRoles[randomNumber];

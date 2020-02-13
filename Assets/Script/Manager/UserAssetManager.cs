@@ -39,7 +39,7 @@ public class UserAssetManager:SingletonMono<UserAssetManager>{
         }
 
         var json = PlayerPrefs.GetString("UserAsset", "{}");
-        Debug.Log("Load " + json);
+        //Debug.Log("Load " + json);
         asset = JsonUtility.FromJson<UserAsset>(json);
         inited = true;
     }
