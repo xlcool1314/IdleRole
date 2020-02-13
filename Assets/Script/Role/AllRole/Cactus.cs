@@ -22,7 +22,6 @@ public class Cactus : RoleBase
         if(attackSpeed.currentfill==1)
         {
             attackSpeed.currentfill=0;
-            base.Attack(myAnimator);
             base.StartCoroutine(AttackCountdown(maxAttackSpeed,attackSpeed));
         }
     }

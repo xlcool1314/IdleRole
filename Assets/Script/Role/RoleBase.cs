@@ -30,9 +30,15 @@ public abstract class RoleBase : MonoBehaviour
         allRoles=GameObject.FindObjectOfType<BattlefieldMonitor>();
     }
 
-    public virtual void Attack(Animator attackAnimator)
+    public virtual void Attack(Animator attackAnimator,GameObject attackEff,GameObject attackTarget)
     {
         attackAnimator.SetTrigger("Attack");
+        Instantiate(attackEff,transform);
+    }
+
+    public float DamageCalculation()
+    {
+
     }
 
     public void Dead()//角色死亡
@@ -48,7 +54,6 @@ public abstract class RoleBase : MonoBehaviour
             yield return new WaitForSeconds (1);
             tim++;
             myBar.CurrentValue=tim;
-            Debug.Log(tim);
             time--;
         }
     }
