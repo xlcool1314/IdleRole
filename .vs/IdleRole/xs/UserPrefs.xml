@@ -1,0 +1,36 @@
+﻿<Properties StartupConfiguration="{F7A7488B-D857-F570-08F5-BBC976D73E93}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Script/Role/AllRole/Cactus.cs">
+    <Files>
+      <File FileName="Assets/Script/Ui/Stat.cs" Line="49" Column="27" />
+      <File FileName="Assets/Script/Role/RoleBase.cs" />
+      <File FileName="Assets/Script/Role/AllRole/Cactus.cs" Line="19" Column="41" />
+      <File FileName="Assets/Script/Ui/LossHp.cs" Line="22" Column="45" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="IdleRole" expanded="True">
+            <Node name="Assets" expanded="True">
+              <Node name="Script" expanded="True">
+                <Node name="Manager" expanded="True" />
+                <Node name="Role" expanded="True">
+                  <Node name="AllRole" expanded="True">
+                    <Node name="Cactus.cs" selected="True" />
+                  </Node>
+                </Node>
+                <Node name="Ui" expanded="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="537ac5a1-e54b-49f4-a8fd-7cdfeff09978" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

@@ -13,43 +13,7 @@ MonoBehaviour:
   m_Name: MyRoleData
   m_EditorClassIdentifier: 
   myRoles:
-  - isUnlock: 0
+  - isUnlock: 1
     myRole: {fileID: 6012676052722955783, guid: 2d76ef8e2334d4cd49eaedc989647158,
       type: 3}
     howMuchMoney: 3
-  - isUnlock: 1
-    myRole: {fileID: 6012676052722955783, guid: d70fc1d80e83ff04ab285ebc0142dbec,
-      type: 3}
-    howMuchMoney: 4
-  - isUnlock: 1
-    myRole: {fileID: 6012676052722955783, guid: 2d76ef8e2334d4cd49eaedc989647158,
-      type: 3}
-    howMuchMoney: 5
-  - isUnlock: 1
-    myRole: {fileID: 6012676052722955783, guid: 2962c1eb344d38f40bfe97662ab07e6f,
-      type: 3}
-    howMuchMoney: 6
-  - isUnlock: 1
-    myRole: {fileID: 6012676052722955783, guid: 2d76ef8e2334d4cd49eaedc989647158,
-      type: 3}
-    howMuchMoney: 0
-  - isUnlock: 0
-    myRole: {fileID: 6012676052722955783, guid: d70fc1d80e83ff04ab285ebc0142dbec,
-      type: 3}
-    howMuchMoney: 7
-  - isUnlock: 1
-    myRole: {fileID: 6012676052722955783, guid: 2d76ef8e2334d4cd49eaedc989647158,
-      type: 3}
-    howMuchMoney: 0
-  - isUnlock: 1
-    myRole: {fileID: 6012676052722955783, guid: d70fc1d80e83ff04ab285ebc0142dbec,
-      type: 3}
-    howMuchMoney: 8
-  - isUnlock: 0
-    myRole: {fileID: 6012676052722955783, guid: 2d76ef8e2334d4cd49eaedc989647158,
-      type: 3}
-    howMuchMoney: 90
-  - isUnlock: 1
-    myRole: {fileID: 6012676052722955783, guid: 2962c1eb344d38f40bfe97662ab07e6f,
-      type: 3}
-    howMuchMoney: 100

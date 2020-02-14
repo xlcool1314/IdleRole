@@ -1,11 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public abstract class RoleBase : MonoBehaviour
 {
-    public int hp;//血量
+    public int myhp;//血量
 
     public int maxHp;//最大血量
 
@@ -25,6 +24,12 @@ public abstract class RoleBase : MonoBehaviour
 
     public BattlefieldMonitor allRoles;//所有角色
 
+    public Stat hpBar;//血条
+
+    public Stat attackSpeedBar;//攻击频率条
+
+    public LossHp lossHpText;
+
     public void InitRoleBase() 
     {
         allRoles=GameObject.FindObjectOfType<BattlefieldMonitor>();
@@ -33,7 +38,7 @@ public abstract class RoleBase : MonoBehaviour
     public virtual void Attack(Animator attackAnimator)//攻击表现
     {
         GameObject go=FindTheTarget();
-        go.GetComponent<RoleBase>().hp-=2;
+        go.GetComponent<RoleBase>().myhp-=2;
         attackAnimator.SetTrigger("Attack");
     }
 
@@ -67,7 +72,7 @@ public abstract class RoleBase : MonoBehaviour
 
     public void Dead()//角色死亡
     {
-        if(hp<=0)
+        if(myhp<=0)
         {
             Destroy(this.gameObject);
         }
