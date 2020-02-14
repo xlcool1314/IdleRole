@@ -1,13 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
-using UnityEngine.UI;
 
 public class Cactus : RoleBase
 {
-    
-
     private void Start()
     {
         base.InitRoleBase();

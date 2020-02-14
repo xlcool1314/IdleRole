@@ -9,7 +9,7 @@ public class Stat : MonoBehaviour
 
     public float currentfill;//进度条的float值
 
-    public float MyMaxValue{get;set;}//最大的进度条数值
+    public float MyMaxValue;//最大的进度条数值
 
     private float currentValue;//当前进度数值
     public float CurrentValue 

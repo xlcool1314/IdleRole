@@ -38,7 +38,8 @@ public abstract class RoleBase : MonoBehaviour
     public virtual void Attack(Animator attackAnimator)//攻击表现
     {
         GameObject go=FindTheTarget();
-        go.GetComponent<RoleBase>().myhp-=2;
+        go.GetComponent<RoleBase>().myhp-=1;
+        go.GetComponent<RoleBase>().lossHpText.hpText = go.GetComponent<RoleBase>().myhp;
         attackAnimator.SetTrigger("Attack");
     }
 
