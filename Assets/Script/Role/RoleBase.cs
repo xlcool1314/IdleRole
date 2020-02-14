@@ -25,7 +25,7 @@ public abstract class RoleBase : MonoBehaviour
 
     public BattlefieldMonitor allRoles;//所有角色
 
-    private void Start() 
+    public void InitRoleBase() 
     {
         allRoles=GameObject.FindObjectOfType<BattlefieldMonitor>();
     }
@@ -33,20 +33,20 @@ public abstract class RoleBase : MonoBehaviour
     public virtual void Attack(Animator attackAnimator)//攻击表现
     {
         GameObject go=FindTheTarget();
-        Debug.Log(go.name);
+        go.GetComponent<RoleBase>().hp-=2;
         attackAnimator.SetTrigger("Attack");
     }
 
     public GameObject FindTheTarget()//随机锁定一个敌人
     {
         GameObject go;
-        if(gameObject.CompareTag("MyRolePlane")&&allRoles.allEnemys!=null)
+        if(gameObject.CompareTag("MyRolePlane"))
         {
             int randomNumber=Random.Range(0,allRoles.allEnemys.Length);
             go=allRoles.allEnemys[randomNumber];
             return go;
         }
-        else if (gameObject.CompareTag("EnemysPlane")&&allRoles.allMyRoles!=null)
+        else if (gameObject.CompareTag("EnemysPlane"))
         {
             int randomNumber=Random.Range(0,allRoles.allMyRoles.Length);
             go=allRoles.allMyRoles[randomNumber];
@@ -67,7 +67,11 @@ public abstract class RoleBase : MonoBehaviour
 
     public void Dead()//角色死亡
     {
-        Destroy(this.gameObject);
+        if(hp<=0)
+        {
+            Destroy(this.gameObject);
+        }
+        
     }
 
     public IEnumerator AttackCountdown(float time,Stat myBar)//攻击频率

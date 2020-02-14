@@ -10,9 +10,10 @@ public class Cactus : RoleBase
 
     private void Start()
     {
+        base.InitRoleBase();
         attackSpeed.currentfill=0;
         hpBar.currentfill=1;
-        hpBar.Initialize(maxHp,maxHp);
+        hpBar.Initialize(hp,maxHp);
         attackSpeed.Initialize(maxAttackSpeed,maxAttackSpeed);
         base.StartCoroutine(AttackCountdown(maxAttackSpeed,attackSpeed));
     }
@@ -25,6 +26,7 @@ public class Cactus : RoleBase
             base.Attack(myAnimator);
             base.StartCoroutine(AttackCountdown(maxAttackSpeed,attackSpeed));
         }
+        Dead();
     }
     
 }
