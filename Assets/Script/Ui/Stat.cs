@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Stat : MonoBehaviour
 {
-    private Image content;//进度条的图片
+    public Image content;//进度条的图片
 
     public float currentfill;//进度条的float值
 
@@ -43,7 +43,11 @@ public class Stat : MonoBehaviour
 
     void Update()
     {
-        content.fillAmount=currentfill;
+        if (currentfill != content.fillAmount)
+        {
+            content.fillAmount = Mathf.Lerp(content.fillAmount, currentfill, Time.deltaTime * 5f);
+        }
+        
     }
 
     public void Initialize(float currentVal,float maxValue)//初始化进度条

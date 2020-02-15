@@ -28,7 +28,7 @@ public abstract class RoleBase : MonoBehaviour
 
     public Stat attackSpeedBar;//攻击频率条
 
-    public LossHp lossHpText;
+    public LossHp lossHpText;//显示伤害数字的脚本
 
     public void InitRoleBase() //初始化
     {
