@@ -18,7 +18,6 @@ public class Shop : SingletonMono<Shop>
     {
         var task = Addressables.LoadAssetAsync<MyRoleData>("MyRoleData").Task;
         rolesData = await task;
-        Debug.Log(rolesData.myRoles.Count);
     }
 
     public async void CreatAllShopRoles()
