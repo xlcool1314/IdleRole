@@ -30,6 +30,8 @@ public abstract class RoleBase : MonoBehaviour
 
     public LossHp lossHpText;//显示伤害数字的脚本
 
+    public Animator lossAnimator;//伤害数字的显示动画
+
     public void InitRoleBase() //初始化
     {
         allRoles=GameObject.FindObjectOfType<BattlefieldMonitor>();//拿到存着的所有角色
@@ -44,7 +46,7 @@ public abstract class RoleBase : MonoBehaviour
     {
         GameObject go=FindTheTarget();//找到要攻击的随机目标
         go.GetComponent<RoleBase>().myhp -= DamageCalculation(damage, go.GetComponent<RoleBase>().defense);//计算出伤害然后在血量里面减去
-        go.GetComponent<RoleBase>().lossHpText.gameObject.SetActive(true);
+        go.GetComponent<RoleBase>().lossAnimator.SetTrigger("LossHp");
         go.GetComponent<RoleBase>().lossHpText.hpText = DamageCalculation(damage, go.GetComponent<RoleBase>().defense);
         attackAnimator.SetTrigger("Attack");
     }

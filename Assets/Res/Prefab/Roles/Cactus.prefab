@@ -269,6 +269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d71921cae0c5f4abfb9a488ff05af018, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  content: {fileID: 0}
   currentfill: 0
   MyMaxValue: 0
 --- !u!1 &4046104803863409026
@@ -396,10 +397,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13ac9d017e14b3c4a9120aa91a22e535, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myhp: 50
-  maxHp: 50
-  defense: 1
-  damage: 5
+  myhp: 60
+  maxHp: 60
+  defense: 3
+  damage: 7
   maxAttackSpeed: 6
   myAnimator: {fileID: 5786937369007160211}
   attackEffects: {fileID: 0}
@@ -409,6 +410,7 @@ MonoBehaviour:
   hpBar: {fileID: 6163582316152066241}
   attackSpeedBar: {fileID: 3737439147865373123}
   lossHpText: {fileID: 7375422541548541427}
+  lossAnimator: {fileID: 667689917121095274}
 --- !u!1 &6099337797411169960
 GameObject:
   m_ObjectHideFlags: 0
@@ -495,6 +497,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d71921cae0c5f4abfb9a488ff05af018, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  content: {fileID: 0}
   currentfill: 0
   MyMaxValue: 0
 --- !u!1 &7301175213291435102
@@ -516,7 +519,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3333241768739004190
 RectTransform:
   m_ObjectHideFlags: 0
@@ -571,8 +574,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4282203125
-  m_fontColor: {r: 0.9622642, g: 0.23148806, b: 0.23857018, a: 1}
+    rgba: 4013045
+  m_fontColor: {r: 0.9622642, g: 0.23148806, b: 0.23857018, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -590,8 +593,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 25
-  m_fontSizeBase: 25
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
