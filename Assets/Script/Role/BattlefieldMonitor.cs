@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BattlefieldMonitor : SingletonMono<BattlefieldMonitor>
 {
@@ -13,6 +14,8 @@ public class BattlefieldMonitor : SingletonMono<BattlefieldMonitor>
     {
         FindAllMyRole();
         FindAllEnemys();
+        GameOver();
+
     }
 
     public void FindAllMyRole()//找到所有的我方角色
@@ -24,5 +27,13 @@ public class BattlefieldMonitor : SingletonMono<BattlefieldMonitor>
     {
         allEnemys=GameObject.FindGameObjectsWithTag("EnemysPlane");
 
+    }
+
+    void GameOver()
+    {
+        if (allMyRoles.Length == 0)
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 }

@@ -1,11 +1,12 @@
 ﻿<Properties StartupConfiguration="{F7A7488B-D857-F570-08F5-BBC976D73E93}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Script/Ui/Stat.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Script/Role/BattlefieldMonitor.cs">
     <Files>
-      <File FileName="Assets/Script/Ui/Stat.cs" Line="46" Column="12" />
-      <File FileName="Assets/Script/Role/RoleBase.cs" Line="42" Column="90" />
-      <File FileName="Assets/Script/Role/AllRole/Cactus.cs" Line="19" Column="6" />
+      <File FileName="Assets/Script/Role/RoleBase.cs" Line="49" Column="71" IsPinned="True" />
+      <File FileName="Assets/Script/Ui/Stat.cs" Line="48" Column="96" />
+      <File FileName="Assets/Script/Role/AllRole/Cactus.cs" Line="16" Column="89" />
       <File FileName="Assets/Script/Ui/LossHp.cs" Line="23" Column="24" />
       <File FileName="Assets/Script/Manager/UserAssetManager.cs" Line="29" Column="1" />
+      <File FileName="Assets/Script/Role/BattlefieldMonitor.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -17,10 +18,9 @@
                 <Node name="Manager" expanded="True" />
                 <Node name="Role" expanded="True">
                   <Node name="AllRole" expanded="True" />
+                  <Node name="BattlefieldMonitor.cs" selected="True" />
                 </Node>
-                <Node name="Ui" expanded="True">
-                  <Node name="Stat.cs" selected="True" />
-                </Node>
+                <Node name="Ui" expanded="True" />
               </Node>
             </Node>
           </Node>
