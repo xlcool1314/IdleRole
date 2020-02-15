@@ -270,6 +270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentfill: 0
+  MyMaxValue: 0
 --- !u!1 &4046104803863409026
 GameObject:
   m_ObjectHideFlags: 0
@@ -395,10 +396,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13ac9d017e14b3c4a9120aa91a22e535, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myhp: 8
-  maxHp: 8
-  defense: 2
-  damage: 3
+  myhp: 50
+  maxHp: 50
+  defense: 1
+  damage: 5
   maxAttackSpeed: 6
   myAnimator: {fileID: 5786937369007160211}
   attackEffects: {fileID: 0}
@@ -495,6 +496,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentfill: 0
+  MyMaxValue: 0
 --- !u!1 &7301175213291435102
 GameObject:
   m_ObjectHideFlags: 0
@@ -507,13 +509,14 @@ GameObject:
   - component: {fileID: 752100773344499516}
   - component: {fileID: 1796691698403232696}
   - component: {fileID: 7375422541548541427}
+  - component: {fileID: 667689917121095274}
   m_Layer: 5
   m_Name: LossHp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3333241768739004190
 RectTransform:
   m_ObjectHideFlags: 0
@@ -665,6 +668,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lossHpText: {fileID: 0}
   hpText: 0
+--- !u!95 &667689917121095274
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7301175213291435102}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a29354d9361244abdba322d900eb0abc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7968216641411356856
 GameObject:
   m_ObjectHideFlags: 0

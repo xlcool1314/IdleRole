@@ -30,16 +30,22 @@ public abstract class RoleBase : MonoBehaviour
 
     public LossHp lossHpText;
 
-    public void InitRoleBase() 
+    public void InitRoleBase() //初始化
     {
-        allRoles=GameObject.FindObjectOfType<BattlefieldMonitor>();
+        allRoles=GameObject.FindObjectOfType<BattlefieldMonitor>();//拿到存着的所有角色
+        attackSpeedBar.currentfill = 0;//初始的攻击速度为0
+        hpBar.currentfill = 1;//初始的血条为满
+        hpBar.Initialize(myhp, maxHp);//初始化血条的显示
+        attackSpeedBar.Initialize(maxAttackSpeed, maxAttackSpeed);//初始话攻击速度的显示
+        StartCoroutine(AttackCountdown(maxAttackSpeed, attackSpeedBar));//游戏开始进行第一次的攻击频率倒计时
     }
 
     public virtual void Attack(Animator attackAnimator)//攻击表现
     {
-        GameObject go=FindTheTarget();
-        go.GetComponent<RoleBase>().myhp-=1;
-        go.GetComponent<RoleBase>().lossHpText.hpText = go.GetComponent<RoleBase>().myhp;
+        GameObject go=FindTheTarget();//找到要攻击的随机目标
+        go.GetComponent<RoleBase>().myhp -= DamageCalculation(damage, go.GetComponent<RoleBase>().defense);//计算出伤害然后在血量里面减去
+        go.GetComponent<RoleBase>().lossHpText.gameObject.SetActive(true);
+        go.GetComponent<RoleBase>().lossHpText.hpText = DamageCalculation(damage, go.GetComponent<RoleBase>().defense);
         attackAnimator.SetTrigger("Attack");
     }
 
