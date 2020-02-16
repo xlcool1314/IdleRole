@@ -54,13 +54,13 @@ public abstract class RoleBase : MonoBehaviour
     public GameObject FindTheTarget()//随机锁定一个敌人
     {
         GameObject go;
-        if(gameObject.CompareTag("MyRolePlane"))
+        if(gameObject.CompareTag("MyRolePlane")&&allRoles.allEnemys.Length>0)
         {
             int randomNumber=Random.Range(0,allRoles.allEnemys.Length);
             go=allRoles.allEnemys[randomNumber];
             return go;
         }
-        else if (gameObject.CompareTag("EnemysPlane"))
+        else if (gameObject.CompareTag("EnemysPlane")&&allRoles.allMyRoles.Length>0)
         {
             int randomNumber=Random.Range(0,allRoles.allMyRoles.Length);
             go=allRoles.allMyRoles[randomNumber];
@@ -76,6 +76,10 @@ public abstract class RoleBase : MonoBehaviour
     {
         int damag;
         damag=myDamage-yourDefense;
+        if (damag <= 0)
+        {
+            damag = 1;
+        }
         return damag;
     }
 
