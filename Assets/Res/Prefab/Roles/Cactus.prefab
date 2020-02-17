@@ -401,7 +401,8 @@ MonoBehaviour:
   maxHp: 60
   defense: 3
   damage: 7
-  maxAttackSpeed: 6
+  myTreatment: 0
+  maxAttackSpeed: 3
   myAnimator: {fileID: 5786937369007160211}
   attackEffects: {fileID: 0}
   underAttackEffects: {fileID: 0}

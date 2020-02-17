@@ -88,26 +88,46 @@ public abstract class RoleBase : MonoBehaviour
     public void Treatment()//治疗
     {
         GameObject go = FindMyRole();
-        Debug.Log(go);
+        Debug.Log(go.name);
         go.GetComponent<RoleBase>().myhp +=myTreatment;
     }
 
     public GameObject FindMyRole()//寻找我方血量最少的角色
     {
-        GameObject go;
         if (gameObject.CompareTag("MyRolePlane"))
         {
-            go = BattlefieldMonitor.Instance.allMyRoles[0];
-            float min = go.GetComponent<RoleBase>().hpBar.currentfill;
+            GameObject go = BattlefieldMonitor.Instance.allMyRoles[0];
+            float min = BattlefieldMonitor.Instance.allMyRoles[0].GetComponent<RoleBase>().hpBar.currentfill;
             for (int i = 0; i < BattlefieldMonitor.Instance.allMyRoles.Length; i++)
             {
                 if (BattlefieldMonitor.Instance.allMyRoles[i].GetComponent<RoleBase>().hpBar.currentfill <= min)
                 {
                     go = BattlefieldMonitor.Instance.allMyRoles[i];
-                    return go;
+                    if (i == BattlefieldMonitor.Instance.allMyRoles.Length - 1)
+                    {
+                        return go;
+                    }
                 }
             }
             return go;
+        }
+        else if (gameObject.CompareTag("EnemysPlane"))
+        {
+            GameObject go = BattlefieldMonitor.Instance.allEnemys[0];
+            float min = BattlefieldMonitor.Instance.allEnemys[0].GetComponent<RoleBase>().hpBar.currentfill;
+            for (int i = 0; i < BattlefieldMonitor.Instance.allEnemys.Length; i++)
+            {
+                if (BattlefieldMonitor.Instance.allEnemys[i].GetComponent<RoleBase>().hpBar.currentfill <= min)
+                {
+                    go = BattlefieldMonitor.Instance.allEnemys[i];
+                    if (i == BattlefieldMonitor.Instance.allEnemys.Length - 1)
+                    {
+                        return go;
+                    }
+                }
+            }
+            return go;
+
         }
         else
         {
