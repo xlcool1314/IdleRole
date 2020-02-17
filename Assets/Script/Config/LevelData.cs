@@ -14,6 +14,6 @@ public class LevelDesc
 {
     public int levelNumber;
 
-    public int EnmeysNumber;
+    public EnemysData enemysData;
 }
 

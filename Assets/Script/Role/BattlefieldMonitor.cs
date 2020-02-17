@@ -29,7 +29,7 @@ public class BattlefieldMonitor : SingletonMono<BattlefieldMonitor>
 
     }
 
-    void GameOver()
+    void GameOver()//游戏结束
     {
         if (allMyRoles.Length == 0)
         {

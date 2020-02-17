@@ -12,6 +12,8 @@ public abstract class RoleBase : MonoBehaviour
 
     public int damage;//攻击力
 
+    public int myTreatment;// 治疗量
+
     public float maxAttackSpeed;//最大的的攻击间隔
 
     public Animator myAnimator;//动画控制器
@@ -32,6 +34,34 @@ public abstract class RoleBase : MonoBehaviour
 
     public Animator lossAnimator;//伤害数字的显示动画
 
+    public void RoleUpDate()
+    {
+        hpBar.CurrentValue = myhp;
+        Dead();
+    }
+
+    public void AttackUpDate()//攻击伤害更新
+    {
+        if (attackSpeedBar.currentfill == 1 && attackSpeedBar.content.fillAmount > 0.99f)
+        {
+            attackSpeedBar.content.fillAmount = 0;
+            attackSpeedBar.currentfill = 0;
+            Attack(myAnimator);
+            StartCoroutine(AttackCountdown(maxAttackSpeed, attackSpeedBar));
+        }
+    }
+
+    public void TreatmentUpDate()//治疗更新
+    {
+        if (attackSpeedBar.currentfill == 1 && attackSpeedBar.content.fillAmount > 0.99f)
+        {
+            attackSpeedBar.content.fillAmount = 0;
+            attackSpeedBar.currentfill = 0;
+            Treatment();
+            StartCoroutine(AttackCountdown(maxAttackSpeed, attackSpeedBar));
+        }
+    }
+
     public void InitRoleBase() //初始化
     {
         allRoles=GameObject.FindObjectOfType<BattlefieldMonitor>();//拿到存着的所有角色
@@ -45,10 +75,45 @@ public abstract class RoleBase : MonoBehaviour
     public virtual void Attack(Animator attackAnimator)//攻击表现
     {
         GameObject go=FindTheTarget();//找到要攻击的随机目标
-        go.GetComponent<RoleBase>().myhp -= DamageCalculation(damage, go.GetComponent<RoleBase>().defense);//计算出伤害然后在血量里面减去
-        go.GetComponent<RoleBase>().lossAnimator.SetTrigger("LossHp");
-        go.GetComponent<RoleBase>().lossHpText.hpText = DamageCalculation(damage, go.GetComponent<RoleBase>().defense);
-        attackAnimator.SetTrigger("Attack");
+        if (go != null)
+        {
+            go.GetComponent<RoleBase>().myhp -= DamageCalculation(damage, go.GetComponent<RoleBase>().defense);//计算出伤害然后在血量里面减去
+            go.GetComponent<RoleBase>().lossAnimator.SetTrigger("LossHp");
+            go.GetComponent<RoleBase>().lossHpText.hpText = DamageCalculation(damage, go.GetComponent<RoleBase>().defense);
+            attackAnimator.SetTrigger("Attack");
+        }
+        
+    }
+
+    public void Treatment()//治疗
+    {
+        GameObject go = FindMyRole();
+        Debug.Log(go);
+        go.GetComponent<RoleBase>().myhp +=myTreatment;
+    }
+
+    public GameObject FindMyRole()//寻找我方血量最少的角色
+    {
+        GameObject go;
+        if (gameObject.CompareTag("MyRolePlane"))
+        {
+            go = BattlefieldMonitor.Instance.allMyRoles[0];
+            float min = go.GetComponent<RoleBase>().hpBar.currentfill;
+            for (int i = 0; i < BattlefieldMonitor.Instance.allMyRoles.Length; i++)
+            {
+                if (BattlefieldMonitor.Instance.allMyRoles[i].GetComponent<RoleBase>().hpBar.currentfill <= min)
+                {
+                    go = BattlefieldMonitor.Instance.allMyRoles[i];
+                    return go;
+                }
+            }
+            return go;
+        }
+        else
+        {
+            return null;
+        }
+
     }
 
     public GameObject FindTheTarget()//随机锁定一个敌人

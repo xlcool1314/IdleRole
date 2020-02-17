@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Cactus : RoleBase
+public class Duck : RoleBase
 {
     private void Start()
     {
@@ -13,7 +13,7 @@ public class Cactus : RoleBase
     private void Update() 
     {
         base.RoleUpDate();
-        base.AttackUpDate();
+        base.TreatmentUpDate();
     }
     
 }

@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: LevelData
   m_EditorClassIdentifier: 
   levelinfo:
-  - levelNumber: 0
-    EnmeysNumber: 3
   - levelNumber: 1
-    EnmeysNumber: 4
+    enemysData: {fileID: 11400000, guid: d2157d8a7ec9133409b959c9fcbc82fe, type: 2}
   - levelNumber: 2
-    EnmeysNumber: 5
+    enemysData: {fileID: 11400000, guid: 27f36d2e4cf154550824f1f6e8dcb415, type: 2}
+  - levelNumber: 3
+    enemysData: {fileID: 11400000, guid: d48dcfc42e0a245888e3c16c5d590c15, type: 2}

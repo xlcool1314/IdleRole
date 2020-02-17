@@ -319,7 +319,7 @@ GameObject:
   - component: {fileID: 6012676052722955780}
   - component: {fileID: 6012676052722955834}
   - component: {fileID: 6012676052722955781}
-  - component: {fileID: 1040236606015251461}
+  - component: {fileID: 8838055558443828948}
   m_Layer: 5
   m_Name: Duck
   m_TagString: Untagged
@@ -385,7 +385,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1040236606015251461
+--- !u!114 &8838055558443828948
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -394,14 +394,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 6012676052722955783}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13ac9d017e14b3c4a9120aa91a22e535, type: 3}
+  m_Script: {fileID: 11500000, guid: 123a1dd670a1c4d75a14961807579210, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   myhp: 30
   maxHp: 30
-  defense: 2
-  damage: 4
-  maxAttackSpeed: 10
+  defense: 4
+  damage: 6
+  myTreatment: 3
+  maxAttackSpeed: 6
   myAnimator: {fileID: 5786937369007160211}
   attackEffects: {fileID: 0}
   underAttackEffects: {fileID: 0}
