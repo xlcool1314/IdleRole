@@ -1,15 +1,17 @@
 ﻿<Properties StartupConfiguration="{F7A7488B-D857-F570-08F5-BBC976D73E93}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Script/Role/AllRole/Duck.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Script/Ui/BuyRoleUi.cs">
     <Files>
-      <File FileName="Assets/Script/Role/RoleBase.cs" Line="38" Column="16" IsPinned="True" />
-      <File FileName="Assets/Script/Ui/Stat.cs" Line="1" Column="1" />
+      <File FileName="Assets/Script/Role/RoleBase.cs" Line="95" Column="48" IsPinned="True" />
+      <File FileName="Assets/Script/Ui/Stat.cs" Line="10" Column="29" />
       <File FileName="Assets/Script/Role/AllRole/Cactus.cs" Line="16" Column="29" />
       <File FileName="Assets/Script/Ui/LossHp.cs" />
       <File FileName="Assets/Script/Manager/UserAssetManager.cs" Line="19" Column="6" />
-      <File FileName="Assets/Script/Role/BattlefieldMonitor.cs" Line="30" Column="6" />
-      <File FileName="Assets/Script/Ui/Shop.cs" />
+      <File FileName="Assets/Script/Role/BattlefieldMonitor.cs" Line="36" Column="55" />
+      <File FileName="Assets/Script/Ui/Shop.cs" Line="1" Column="1" />
       <File FileName="Assets/Script/Ui/EnemysBuilder.cs" Line="37" Column="60" />
-      <File FileName="Assets/Script/Role/AllRole/Duck.cs" Line="5" Column="18" />
+      <File FileName="Assets/Script/Role/AllRole/Duck.cs" Line="16" Column="32" />
+      <File FileName="Assets/Script/Ui/ShopRoleCell.cs" Line="1" Column="1" />
+      <File FileName="Assets/Script/Ui/BuyRoleUi.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -21,11 +23,11 @@
                 <Node name="Framework" expanded="True" />
                 <Node name="Manager" expanded="True" />
                 <Node name="Role" expanded="True">
-                  <Node name="AllRole" expanded="True">
-                    <Node name="Duck.cs" selected="True" />
-                  </Node>
+                  <Node name="AllRole" expanded="True" />
                 </Node>
-                <Node name="Ui" expanded="True" />
+                <Node name="Ui" expanded="True">
+                  <Node name="BuyRoleUi.cs" selected="True" />
+                </Node>
               </Node>
             </Node>
           </Node>

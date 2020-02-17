@@ -38,6 +38,7 @@ public class BuyRoleUi : UIBaseBehaviour
         Clean();
         MyRoleBuilder.Instance.CreatRole(ShopRoleCell.Instance.myRole);
         BattlefieldMonitor.Instance.FindAllMyRole();
+        BattlefieldMonitor.Instance.isFirstGame = false;
         ShopUi.Instance.CloseShopUi();
         Destroy(gameObject);
     }

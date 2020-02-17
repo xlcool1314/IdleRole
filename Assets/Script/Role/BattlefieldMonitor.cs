@@ -9,7 +9,9 @@ public class BattlefieldMonitor : SingletonMono<BattlefieldMonitor>
 
     public GameObject[] allEnemys;
 
-    
+    public bool isFirstGame=true;
+
+
     void Update()
     {
         FindAllMyRole();
@@ -31,7 +33,7 @@ public class BattlefieldMonitor : SingletonMono<BattlefieldMonitor>
 
     void GameOver()//游戏结束
     {
-        if (allMyRoles.Length == 0)
+        if (allMyRoles.Length == 0&&isFirstGame==false)
         {
             SceneManager.LoadScene(0);
         }
