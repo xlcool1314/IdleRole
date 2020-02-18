@@ -38,6 +38,7 @@ public class GameSaveManager : SingletonMono<GameSaveManager>
             JsonUtility.FromJsonOverwrite((string)bf.Deserialize(file), myAllRoles);
 
             file.Close();
+            
         }
     }
 }
