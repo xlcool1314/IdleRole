@@ -6,7 +6,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public class GameSaveManager : SingletonMono<GameSaveManager>
 {
-    public AllRoleData myAllRoles;
+    public MyRoleData myAllRoles;
 
     public void SaveGame()
     {

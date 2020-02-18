@@ -13,7 +13,6 @@ public class GameMain : SingletonMono<GameMain>
 
     private async Task GameInit()
     {
-       await UserAssetManager.Instance.Init();
        await Addressables.InstantiateAsync("LogoUi", transform).Task;
 
     }
