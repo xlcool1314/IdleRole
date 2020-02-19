@@ -1,43 +1,27 @@
 ﻿<Properties StartupConfiguration="{F7A7488B-D857-F570-08F5-BBC976D73E93}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Script/Ui/BuyRoleUi.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Script/Role/AllRole/Duck.cs">
     <Files>
-      <File FileName="Assets/Script/Role/RoleBase.cs" Line="95" Column="48" IsPinned="True" />
-      <File FileName="Assets/Script/Ui/Stat.cs" Line="10" Column="29" />
-      <File FileName="Assets/Script/Role/AllRole/Cactus.cs" Line="16" Column="29" />
-      <File FileName="Assets/Script/Ui/LossHp.cs" />
-      <File FileName="Assets/Script/Manager/UserAssetManager.cs" Line="19" Column="6" />
+      <File FileName="Assets/Script/Manager/UserAssetManager.cs" Line="10" Column="24" />
       <File FileName="Assets/Script/Role/BattlefieldMonitor.cs" Line="36" Column="55" />
-      <File FileName="Assets/Script/Ui/Shop.cs" Line="1" Column="1" />
-      <File FileName="Assets/Script/Ui/EnemysBuilder.cs" Line="37" Column="60" />
-      <File FileName="Assets/Script/Role/AllRole/Duck.cs" Line="16" Column="32" />
-      <File FileName="Assets/Script/Ui/ShopRoleCell.cs" Line="1" Column="1" />
-      <File FileName="Assets/Script/Ui/BuyRoleUi.cs" Line="1" Column="1" />
+      <File FileName="Assets/Script/Config/DeleteAllData.cs" Line="8" Column="47" />
+      <File FileName="Assets/Script/Manager/GameMain.cs" Line="24" Column="9" />
+      <File FileName="Assets/Script/Ui/EnemysBuilder.cs" Line="17" Column="39" />
+      <File FileName="Assets/Script/Ui/LossHp.cs" Line="23" Column="26" />
+      <File FileName="Assets/Script/Role/AllRole/Cactus.cs" Line="5" Column="29" />
+      <File FileName="Assets/Script/Role/RoleBase.cs" Line="95" Column="63" />
+      <File FileName="Assets/Script/Role/AllRole/Duck.cs" Line="15" Column="24" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="IdleRole" expanded="True">
-            <Node name="Assets" expanded="True">
-              <Node name="Script" expanded="True">
-                <Node name="Config" expanded="True" />
-                <Node name="Framework" expanded="True" />
-                <Node name="Manager" expanded="True" />
-                <Node name="Role" expanded="True">
-                  <Node name="AllRole" expanded="True" />
-                </Node>
-                <Node name="Ui" expanded="True">
-                  <Node name="BuyRoleUi.cs" selected="True" />
-                </Node>
-              </Node>
-            </Node>
-          </Node>
+          <Node name="IdleRole" expanded="True" selected="True" />
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="537ac5a1-e54b-49f4-a8fd-7cdfeff09978" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="f0e950cb-e401-458d-be54-c821ed92ba27" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

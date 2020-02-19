@@ -32,6 +32,8 @@ public abstract class RoleBase : MonoBehaviour
 
     public LossHp lossHpText;//显示伤害数字的脚本
 
+    public LossHp treatmentText;//显示的治疗量
+
     public Animator lossAnimator;//伤害数字的显示动画
 
     public void RoleUpDate()
@@ -88,8 +90,10 @@ public abstract class RoleBase : MonoBehaviour
     public void Treatment()//治疗
     {
         GameObject go = FindMyRole();
-        Debug.Log(go.name);
-        go.GetComponent<RoleBase>().myhp +=myTreatment;
+        go.GetComponent<RoleBase>().treatmentText.InitLossHpText(myTreatment);
+        go.GetComponent<RoleBase>().myhp += myTreatment;
+        go.GetComponent<RoleBase>().treatmentText.hpText = myTreatment;
+        go.GetComponent<RoleBase>().lossAnimator.SetTrigger("LossHp");
     }
 
     public GameObject FindMyRole()//寻找我方血量最少的角色

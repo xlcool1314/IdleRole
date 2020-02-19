@@ -9,6 +9,7 @@ public class GameMain : SingletonMono<GameMain>
     private async void Awake()
     {
        await UserAssetManager.Instance.Init();
+       
        await GameInit();
     }
 
@@ -16,5 +17,10 @@ public class GameMain : SingletonMono<GameMain>
     {
        await Addressables.InstantiateAsync("LogoUi", transform).Task;
 
+    }
+
+    private void Update()
+    {
+        Debug.Log(UserAssetManager.Instance.GetLevel());
     }
 }

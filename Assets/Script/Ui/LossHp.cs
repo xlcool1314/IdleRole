@@ -20,7 +20,7 @@ public class LossHp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        lossHpText.text ="-"+ hpText.ToString();
+        lossHpText.text =hpText.ToString();
     }
 
     public void InitLossHpText(int hpTex)
