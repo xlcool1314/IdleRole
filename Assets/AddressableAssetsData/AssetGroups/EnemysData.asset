@@ -17,8 +17,16 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 9184ae33b1f5e9e4c9b326fd65e90eaa
   m_SerializeEntries:
+  - m_GUID: 27f36d2e4cf154550824f1f6e8dcb415
+    m_Address: EnemysData002 (EnemysData)
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   - m_GUID: d2157d8a7ec9133409b959c9fcbc82fe
-    m_Address: EnemysData001
+    m_Address: EnemysData001 (EnemysData)
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d48dcfc42e0a245888e3c16c5d590c15
+    m_Address: EnemysData003 (EnemysData)
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

@@ -164,6 +164,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allMyRoles: []
   allEnemys: []
+  isFirstGame: 1
 --- !u!1 &5462896364543652604
 GameObject:
   m_ObjectHideFlags: 0
@@ -399,6 +400,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemysData: {fileID: 0}
+  levelData: {fileID: 11400000, guid: d86e8f470ec0ba346bdad33685706dae, type: 2}
   enemysDataName: 
 --- !u!1 &5462896365100795946
 GameObject:

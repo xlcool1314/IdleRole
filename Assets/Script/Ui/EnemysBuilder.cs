@@ -8,12 +8,16 @@ public class EnemysBuilder : MonoBehaviour
 {
     public EnemysData enemysData;
 
+    public LevelData levelData;
+
     public string enemysDataName;
 
     private bool isCreat;
 
     private async Task LoadSomeConfigs()
     {
+        enemysDataName=getLevelDataEnemyNm();
+        Debug.Log(enemysDataName);
         var task = Addressables.LoadAssetAsync<EnemysData>(enemysDataName).Task;
         enemysData = await task;
     }
@@ -40,10 +44,15 @@ public class EnemysBuilder : MonoBehaviour
         }
     }
 
+    public string getLevelDataEnemyNm()//拿到某个关卡的怪物数据文件名称
+    {
+        string nm=levelData.levelinfo[UserAssetManager.Instance.GetLevel()].enemysData.ToString();
+        return nm;
+    }
+
     private async void Awake()
     {
         isCreat = true;
-        enemysDataName = "EnemysData001";
         await LoadSomeConfigs();
     }
 
