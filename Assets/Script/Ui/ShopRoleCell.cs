@@ -22,7 +22,7 @@ public class ShopRoleCell : SingletonMono<ShopRoleCell>
         ShopRoleCellInit();
     }
 
-    public void CreatBuyRoleUi()
+    public void CreatBuyRoleUi()//创建确定购买的UI
     {
         ShopRoleCell.Instance.myRole=this.myRole;
         Addressables.InstantiateAsync("BuyRoleUi");

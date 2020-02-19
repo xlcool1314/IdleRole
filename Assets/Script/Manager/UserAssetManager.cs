@@ -7,7 +7,7 @@ public class UserAsset
 {
     private int gold=100;
 
-    private int level=1;
+    private int level=0;
 
     private bool isDirty=false;//是否是脏数据
 
@@ -96,9 +96,9 @@ public class UserAssetManager:SingletonMono<UserAssetManager>{
         return asset.Gold += val;
     }
 
-        public int AddLevel(int val)
+        public int AddLevel()
     {
-        return asset.Level+= val;
+        return asset.Level+= 1;
     }
         
         public int GetLevel()

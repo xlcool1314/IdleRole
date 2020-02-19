@@ -40,6 +40,9 @@ public class EnemysBuilder : MonoBehaviour
     {
         if (BattlefieldMonitor.Instance.allEnemys.Length <= 0)
         {
+            UserAssetManager.Instance.AddLevel();
+            UserAssetManager.Instance.LateUpdateLoop();
+            Debug.Log(UserAssetManager.Instance.GetLevel());
             isCreat = true;
         }
     }
@@ -58,10 +61,10 @@ public class EnemysBuilder : MonoBehaviour
 
     private void Update()
     {
-        AllEnemysIsDead();
         if (isCreat == true)
         {
             CreatEnemys(enemysData);
         }
+        AllEnemysIsDead();
     }
 }
