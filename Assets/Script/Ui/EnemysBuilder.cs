@@ -17,20 +17,19 @@ public class EnemysBuilder : MonoBehaviour
     private async Task LoadSomeConfigs()
     {
         enemysDataName=GetLevelDataEnemyNm();
-        Debug.Log(enemysDataName);
         var task = Addressables.LoadAssetAsync<EnemysData>(enemysDataName).Task;
         enemysData = await task;
     }
 
     public void CreatEnemys(EnemysData enemyData)
     {
-        
         if (enemyData != null&&isCreat==true)
         {
             for (int i = 0; i < enemyData.enemys.Count; i++)
             {
                var go= Instantiate(enemyData.enemys[i].enemy, transform);
                go.tag="EnemysPlane";
+               Debug.Log("进来一次");
             }
             isCreat = false;
         }
@@ -64,6 +63,7 @@ public class EnemysBuilder : MonoBehaviour
 
     private async void Update()
     {
+        Debug.Log(isCreat);
         AllEnemysIsDead();
         if (isCreat)
         {
