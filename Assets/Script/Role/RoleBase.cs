@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class RoleBase : MonoBehaviour
 {
-    public int myhp;//血量
+    private int myhp;//血量
 
     public int maxHp;//最大血量
 
@@ -36,9 +36,23 @@ public abstract class RoleBase : MonoBehaviour
 
     public Animator lossAnimator;//伤害数字的显示动画
 
+    public int Myhp 
+    { 
+        get => myhp;
+        set 
+        {
+            if(myhp>maxHp)
+            {
+                myhp=maxHp;
+
+            }
+            myhp = value;
+        }  
+    }
+
     public void RoleUpDate()
     {
-        hpBar.CurrentValue = myhp;
+        hpBar.CurrentValue = Myhp;
         Dead();
     }
 
@@ -69,7 +83,7 @@ public abstract class RoleBase : MonoBehaviour
         allRoles=GameObject.FindObjectOfType<BattlefieldMonitor>();//拿到存着的所有角色
         attackSpeedBar.currentfill = 0;//初始的攻击速度为0
         hpBar.currentfill = 1;//初始的血条为满
-        hpBar.Initialize(myhp, maxHp);//初始化血条的显示
+        hpBar.Initialize(Myhp, maxHp);//初始化血条的显示
         attackSpeedBar.Initialize(maxAttackSpeed, maxAttackSpeed);//初始话攻击速度的显示
         StartCoroutine(AttackCountdown(maxAttackSpeed, attackSpeedBar));//游戏开始进行第一次的攻击频率倒计时
     }
@@ -79,7 +93,7 @@ public abstract class RoleBase : MonoBehaviour
         GameObject go=FindTheTarget();//找到要攻击的随机目标
         if (go != null)
         {
-            go.GetComponent<RoleBase>().myhp -= DamageCalculation(damage, go.GetComponent<RoleBase>().defense);//计算出伤害然后在血量里面减去
+            go.GetComponent<RoleBase>().Myhp -= DamageCalculation(damage, go.GetComponent<RoleBase>().defense);//计算出伤害然后在血量里面减去
             go.GetComponent<RoleBase>().lossAnimator.SetTrigger("LossHp");
             go.GetComponent<RoleBase>().lossHpText.hpText = DamageCalculation(damage, go.GetComponent<RoleBase>().defense);
             attackAnimator.SetTrigger("Attack");
@@ -91,7 +105,7 @@ public abstract class RoleBase : MonoBehaviour
     {
         GameObject go = FindMyRole();
         go.GetComponent<RoleBase>().treatmentText.InitLossHpText(myTreatment);
-        go.GetComponent<RoleBase>().myhp += myTreatment;
+        go.GetComponent<RoleBase>().Myhp += myTreatment;
         go.GetComponent<RoleBase>().treatmentText.hpText = myTreatment;
         go.GetComponent<RoleBase>().lossAnimator.SetTrigger("LossHp");
     }
@@ -174,7 +188,7 @@ public abstract class RoleBase : MonoBehaviour
 
     public void Dead()//角色死亡
     {
-        if(myhp<=0)
+        if(Myhp<=0)
         {
             Destroy(this.gameObject);
         }

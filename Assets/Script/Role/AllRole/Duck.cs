@@ -7,7 +7,6 @@ public class Duck : RoleBase
     private void Start()
     {
         base.InitRoleBase();
-        
     }
 
     private void Update() 
