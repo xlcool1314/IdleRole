@@ -130,11 +130,11 @@ public abstract class RoleBase : MonoBehaviour
             {
                 if (BattlefieldMonitor.Instance.allMyRoles[i].GetComponent<RoleBase>().hpBar.currentfill <= min)
                 {
+                    min=BattlefieldMonitor.Instance.allMyRoles[i].GetComponent<RoleBase>().hpBar.currentfill;
                     go = BattlefieldMonitor.Instance.allMyRoles[i];
                     if(i==BattlefieldMonitor.Instance.allMyRoles.Length){
                         return go;
                     }
-                    
                 }
             }
             return go;
@@ -147,6 +147,7 @@ public abstract class RoleBase : MonoBehaviour
             {
                 if (BattlefieldMonitor.Instance.allEnemys[i].GetComponent<RoleBase>().hpBar.currentfill <= min)
                 {
+                    min=BattlefieldMonitor.Instance.allEnemys[i].GetComponent<RoleBase>().hpBar.currentfill;
                     go = BattlefieldMonitor.Instance.allEnemys[i];
                     if(i==BattlefieldMonitor.Instance.allEnemys.Length)
                     {
