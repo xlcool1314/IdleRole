@@ -39,6 +39,8 @@ public abstract class RoleBase : MonoBehaviour
 
     public Animator lossAnimator;//伤害数字的显示动画
 
+    public Animator treatmentAnimator;//治疗数字显示动画
+
     
     public int Myhp 
     { 
@@ -113,10 +115,9 @@ public abstract class RoleBase : MonoBehaviour
     public void Treatment()//治疗
     {
         GameObject go = FindMyRole();
-        go.GetComponent<RoleBase>().treatmentText.InitLossHpText(myTreatment);
         go.GetComponent<RoleBase>().Myhp += myTreatment;
         go.GetComponent<RoleBase>().treatmentText.hpText = myTreatment;
-        go.GetComponent<RoleBase>().lossAnimator.SetTrigger("LossHp");
+        go.GetComponent<RoleBase>().treatmentAnimator.SetTrigger("Treatment");
     }
 
     public GameObject FindMyRole()//寻找我方血量最少的角色
@@ -130,10 +131,7 @@ public abstract class RoleBase : MonoBehaviour
                 if (BattlefieldMonitor.Instance.allMyRoles[i].GetComponent<RoleBase>().hpBar.currentfill <= min)
                 {
                     go = BattlefieldMonitor.Instance.allMyRoles[i];
-                    if (i == BattlefieldMonitor.Instance.allMyRoles.Length - 1)
-                    {
-                        return go;
-                    }
+                    return go;
                 }
             }
             return go;
@@ -147,10 +145,7 @@ public abstract class RoleBase : MonoBehaviour
                 if (BattlefieldMonitor.Instance.allEnemys[i].GetComponent<RoleBase>().hpBar.currentfill <= min)
                 {
                     go = BattlefieldMonitor.Instance.allEnemys[i];
-                    if (i == BattlefieldMonitor.Instance.allEnemys.Length - 1)
-                    {
-                        return go;
-                    }
+                    return go;
                 }
             }
             return go;
