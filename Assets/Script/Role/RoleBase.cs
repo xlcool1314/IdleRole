@@ -131,7 +131,10 @@ public abstract class RoleBase : MonoBehaviour
                 if (BattlefieldMonitor.Instance.allMyRoles[i].GetComponent<RoleBase>().hpBar.currentfill <= min)
                 {
                     go = BattlefieldMonitor.Instance.allMyRoles[i];
-                    return go;
+                    if(i==BattlefieldMonitor.Instance.allMyRoles.Length){
+                        return go;
+                    }
+                    
                 }
             }
             return go;
@@ -145,17 +148,18 @@ public abstract class RoleBase : MonoBehaviour
                 if (BattlefieldMonitor.Instance.allEnemys[i].GetComponent<RoleBase>().hpBar.currentfill <= min)
                 {
                     go = BattlefieldMonitor.Instance.allEnemys[i];
-                    return go;
+                    if(i==BattlefieldMonitor.Instance.allEnemys.Length)
+                    {
+                        return go;
+                    }
                 }
             }
             return go;
-
         }
         else
         {
             return null;
         }
-
     }
 
     public GameObject FindTheTarget()//随机锁定一个敌人
