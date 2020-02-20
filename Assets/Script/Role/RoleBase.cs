@@ -44,9 +44,14 @@ public abstract class RoleBase : MonoBehaviour
             if(myhp>maxHp)
             {
                 myhp=maxHp;
-
             }
-            myhp = value;
+            else if(myhp<0){
+                myhp=0;
+            }
+            else{
+                myhp = value;
+            }
+            
         }  
     }
 
