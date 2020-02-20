@@ -21,6 +21,5 @@ public class GameMain : SingletonMono<GameMain>
 
     private void Update()
     {
-        Debug.Log(UserAssetManager.Instance.GetLevel());
     }
 }

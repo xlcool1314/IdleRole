@@ -29,7 +29,6 @@ public class EnemysBuilder : MonoBehaviour
             {
                var go= Instantiate(enemyData.enemys[i].enemy, transform);
                go.tag="EnemysPlane";
-               Debug.Log("进来一次");
             }
             isCreat = false;
         }
@@ -63,7 +62,6 @@ public class EnemysBuilder : MonoBehaviour
 
     private async void Update()
     {
-        Debug.Log(isCreat);
         AllEnemysIsDead();
         if (isCreat)
         {

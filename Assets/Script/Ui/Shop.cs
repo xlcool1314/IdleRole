@@ -14,7 +14,7 @@ public class Shop : SingletonMono<Shop>
     public TextMeshProUGUI howMuchRoleMoney;
 
     
-    private async Task LoadSomeConfigs()
+    private async Task LoadSomeConfigs()//拿到商店展示的英雄列表
     {
         var task = Addressables.LoadAssetAsync<MyRoleData>("MyRoleData").Task;
         rolesData = await task;
@@ -31,8 +31,7 @@ public class Shop : SingletonMono<Shop>
                 {
                   var go2= await Addressables.InstantiateAsync("ShopRoleCell", transform).Task;
                   go2.GetComponent<ShopRoleCell>().myRole=go.myRole;
-                }
-                
+                } 
             }
         }
     }
