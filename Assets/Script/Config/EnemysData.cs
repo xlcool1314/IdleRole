@@ -14,4 +14,5 @@ public class EnemysData : ScriptableObject
 public class Enemys
 {
     public GameObject enemy;
+    
 }
