@@ -36,8 +36,6 @@ public class EnemysBuilder : MonoBehaviour
         {
             return;
         }
-        
-        
     }
 
     void AllEnemysIsDead()
@@ -51,7 +49,6 @@ public class EnemysBuilder : MonoBehaviour
     public string GetLevelDataEnemyNm()//拿到某个关卡的怪物数据文件名称
     {
         string nm=levelData.levelinfo[UserAssetManager.Instance.GetLevel()].enemysData.ToString();
-        Debug.Log(nm);
         return nm;
     }
 
