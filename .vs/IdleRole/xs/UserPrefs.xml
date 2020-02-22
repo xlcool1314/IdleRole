@@ -1,20 +1,8 @@
 ﻿<Properties StartupConfiguration="{F7A7488B-D857-F570-08F5-BBC976D73E93}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Script/Ui/HomeUi.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Script/Manager/GameMain.cs">
     <Files>
       <File FileName="Assets/Script/Manager/UserAssetManager.cs" Line="10" Column="24" />
-      <File FileName="Assets/Script/Role/BattlefieldMonitor.cs" Line="36" Column="55" />
-      <File FileName="Assets/Script/Config/DeleteAllData.cs" Line="8" Column="47" />
-      <File FileName="Assets/Script/Manager/GameMain.cs" Line="24" Column="9" />
-      <File FileName="Assets/Script/Ui/EnemysBuilder.cs" Line="76" Column="1" />
-      <File FileName="Assets/Script/Ui/LossHp.cs" Line="31" Column="1" />
-      <File FileName="Assets/Script/Role/AllRole/Cactus.cs" Line="5" Column="29" />
-      <File FileName="Assets/Script/Role/RoleBase.cs" Line="218" Column="2" />
-      <File FileName="Assets/Script/Role/AllRole/Duck.cs" Line="19" Column="1" />
-      <File FileName="Assets/Script/Ui/BuyRoleUi.cs" Line="38" Column="17" />
-      <File FileName="Assets/Script/Ui/ShopUi.cs" Line="1" Column="1" />
-      <File FileName="Assets/Script/Ui/ShopRoleCell.cs" Line="1" Column="1" />
-      <File FileName="Assets/Script/Ui/Shop.cs" Line="28" Column="14" />
-      <File FileName="Assets/Script/Ui/HomeUi.cs" Line="11" Column="19" />
+      <File FileName="Assets/Script/Manager/GameMain.cs" Line="12" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -26,7 +14,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="f0e950cb-e401-458d-be54-c821ed92ba27" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="22dbe993-7e44-4714-b621-bad00eb36fca" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

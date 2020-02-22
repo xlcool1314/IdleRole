@@ -8,6 +8,8 @@ public class GameMain : SingletonMono<GameMain>
 {
     private async void Awake()
     {
+       Application.targetFrameRate = 60;
+
        await UserAssetManager.Instance.Init();
        
        await GameInit();
