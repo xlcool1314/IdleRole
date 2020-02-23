@@ -10,6 +10,8 @@ public class ShopRoleCell : SingletonMono<ShopRoleCell>
 
     public GameObject myRole;
 
+    
+
     public void ShopRoleCellInit()
     {
 

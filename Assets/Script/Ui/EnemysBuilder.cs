@@ -6,9 +6,9 @@ using UnityEngine.AddressableAssets;
 
 public class EnemysBuilder : MonoBehaviour
 {
-    public EnemysData enemysData;
+    public EnemysData enemysData;//怪物的数据
 
-    public LevelData levelData;
+    public LevelData levelData;//关卡数据
 
     public string enemysDataName;
 
@@ -38,7 +38,7 @@ public class EnemysBuilder : MonoBehaviour
         }
     }
 
-    void AllEnemysIsDead()
+    void AllEnemysIsDead()//所有这轮的怪物全部死亡，生成新的一批怪物
     {
         if (BattlefieldMonitor.Instance.allEnemys.Length <= 0&&isCreat==false)
         {
@@ -65,6 +65,5 @@ public class EnemysBuilder : MonoBehaviour
             await LoadSomeConfigs();
             CreatEnemys(enemysData);
         }
-
     }
 }
