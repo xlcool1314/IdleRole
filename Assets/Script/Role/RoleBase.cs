@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public abstract class RoleBase : MonoBehaviour
 {
@@ -40,6 +41,8 @@ public abstract class RoleBase : MonoBehaviour
     public Animator lossAnimator;//伤害数字的显示动画
 
     public Animator treatmentAnimator;//治疗数字显示动画
+
+    public Image mySkin;//我的皮肤
 
     
     public int Myhp 

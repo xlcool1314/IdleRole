@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AddressableAssets;
+using TMPro;
 
 public class ShopRoleCell : SingletonMono<ShopRoleCell>
 {
@@ -10,7 +11,11 @@ public class ShopRoleCell : SingletonMono<ShopRoleCell>
 
     public GameObject myRole;
 
-    
+    public Image skin;
+
+    public TextMeshProUGUI moneyText;
+
+    public TextMeshProUGUI nameText;
 
     public void ShopRoleCellInit()
     {
