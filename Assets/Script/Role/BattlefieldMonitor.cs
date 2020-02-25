@@ -16,8 +16,8 @@ public class BattlefieldMonitor : SingletonMono<BattlefieldMonitor>
     {
         FindAllMyRole();
         FindAllEnemys();
-        GameOver();
-
+        GameOver();     
+    
     }
 
     public void FindAllMyRole()//找到所有的我方角色
@@ -29,6 +29,35 @@ public class BattlefieldMonitor : SingletonMono<BattlefieldMonitor>
     {
         allEnemys=GameObject.FindGameObjectsWithTag("EnemysPlane");
 
+    }
+
+    public GameObject Combination(GameObject go)
+    {
+        if (allMyRoles.Length >= 3)
+        {
+            Debug.Log("插入");
+            int sameNb;
+            sameNb = 0;
+            for (int i = 0; i < allMyRoles.Length; i++)
+            {
+                bool isSame = allMyRoles[i].gameObject.name.Equals(go.name);
+                Debug.Log(isSame);
+                if (isSame)
+                {
+                    sameNb += 1;
+                }
+            }
+            if (sameNb >= 3)
+            {
+                Debug.Log("我成功了");
+            }
+            return null;
+        }
+        else
+        {
+            return null;
+        }
+        
     }
 
     void GameOver()//游戏结束

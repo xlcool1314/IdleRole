@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Duck : RoleBase
+public class TreeMan : RoleBase
 {
     private void Start()
     {

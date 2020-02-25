@@ -36,9 +36,10 @@ public class BuyRoleUi : UIBaseBehaviour
     public void DetermineBuyRole()//确定购买我的角色
     {
         Clean();
-        MyRoleBuilder.Instance.CreatRole(ShopRoleCell.Instance.myRole);
+        var go= MyRoleBuilder.Instance.CreatRole(ShopRoleCell.Instance.myRole);
         BattlefieldMonitor.Instance.FindAllMyRole();
         BattlefieldMonitor.Instance.isFirstGame = false;
+        BattlefieldMonitor.Instance.Combination(go);
         ShopUi.Instance.CloseShopUi();
         Destroy(gameObject);
     }
