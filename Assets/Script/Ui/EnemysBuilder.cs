@@ -19,6 +19,8 @@ public class EnemysBuilder : MonoBehaviour
 
     private async Task LoadSomeConfigs()
     {
+        var taskHpBar = Addressables.LoadAssetAsync<Sprite>("hpred").Task;
+        enemyHpBar = await taskHpBar;
         enemysDataName=GetLevelDataEnemyNm();
         var task = Addressables.LoadAssetAsync<EnemysData>(enemysDataName).Task;
         enemysData = await task;
