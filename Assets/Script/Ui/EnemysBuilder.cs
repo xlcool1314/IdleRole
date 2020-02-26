@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.UI;
 
 public class EnemysBuilder : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class EnemysBuilder : MonoBehaviour
     public LevelData levelData;//关卡数据
 
     public string enemysDataName;
+
+    public Sprite  enemyHpBar;
 
     private bool isCreat=true;
 
@@ -29,6 +32,8 @@ public class EnemysBuilder : MonoBehaviour
             {
                var go= Instantiate(enemyData.enemys[i].enemy, transform);
                go.tag="EnemysPlane";
+               go.GetComponent<RoleBase>().myHpBarImage.sprite = enemyHpBar;
+               
             }
             isCreat = false;
         }

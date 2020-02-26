@@ -44,6 +44,8 @@ public abstract class RoleBase : MonoBehaviour
 
     public Image mySkin;//我的皮肤
 
+    public Image myHpBarImage;//我的血条image
+
     
     public int Myhp 
     { 
