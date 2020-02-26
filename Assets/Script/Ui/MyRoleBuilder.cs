@@ -10,6 +10,7 @@ public class MyRoleBuilder : SingletonMono<MyRoleBuilder>
     {
         var go= Instantiate(thisRole, transform);
         go.tag="MyRolePlane";
+        go.name = thisRole.name;
         return go;
     }
 }

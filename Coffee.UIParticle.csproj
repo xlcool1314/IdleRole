@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{01D1E31E-7472-ACC1-F3B0-420C2393372D}</ProjectGuid>
+    <ProjectGuid>{591BF638-5ED7-5AE9-43A8-1C4CB82310F8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Coffee.UIParticle</AssemblyName>
@@ -66,10 +66,10 @@
     <Compile Include="Assets\Framework\Plugins\UIParticle\UIParticle.cs" />
     <Compile Include="Assets\Framework\Plugins\UIParticle\UIParticleOverlayCamera.cs" />
     <Reference Include="UnityEditor.UI">
-      <HintPath>E:/IdleRole/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>D:/Idle/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>E:/IdleRole/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>D:/Idle/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.0f5/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>

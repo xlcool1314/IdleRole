@@ -1,18 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CombinationUi : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Image betterRole;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public Image role01_Skin;
+
+    public Image role02_Skin;
+
+    public Image role03_Skin;
 }
