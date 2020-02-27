@@ -23,8 +23,10 @@ public class CombinationUi : MonoBehaviour
         DeleteMySelf();
     }
 
+
+
     void DeleteMySelf()
     {
-        Destroy(gameObject, 4f);
+        Destroy(gameObject, 3f);
     }
 }

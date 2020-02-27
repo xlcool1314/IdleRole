@@ -62,9 +62,6 @@ public class BattlefieldMonitor : SingletonMono<BattlefieldMonitor>
             {
                 Addressables.InstantiateAsync("CombinationUi");
                 FindLv2Role(go);
-                //CreatAndDeleteRole(levelRole, allDeleteRole);
-
-
             }
             return null;
         }
@@ -101,19 +98,14 @@ public class BattlefieldMonitor : SingletonMono<BattlefieldMonitor>
         combinationUi.role03_Skin.sprite = go.GetComponent<RoleBase>().mySkin.sprite;
     }
 
-    //public void CreatAndDeleteRole(List<GameObject> deleteRoles)
-    //{
-    //    Debug.Log(deleteRoles.Count);
-        
-    //    if (deleteRoles.Count == 3)
-    //    {
-    //        for (int i = 0; i < 3; i++)
-    //        {
-    //            Debug.Log(deleteRoles[i]);
-    //            Destroy(deleteRoles[i]);
-    //        }
-    //    }
-    //}
+    void DeleteCombinationRole()
+    {
+        for (int i = 0; i < allDeleteRole.Count; i++)
+        {
+            Destroy(allDeleteRole[i]);
+            allDeleteRole.RemoveAt(i);
+        }
+    }
 
     void GameOver()//游戏结束
     {
