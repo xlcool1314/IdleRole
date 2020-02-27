@@ -83,7 +83,7 @@ public class BattlefieldMonitor : SingletonMono<BattlefieldMonitor>
                 levelRole = allRoleData.AllRoleInfo[i].RoleInfo[1].roleObj;
 
                 MyRoleBuilder.Instance.CreatRole(levelRole);
-
+                DeleteCombinationRole();
                 InitLv2CombinationUi(go);//初始化合成UI的表现数据
             }
         }
@@ -103,7 +103,6 @@ public class BattlefieldMonitor : SingletonMono<BattlefieldMonitor>
         for (int i = 0; i < allDeleteRole.Count; i++)
         {
             Destroy(allDeleteRole[i]);
-            allDeleteRole.RemoveAt(i);
         }
     }
 
