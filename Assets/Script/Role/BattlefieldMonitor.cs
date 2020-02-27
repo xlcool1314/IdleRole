@@ -17,9 +17,11 @@ public class BattlefieldMonitor : SingletonMono<BattlefieldMonitor>
 
     public GameObject levelRole=null;//进阶角色储存变量
 
-    public List<GameObject> allDeleteRole=new List<GameObject>();//等待删除的角色
+    //等待删除的角色
 
     public CombinationUi combinationUi;//表现的UI
+
+    public bool isCombination = false;
 
     void Update()
     {
@@ -38,39 +40,35 @@ public class BattlefieldMonitor : SingletonMono<BattlefieldMonitor>
     public void FindAllEnemys()//找到敌方所有角色
     {
         allEnemys=GameObject.FindGameObjectsWithTag("EnemysPlane");
-
     }
 
-    public GameObject Combination(GameObject go)//判断是否又三个一样的英雄，如果有就合成
+
+    public void Combination(GameObject go)//判断是否又三个一样的英雄，如果有就合成
     {
         if (allMyRoles.Length >= 3)
         {
             int sameNb;
             sameNb = 0;
+            List<GameObject> allDeleteRole = new List<GameObject>();
             for (int i = 0; i < allMyRoles.Length; i++)
             {
-                bool isSame = allMyRoles[i].gameObject.name.Equals(go.name);
-                if (isSame)
+                if (allMyRoles[i].name==go.name)
                 {
                     sameNb += 1;
-                    allDeleteRole.Add(allMyRoles[i].gameObject);
+                    allDeleteRole.Add(allMyRoles[i]);
+                    Debug.Log(allDeleteRole.Count);
                 }
             }
             if (sameNb >= 3)
             {
                 Addressables.InstantiateAsync("CombinationUi");
-                FindLv2Role(go);
+                FindLv2Role(go,allDeleteRole);
+                //
             }
-            return null;
         }
-        else
-        {
-            return null;
-        }
-        
     }
 
-    public async void FindLv2Role(GameObject go)//找到要进阶2级的角色是哪一个
+    public async void FindLv2Role(GameObject go,List<GameObject> goes)//找到要进阶2级的角色是哪一个
     {
         var task = Addressables.LoadAssetAsync<AllRoleData>("AllRoleInfo").Task;
         allRoleData = await task;
@@ -82,6 +80,7 @@ public class BattlefieldMonitor : SingletonMono<BattlefieldMonitor>
 
                 MyRoleBuilder.Instance.CreatRole(levelRole);
                 InitLv2CombinationUi(go);//初始化合成UI的表现数据
+                DeleteCombinationRole(goes);
             }
         }
     }
@@ -95,12 +94,11 @@ public class BattlefieldMonitor : SingletonMono<BattlefieldMonitor>
         combinationUi.role03_Skin.sprite = go.GetComponent<RoleBase>().mySkin.sprite;
     }
 
-    public void DeleteCombinationRole()
+    public void DeleteCombinationRole(List<GameObject> go)
     {
-        Debug.Log(allDeleteRole.Count);
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < go.Count; i++)
         {
-            Destroy(allDeleteRole[i]);
+            Destroy(go[i]);
         }
     }
 

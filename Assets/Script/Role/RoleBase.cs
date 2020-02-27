@@ -62,7 +62,6 @@ public abstract class RoleBase : MonoBehaviour
             else{
                 myhp = value;
             }
-            
         }  
     }
 
