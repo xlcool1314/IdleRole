@@ -53,7 +53,7 @@ public class BattlefieldMonitor : SingletonMono<BattlefieldMonitor>
                 if (isSame)
                 {
                     sameNb += 1;
-                    allDeleteRole.Add(allMyRoles[i]);
+                    allDeleteRole.Add(allMyRoles[i].gameObject);
                 }
             }
             if (sameNb >= 3)
