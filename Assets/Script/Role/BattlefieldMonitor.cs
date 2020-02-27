@@ -50,11 +50,9 @@ public class BattlefieldMonitor : SingletonMono<BattlefieldMonitor>
             for (int i = 0; i < allMyRoles.Length; i++)
             {
                 bool isSame = allMyRoles[i].gameObject.name.Equals(go.name);
-                Debug.Log(isSame);
                 if (isSame)
                 {
                     sameNb += 1;
-                    Debug.Log(go);
                     allDeleteRole.Add(allMyRoles[i]);
                 }
             }
@@ -83,7 +81,6 @@ public class BattlefieldMonitor : SingletonMono<BattlefieldMonitor>
                 levelRole = allRoleData.AllRoleInfo[i].RoleInfo[1].roleObj;
 
                 MyRoleBuilder.Instance.CreatRole(levelRole);
-                DeleteCombinationRole();
                 InitLv2CombinationUi(go);//初始化合成UI的表现数据
             }
         }
@@ -98,9 +95,10 @@ public class BattlefieldMonitor : SingletonMono<BattlefieldMonitor>
         combinationUi.role03_Skin.sprite = go.GetComponent<RoleBase>().mySkin.sprite;
     }
 
-    void DeleteCombinationRole()
+    public void DeleteCombinationRole()
     {
-        for (int i = 0; i < allDeleteRole.Count; i++)
+        Debug.Log(allDeleteRole.Count);
+        for (int i = 0; i < 3; i++)
         {
             Destroy(allDeleteRole[i]);
         }

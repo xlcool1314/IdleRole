@@ -27,6 +27,10 @@ public class CombinationUi : MonoBehaviour
 
     void DeleteMySelf()
     {
+        Debug.Log(BattlefieldMonitor.Instance.allDeleteRole[0].name);
+        Debug.Log(BattlefieldMonitor.Instance.allDeleteRole[1].name);
+        Debug.Log(BattlefieldMonitor.Instance.allDeleteRole[2].name);
+        //BattlefieldMonitor.Instance.DeleteCombinationRole();
         Destroy(gameObject, 3f);
     }
 }
