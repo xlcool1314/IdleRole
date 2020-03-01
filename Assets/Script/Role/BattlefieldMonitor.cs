@@ -105,7 +105,8 @@ public class BattlefieldMonitor : SingletonMono<BattlefieldMonitor>
     {
         if (allMyRoles.Length == 0&&isFirstGame==false)
         {
-            SceneManager.LoadScene(0);
+            Addressables.InstantiateAsync("GameOverUi");
+            isFirstGame = true;
         }
     }
 }
