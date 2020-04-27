@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class BuyRoleUi : UIBaseBehaviour
 {
@@ -9,6 +10,16 @@ public class BuyRoleUi : UIBaseBehaviour
     public Button noButton;
 
     public ShopRoleCell buyMyRole;
+
+    public TextMeshProUGUI  nameText;//显示信息名称
+
+    public TextMeshProUGUI mindamage;//显示最小攻击力
+
+    public TextMeshProUGUI maxdamage;//显示最大攻击
+
+    public TextMeshProUGUI defenseText;//显示防御力
+
+    public Image skin;
 
     private void Awake()
     {
@@ -19,6 +30,11 @@ public class BuyRoleUi : UIBaseBehaviour
     {
         yesButton.onClick.AddListener(DetermineBuyRole);
         noButton.onClick.AddListener(CloseBuyRoleUi);
+        nameText.text = ShopRoleCell.Instance.myRole.name;
+        skin.sprite = ShopRoleCell.Instance.myRole.GetComponent<RoleBase>().mySkin.sprite;
+        mindamage.text = ShopRoleCell.Instance.myRole.GetComponent<RoleBase>().mindamage.ToString();
+        maxdamage.text = ShopRoleCell.Instance.myRole.GetComponent<RoleBase>().maxdamage.ToString();
+        defenseText.text = ShopRoleCell.Instance.myRole.GetComponent<RoleBase>().defense.ToString();
     }
 
     public override void UpdateInfo(float deltaTime)
