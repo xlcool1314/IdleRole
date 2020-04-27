@@ -91,9 +91,14 @@ public class UserAssetManager:SingletonMono<UserAssetManager>{
         return null;
     }
 
-        public int AddGold(int val)
+        public int AddGold(int val)//增加金币
     {
         return asset.Gold += val;
+    }
+
+       public int ReduceGold(int val)//减少金币
+    {
+        return asset.Gold -= val;
     }
 
     public int UpdateGold()

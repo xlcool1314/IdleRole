@@ -51,13 +51,22 @@ public class BuyRoleUi : UIBaseBehaviour
 
     public void DetermineBuyRole()//确定购买我的角色
     {
-        Clean();
-        var go= MyRoleBuilder.Instance.CreatRole(ShopRoleCell.Instance.myRole);
-        BattlefieldMonitor.Instance.FindAllMyRole();
-        BattlefieldMonitor.Instance.isFirstGame = false;
-        BattlefieldMonitor.Instance.Combination(go);
-        ShopUi.Instance.CloseShopUi();
-        Destroy(gameObject);
+        if(UserAssetManager.Instance.UpdateGold()>= ShopRoleCell.Instance.myRole.GetComponent<RoleBase>().howMuchMoneys)
+        {
+            Clean();
+            UserAssetManager.Instance.ReduceGold(ShopRoleCell.Instance.myRole.GetComponent<RoleBase>().howMuchMoneys);
+            var go = MyRoleBuilder.Instance.CreatRole(ShopRoleCell.Instance.myRole);
+            BattlefieldMonitor.Instance.FindAllMyRole();
+            BattlefieldMonitor.Instance.isFirstGame = false;
+            BattlefieldMonitor.Instance.Combination(go);
+            ShopUi.Instance.CloseShopUi();
+            Destroy(gameObject);
+        }
+        else
+        {
+            Debug.Log("金币不够");
+        }
+        
     }
 
     public void CloseBuyRoleUi()//关闭购买UI
