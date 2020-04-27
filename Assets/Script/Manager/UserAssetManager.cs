@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class UserAsset
 {
-    private int gold=20;
+    private int gold;
 
-    private int level=0;
+    private int level;
 
     private bool isDirty=false;//是否是脏数据
 
