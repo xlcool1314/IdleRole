@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class UserAsset
 {
-    private int gold=100;
+    private int gold=20;
 
     private int level=0;
 
@@ -94,6 +94,11 @@ public class UserAssetManager:SingletonMono<UserAssetManager>{
         public int AddGold(int val)
     {
         return asset.Gold += val;
+    }
+
+    public int UpdateGold()
+    {
+        return asset.Gold;
     }
 
         public int AddLevel()

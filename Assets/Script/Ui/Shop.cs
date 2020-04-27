@@ -33,7 +33,7 @@ public class Shop : SingletonMono<Shop>
                   var go2= await Addressables.InstantiateAsync("ShopRoleCell", transform).Task;
                   go2.GetComponent<ShopRoleCell>().myRole=go.myRole;
                   go2.GetComponent<ShopRoleCell>().nameText.text = go.myRole.name.ToString();
-                  go2.GetComponent<ShopRoleCell>().moneyText.text = go.howMuchMoney.ToString();
+                    go2.GetComponent<ShopRoleCell>().moneyText.text = go.myRole.GetComponent<RoleBase>().howMuchMoneys.ToString();
                   go2.GetComponent<ShopRoleCell>().skin.sprite = go.myRole.GetComponent<RoleBase>().mySkin.sprite;
                   go2.GetComponent<ShopRoleCell>().skin.SetNativeSize();
                 } 

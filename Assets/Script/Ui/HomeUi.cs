@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AddressableAssets;
+using TMPro;
 
 public class HomeUi : UIBaseBehaviour
 {
@@ -11,6 +12,8 @@ public class HomeUi : UIBaseBehaviour
     public Button nextLevelButton;
 
     public bool isOpenNextButton;
+
+    public TextMeshProUGUI gold;
 
     public override void Clean()
     {
@@ -32,6 +35,11 @@ public class HomeUi : UIBaseBehaviour
     void Start()
     {
         Init();
+    }
+
+    private void Update()
+    {
+        gold.text = UserAssetManager.Instance.UpdateGold().ToString();
     }
 
     public void CreatShopUi()

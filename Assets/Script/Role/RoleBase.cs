@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public abstract class RoleBase : MonoBehaviour
 {
     [SerializeField]
+
     private int myhp;//血量
 
     public int maxHp;//最大血量
@@ -45,6 +46,8 @@ public abstract class RoleBase : MonoBehaviour
     public Image mySkin;//我的皮肤
 
     public Image myHpBarImage;//我的血条image
+
+    public int howMuchMoneys;
 
     
     public int Myhp 
