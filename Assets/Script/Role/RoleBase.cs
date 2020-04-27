@@ -204,7 +204,12 @@ public abstract class RoleBase : MonoBehaviour
 
     public void Dead()//角色死亡
     {
-        if(Myhp<=0)
+        if(Myhp<=0&&transform.CompareTag("EnemysPlane"))
+        {
+            UserAssetManager.Instance.AddGold(5);
+            Destroy(this.gameObject);
+        }
+        else if(Myhp <= 0 && transform.CompareTag("MyRolePlane"))
         {
             Destroy(this.gameObject);
         }
