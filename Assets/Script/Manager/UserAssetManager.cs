@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 
+
 public class UserAsset
 {
-    private int gold;
+    [SerializeField]
+    private int gold=100;
 
-    private int level;
+    [SerializeField]
+    private int level=1;
 
     private bool isDirty=false;//是否是脏数据
 
@@ -64,7 +67,6 @@ public class UserAsset
             isDirty = false;
         }
     }
-
 }
 
 
@@ -89,6 +91,16 @@ public class UserAssetManager:SingletonMono<UserAssetManager>{
     {
         asset.Save();
         return null;
+    }
+
+    public void SaveGame()
+    {
+        asset.Save();
+    }
+
+    public void InitInfo()
+    {
+        PlayerPrefs.DeleteAll();
     }
 
         public int AddGold(int val)//增加金币

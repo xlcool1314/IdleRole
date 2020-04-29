@@ -13,4 +13,9 @@ public class MyRoleBuilder : SingletonMono<MyRoleBuilder>
         go.name = thisRole.name;
         return go;
     }
+
+    public void CreatAllRoles()
+    {
+
+    }
 }

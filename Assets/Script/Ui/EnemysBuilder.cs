@@ -26,7 +26,7 @@ public class EnemysBuilder : MonoBehaviour
         enemysData = await task;
     }
 
-    public void CreatEnemys(EnemysData enemyData)
+    public void CreatEnemys(EnemysData enemyData)//刷新怪物
     {
         if (enemyData != null&&isCreat==true)
         {
@@ -55,7 +55,7 @@ public class EnemysBuilder : MonoBehaviour
 
     public string GetLevelDataEnemyNm()//拿到某个关卡的怪物数据文件名称
     {
-        string nm=levelData.levelinfo[UserAssetManager.Instance.GetLevel()].enemysData.ToString();
+        string nm=levelData.levelinfo[UserAssetManager.Instance.GetLevel()-1].enemysData.ToString();
         return nm;
     }
 

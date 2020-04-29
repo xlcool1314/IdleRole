@@ -23,5 +23,6 @@ public class GameMain : SingletonMono<GameMain>
 
     private void Update()
     {
+        UserAssetManager.Instance.LateUpdateLoop();
     }
 }

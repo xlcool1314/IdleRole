@@ -31,6 +31,7 @@ public class GameOverUi : UIBaseBehaviour
 
     void BackHome()
     {
+        UserAssetManager.Instance.InitInfo();
         SceneManager.LoadScene(0);
         Clean();
         Destroy(gameObject);

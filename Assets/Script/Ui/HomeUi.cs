@@ -23,7 +23,7 @@ public class HomeUi : UIBaseBehaviour
     public override void Init()
     {
         shopButton.onClick.AddListener(CreatShopUi);
-        //nextLevelButton.onClick.AddListener(GoToNextLevel);
+        nextLevelButton.onClick.AddListener(GoToNextLevel);
     }
 
     public override void UpdateInfo(float deltaTime)
@@ -45,5 +45,10 @@ public class HomeUi : UIBaseBehaviour
     public void CreatShopUi()
     {
         Addressables.InstantiateAsync("ShopUi", transform.parent);
+    }
+
+    public void GoToNextLevel()
+    {
+        UserAssetManager.Instance.AddLevel();
     }
 }
