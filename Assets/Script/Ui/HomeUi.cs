@@ -68,8 +68,10 @@ public class HomeUi : UIBaseBehaviour
     public void SaveMyRole()
     {
             UserAssetManager.Instance.MyAllRoles().Clear();
-            for (int i = 0; i < BattlefieldMonitor.Instance.allMyRoles.Length; i++)
+            BattlefieldMonitor.Instance.FindAllMyRole();
+        for (int i = 0; i < BattlefieldMonitor.Instance.allMyRoles.Length; i++)
             {
+                
                 UserAssetManager.Instance.MyAllRoles().Add(BattlefieldMonitor.Instance.allMyRoles[i].name);
             }
     }

@@ -15,6 +15,8 @@ public class UserAsset
     [SerializeField]
     private List<string> myRoleNames = null;
 
+    public bool isFirstGame = true;//是否第一次进入游戏
+
     private bool isDirty=false;//是否是脏数据
 
     public int Gold 
@@ -160,5 +162,10 @@ public class UserAssetManager:SingletonMono<UserAssetManager>{
         public int GetLevel()
     {
         return asset.Level;
+    }
+
+       public bool IsFirstGame()
+    {
+        return asset.isFirstGame;
     }
 }
