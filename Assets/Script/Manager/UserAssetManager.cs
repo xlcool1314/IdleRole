@@ -7,7 +7,7 @@ using UnityEngine;
 public class UserAsset
 {
     [SerializeField]
-    private int gold=10;
+    private int gold=100;
 
     [SerializeField]
     private int level=1;

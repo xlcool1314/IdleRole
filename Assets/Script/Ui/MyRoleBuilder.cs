@@ -8,11 +8,9 @@ using System.Threading.Tasks;
 public class MyRoleBuilder : SingletonMono<MyRoleBuilder>
 {
 
-    public GameObject roles;
-
     private void Start()
     {
-        CreatAllRoles();
+        //CreatAllRoles();
     }
 
     public GameObject CreatRole(GameObject thisRole)
@@ -27,13 +25,15 @@ public class MyRoleBuilder : SingletonMono<MyRoleBuilder>
     {
         if (UserAssetManager.Instance.BoolRoles())
         {
+            Debug.Log(UserAssetManager.Instance.MyAllRoles().Count);
             for (int i = 0; i < UserAssetManager.Instance.MyAllRoles().Count; i++)
             {
               var go= Addressables.LoadAssetAsync<GameObject>(UserAssetManager.Instance.MyAllRoles()[i]).Task;
-              roles = await go;
-              var go1= Instantiate(roles, transform);
-                go1.tag= "MyRolePlane";
-                go1.name = UserAssetManager.Instance.MyAllRoles()[i];
+               GameObject roles = await go;
+               var go1= Instantiate(roles, transform);
+               go1.tag= "MyRolePlane";
+               go1.name = UserAssetManager.Instance.MyAllRoles()[i];
+                Debug.Log(1);
             }
         }
     }

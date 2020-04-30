@@ -13,6 +13,8 @@ public class HomeUi : UIBaseBehaviour
 
     public Button button;
 
+    public Button Testbutton;
+
     public bool isOpenNextButton;
 
     public TextMeshProUGUI gold;
@@ -24,6 +26,7 @@ public class HomeUi : UIBaseBehaviour
 
     public override void Init()
     {
+        Testbutton.onClick.AddListener(TestCreatRole);
         button.onClick.AddListener(DeleteInfo);
         shopButton.onClick.AddListener(CreatShopUi);
         nextLevelButton.onClick.AddListener(GoToNextLevel);
@@ -44,11 +47,11 @@ public class HomeUi : UIBaseBehaviour
     {
         gold.text = UserAssetManager.Instance.UpdateGold().ToString();
 
-        if (BattlefieldMonitor.Instance.allMyRoles.Length > 0&& BattlefieldMonitor.Instance.allMyRoles!=null)
+        if (BattlefieldMonitor.Instance.allMyRoles.Length > 0 && BattlefieldMonitor.Instance.allMyRoles != null)
         {
             SaveMyRole();
         }
-        }
+    }
 
     public void CreatShopUi()
     {
@@ -67,12 +70,17 @@ public class HomeUi : UIBaseBehaviour
 
     public void SaveMyRole()
     {
-            UserAssetManager.Instance.MyAllRoles().Clear();
-            BattlefieldMonitor.Instance.FindAllMyRole();
+        UserAssetManager.Instance.MyAllRoles().Clear();
+        BattlefieldMonitor.Instance.FindAllMyRole();
         for (int i = 0; i < BattlefieldMonitor.Instance.allMyRoles.Length; i++)
-            {
-                
-                UserAssetManager.Instance.MyAllRoles().Add(BattlefieldMonitor.Instance.allMyRoles[i].name);
-            }
+        {
+
+            UserAssetManager.Instance.MyAllRoles().Add(BattlefieldMonitor.Instance.allMyRoles[i].name);
+        }
+    }
+
+    public void TestCreatRole()
+    {
+        MyRoleBuilder.Instance.CreatAllRoles();
     }
 }

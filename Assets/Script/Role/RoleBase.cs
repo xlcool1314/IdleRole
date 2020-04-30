@@ -55,11 +55,11 @@ public abstract class RoleBase : MonoBehaviour
         get => myhp;
         set 
         {
-            if(myhp>maxHp)
+            if(value > maxHp)
             {
                 myhp=maxHp;
             }
-            else if(myhp<0){
+            else if(value < 0){
                 myhp=0;
             }
             else{
