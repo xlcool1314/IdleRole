@@ -47,7 +47,7 @@ public abstract class RoleBase : MonoBehaviour
 
     public Image myHpBarImage;//我的血条image
 
-    public int howMuchMoneys;
+    public int howMuchMoneys;//需要的金币数量
 
     
     public int Myhp 
