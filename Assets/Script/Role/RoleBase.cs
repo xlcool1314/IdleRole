@@ -5,6 +5,18 @@ using UnityEngine.UI;
 
 public abstract class RoleBase : MonoBehaviour
 {
+
+    public enum Property
+    {
+        normal,
+        fire,
+        water,
+        earth,
+        wind
+    }
+
+    public Property property;
+
     [SerializeField]
 
     private int myhp;//血量
