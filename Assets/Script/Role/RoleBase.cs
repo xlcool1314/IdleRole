@@ -5,8 +5,7 @@ using UnityEngine.UI;
 
 public abstract class RoleBase : MonoBehaviour
 {
-
-    public enum Property
+    public enum Property//角色属性
     {
         normal,
         fire,
@@ -15,7 +14,7 @@ public abstract class RoleBase : MonoBehaviour
         wind
     }
 
-    public Property property;
+    public Property property;//角色属性
 
     [SerializeField]
 
@@ -30,6 +29,8 @@ public abstract class RoleBase : MonoBehaviour
     public int maxdamage;//最大攻击力
 
     public int myTreatment;// 治疗量
+
+    public int treatmenNumber;//治疗个数
 
     public float maxAttackSpeed;//最大的的攻击间隔
 
@@ -78,12 +79,11 @@ public abstract class RoleBase : MonoBehaviour
                 myhp = value;
             }
         }  
-    }
+    }//血量属性
 
-    public void RoleUpDate()
+    public void RoleUpDate()//bar更新
     {
         hpBar.CurrentValue = Myhp;
-        Dead();
     }
 
     public void AttackUpDate()//攻击伤害更新
@@ -110,6 +110,7 @@ public abstract class RoleBase : MonoBehaviour
 
     public void InitRoleBase() //初始化
     {
+        Myhp = maxHp;
         allRoles=GameObject.FindObjectOfType<BattlefieldMonitor>();//拿到存着的所有角色
         attackSpeedBar.currentfill = 0;//初始的攻击速度为0
         hpBar.currentfill = 1;//初始的血条为满
@@ -131,7 +132,7 @@ public abstract class RoleBase : MonoBehaviour
         
     }
 
-    public void Treatment()//治疗
+    public void Treatment()//单体治疗
     {
         GameObject go = FindMyRole();
         go.GetComponent<RoleBase>().Myhp += myTreatment;
@@ -182,7 +183,7 @@ public abstract class RoleBase : MonoBehaviour
         }
     }
 
-    public GameObject FindTheTarget()//随机锁定一个敌人
+    public GameObject FindTheTarget()//随机锁定一个攻击对象
     {
         GameObject go;
         if(gameObject.CompareTag("MyRolePlane")&&allRoles.allEnemys.Length>0)

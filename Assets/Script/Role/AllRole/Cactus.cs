@@ -14,6 +14,7 @@ public class Cactus : RoleBase
     {
         base.RoleUpDate();
         base.AttackUpDate();
+        base.Dead();
     }
     
 }

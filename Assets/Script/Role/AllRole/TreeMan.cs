@@ -13,6 +13,7 @@ public class TreeMan : RoleBase
     {
         base.RoleUpDate();
         base.TreatmentUpDate();
+        base.Dead();
     }
     
 }
