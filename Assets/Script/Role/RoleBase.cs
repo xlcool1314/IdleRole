@@ -30,7 +30,7 @@ public abstract class RoleBase : MonoBehaviour
 
     public int myTreatment;// 治疗量
 
-    public int treatmenNumber;//治疗个数
+    public int numberTreatmen;//治疗个数
 
     public float maxAttackSpeed;//最大的的攻击间隔
 
@@ -47,6 +47,8 @@ public abstract class RoleBase : MonoBehaviour
     public Stat hpBar;//血条
 
     public Stat attackSpeedBar;//攻击频率条
+
+    public int numberAttack;//攻击目标个数
 
     public LossHp lossHpText;//显示伤害数字的脚本
 
@@ -140,7 +142,24 @@ public abstract class RoleBase : MonoBehaviour
         go.GetComponent<RoleBase>().treatmentAnimator.SetTrigger("Treatment");
     }
 
-    public GameObject FindMyRole()//寻找我方血量最少的角色
+    public void Treatments(int numberTreatmen)//群体治疗
+    {
+        if (BattlefieldMonitor.Instance.allMyRoles.Length <numberTreatmen)
+        {
+            numberTreatmen = BattlefieldMonitor.Instance.allMyRoles.Length;
+        }
+        for (int i = 0; i < numberTreatmen; i++)
+        {
+            GameObject go = FindMyRole();
+
+            go.GetComponent<RoleBase>().Myhp += myTreatment;
+            go.GetComponent<RoleBase>().treatmentText.hpText = myTreatment;
+            go.GetComponent<RoleBase>().treatmentAnimator.SetTrigger("Treatment");
+
+        }
+    }
+
+    public GameObject FindMyRole()//寻找我方血量最少的一个角色
     {
         if (gameObject.CompareTag("MyRolePlane"))
         {
@@ -182,6 +201,7 @@ public abstract class RoleBase : MonoBehaviour
             return null;
         }
     }
+
 
     public GameObject FindTheTarget()//随机锁定一个攻击对象
     {
