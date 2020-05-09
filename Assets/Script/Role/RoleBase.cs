@@ -24,9 +24,7 @@ public abstract class RoleBase : MonoBehaviour
 
     public int defense;//防御
 
-    public int mindamage;//最小攻击力
-
-    public int maxdamage;//最大攻击力
+    public int damage;//攻击力
 
     public int myTreatment;// 治疗量
 
@@ -126,9 +124,9 @@ public abstract class RoleBase : MonoBehaviour
         GameObject go=FindTheTarget();//找到要攻击的随机目标
         if (go != null)
         {
-            go.GetComponent<RoleBase>().Myhp -= DamageCalculation(mindamage,maxdamage, go.GetComponent<RoleBase>().defense);//计算出伤害然后在血量里面减去
+            go.GetComponent<RoleBase>().Myhp -= DamageCalculation(damage, go.GetComponent<RoleBase>().defense);//计算出伤害然后在血量里面减去
             go.GetComponent<RoleBase>().lossAnimator.SetTrigger("LossHp");
-            go.GetComponent<RoleBase>().lossHpText.hpText = DamageCalculation(mindamage,maxdamage, go.GetComponent<RoleBase>().defense);
+            go.GetComponent<RoleBase>().lossHpText.hpText = DamageCalculation(damage, go.GetComponent<RoleBase>().defense);
             attackAnimator.SetTrigger("Attack");
         }
     }
@@ -252,10 +250,10 @@ public abstract class RoleBase : MonoBehaviour
         }
     }
 
-    public int DamageCalculation(int myMinDam,int myMaxDam,int yourDefense)//伤害计算
+    public int DamageCalculation(int Dam,int yourDefense)//伤害计算
     {
         int damag;
-        damag=Random.Range(myMinDam,myMaxDam)-yourDefense;
+        damag= Dam - yourDefense;
         if (damag <= 0)
         {
             damag = 1;
