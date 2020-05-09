@@ -148,14 +148,19 @@ public abstract class RoleBase : MonoBehaviour
         {
             numberTreatmen = BattlefieldMonitor.Instance.allMyRoles.Length;
         }
+        List<GameObject> roles=new List<GameObject>();
+        for (int i = 0; i < BattlefieldMonitor.Instance.allMyRoles.Length; i++)
+        {
+            roles.Add(BattlefieldMonitor.Instance.allMyRoles[i]);
+        }
         for (int i = 0; i < numberTreatmen; i++)
         {
-            GameObject go = FindMyRole();
-
+            int var = Random.Range(0, roles.Count);
+            GameObject go = roles[var];
+            roles.RemoveAt(var);
             go.GetComponent<RoleBase>().Myhp += myTreatment;
             go.GetComponent<RoleBase>().treatmentText.hpText = myTreatment;
             go.GetComponent<RoleBase>().treatmentAnimator.SetTrigger("Treatment");
-
         }
     }
 
