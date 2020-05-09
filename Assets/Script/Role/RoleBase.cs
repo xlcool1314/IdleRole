@@ -32,7 +32,11 @@ public abstract class RoleBase : MonoBehaviour
 
     public int numberTreatmen;//治疗个数
 
+    public int numberAttack;//攻击目标个数
+
     public float maxAttackSpeed;//最大的的攻击间隔
+
+    public int howMuchMoneys;//需要的金币数量
 
     public Animator myAnimator;//动画控制器
 
@@ -48,8 +52,6 @@ public abstract class RoleBase : MonoBehaviour
 
     public Stat attackSpeedBar;//攻击频率条
 
-    public int numberAttack;//攻击目标个数
-
     public LossHp lossHpText;//显示伤害数字的脚本
 
     public LossHp treatmentText;//显示的治疗量
@@ -61,8 +63,6 @@ public abstract class RoleBase : MonoBehaviour
     public Image mySkin;//我的皮肤
 
     public Image myHpBarImage;//我的血条image
-
-    public int howMuchMoneys;//需要的金币数量
 
     
     public int Myhp 
@@ -121,7 +121,7 @@ public abstract class RoleBase : MonoBehaviour
         StartCoroutine(AttackCountdown(maxAttackSpeed, attackSpeedBar));//游戏开始进行第一次的攻击频率倒计时
     }
 
-    public virtual void Attack(Animator attackAnimator)//攻击表现
+    public virtual void Attack(Animator attackAnimator)//单体攻击相关
     {
         GameObject go=FindTheTarget();//找到要攻击的随机目标
         if (go != null)
@@ -131,7 +131,6 @@ public abstract class RoleBase : MonoBehaviour
             go.GetComponent<RoleBase>().lossHpText.hpText = DamageCalculation(mindamage,maxdamage, go.GetComponent<RoleBase>().defense);
             attackAnimator.SetTrigger("Attack");
         }
-        
     }
 
     public void Treatment()//单体治疗
@@ -144,23 +143,47 @@ public abstract class RoleBase : MonoBehaviour
 
     public void Treatments(int numberTreatmen)//群体治疗
     {
-        if (BattlefieldMonitor.Instance.allMyRoles.Length <numberTreatmen)
+        if (gameObject.CompareTag("MyRolePlane"))//我方群体治疗
         {
-            numberTreatmen = BattlefieldMonitor.Instance.allMyRoles.Length;
+            if (BattlefieldMonitor.Instance.allMyRoles.Length < numberTreatmen)
+            {
+                numberTreatmen = BattlefieldMonitor.Instance.allMyRoles.Length;
+            }
+            List<GameObject> roles = new List<GameObject>();
+            for (int i = 0; i < BattlefieldMonitor.Instance.allMyRoles.Length; i++)
+            {
+                roles.Add(BattlefieldMonitor.Instance.allMyRoles[i]);
+            }
+            for (int i = 0; i < numberTreatmen; i++)
+            {
+                int var = Random.Range(0, roles.Count);
+                GameObject go = roles[var];
+                roles.RemoveAt(var);
+                go.GetComponent<RoleBase>().Myhp += myTreatment;
+                go.GetComponent<RoleBase>().treatmentText.hpText = myTreatment;
+                go.GetComponent<RoleBase>().treatmentAnimator.SetTrigger("Treatment");
+            }
         }
-        List<GameObject> roles=new List<GameObject>();
-        for (int i = 0; i < BattlefieldMonitor.Instance.allMyRoles.Length; i++)
+        else if (gameObject.CompareTag("EnemysPlane"))
         {
-            roles.Add(BattlefieldMonitor.Instance.allMyRoles[i]);
-        }
-        for (int i = 0; i < numberTreatmen; i++)
-        {
-            int var = Random.Range(0, roles.Count);
-            GameObject go = roles[var];
-            roles.RemoveAt(var);
-            go.GetComponent<RoleBase>().Myhp += myTreatment;
-            go.GetComponent<RoleBase>().treatmentText.hpText = myTreatment;
-            go.GetComponent<RoleBase>().treatmentAnimator.SetTrigger("Treatment");
+            if (BattlefieldMonitor.Instance.allEnemys.Length < numberTreatmen)
+            {
+                numberTreatmen = BattlefieldMonitor.Instance.allEnemys.Length;
+            }
+            List<GameObject> roles = new List<GameObject>();
+            for (int i = 0; i < BattlefieldMonitor.Instance.allEnemys.Length; i++)
+            {
+                roles.Add(BattlefieldMonitor.Instance.allEnemys[i]);
+            }
+            for (int i = 0; i < numberTreatmen; i++)
+            {
+                int var = Random.Range(0, roles.Count);
+                GameObject go = roles[var];
+                roles.RemoveAt(var);
+                go.GetComponent<RoleBase>().Myhp += myTreatment;
+                go.GetComponent<RoleBase>().treatmentText.hpText = myTreatment;
+                go.GetComponent<RoleBase>().treatmentAnimator.SetTrigger("Treatment");
+            }
         }
     }
 
