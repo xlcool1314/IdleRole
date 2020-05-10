@@ -16,6 +16,8 @@ public abstract class RoleBase : MonoBehaviour
 
     public Property property;//角色属性
 
+    public int lv;
+
     [SerializeField]
 
     private int myhp;//血量
