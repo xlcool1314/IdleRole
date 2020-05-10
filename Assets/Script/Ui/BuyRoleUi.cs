@@ -30,8 +30,8 @@ public class BuyRoleUi : UIBaseBehaviour
         noButton.onClick.AddListener(CloseBuyRoleUi);
         nameText.text = ShopRoleCell.Instance.myRole.name;
         skin.sprite = ShopRoleCell.Instance.myRole.GetComponent<RoleBase>().mySkin.sprite;
-        damageText.text = ShopRoleCell.Instance.myRole.GetComponent<RoleBase>().damage.ToString();
-        defenseText.text = ShopRoleCell.Instance.myRole.GetComponent<RoleBase>().defense.ToString();
+        damageText.text = ShopRoleCell.Instance.myRole.GetComponent<RoleBase>().damage[ShopRoleCell.Instance.myRole.GetComponent<RoleBase>().lv - 1].ToString();
+        defenseText.text = ShopRoleCell.Instance.myRole.GetComponent<RoleBase>().defense[ShopRoleCell.Instance.myRole.GetComponent<RoleBase>().lv - 1].ToString();
     }
 
     public override void UpdateInfo(float deltaTime)

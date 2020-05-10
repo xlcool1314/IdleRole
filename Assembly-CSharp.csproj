@@ -80,6 +80,7 @@
     <Compile Include="Assets\Script\Role\AllRole\TreeMan.cs" />
     <Compile Include="Assets\Script\Role\BattlefieldMonitor.cs" />
     <Compile Include="Assets\Script\Role\RoleBase.cs" />
+    <Compile Include="Assets\Script\Role\RoleWindowInfo.cs" />
     <Compile Include="Assets\Script\Ui\BuyRoleUi.cs" />
     <Compile Include="Assets\Script\Ui\CombinationUi.cs" />
     <Compile Include="Assets\Script\Ui\EnemysBuilder.cs" />
