@@ -16,19 +16,19 @@ public abstract class RoleBase : MonoBehaviour
 
     public Property property;//角色属性
 
-    public int lv;
+    public int lv;//角色等级
 
     [SerializeField]
 
     private int myhp;//血量
 
-    public int maxHp;//最大血量
+    public List<int> maxHp;//最大血量
 
-    public int defense;//防御
+    public List<int> defense;//防御
 
-    public int damage;//攻击力
+    public List<int> damage;//攻击力
 
-    public int myTreatment;// 治疗量
+    public List<int> myTreatment;// 治疗量
 
     public int numberTreatmens;//治疗个数
 
@@ -70,9 +70,9 @@ public abstract class RoleBase : MonoBehaviour
         get => myhp;
         set 
         {
-            if(value > maxHp)
+            if(value > maxHp[lv-1])
             {
-                myhp=maxHp;
+                myhp=maxHp[lv-1];
             }
             else if(value < 0){
                 myhp=0;
@@ -112,11 +112,11 @@ public abstract class RoleBase : MonoBehaviour
 
     public void InitRoleBase() //初始化
     {
-        Myhp = maxHp;
+        Myhp = maxHp[lv-1];
         allRoles=GameObject.FindObjectOfType<BattlefieldMonitor>();//拿到存着的所有角色
         attackSpeedBar.currentfill = 0;//初始的攻击速度为0
         hpBar.currentfill = 1;//初始的血条为满
-        hpBar.Initialize(Myhp, maxHp);//初始化血条的显示
+        hpBar.Initialize(Myhp, maxHp[lv-1]);//初始化血条的显示
         attackSpeedBar.Initialize(maxAttackSpeed, maxAttackSpeed);//初始话攻击速度的显示
         StartCoroutine(AttackCountdown(maxAttackSpeed, attackSpeedBar));//游戏开始进行第一次的攻击频率倒计时
     }
@@ -126,9 +126,9 @@ public abstract class RoleBase : MonoBehaviour
         GameObject go=FindTheTarget();//找到要攻击的随机目标
         if (go != null)
         {
-            go.GetComponent<RoleBase>().Myhp -= DamageCalculation(damage, go.GetComponent<RoleBase>().defense);//计算出伤害然后在血量里面减去
+            go.GetComponent<RoleBase>().Myhp -= DamageCalculation(damage[lv-1], go.GetComponent<RoleBase>().defense[lv-1]);//计算出伤害然后在血量里面减去
             go.GetComponent<RoleBase>().lossAnimator.SetTrigger("LossHp");
-            go.GetComponent<RoleBase>().lossHpText.hpText = DamageCalculation(damage, go.GetComponent<RoleBase>().defense);
+            go.GetComponent<RoleBase>().lossHpText.hpText = DamageCalculation(damage[lv-1], go.GetComponent<RoleBase>().defense[lv-1]);
             attackAnimator.SetTrigger("Attack");
         }
     }
@@ -136,8 +136,8 @@ public abstract class RoleBase : MonoBehaviour
     public void Treatment()//单体治疗
     {
         GameObject go = FindMyRole();
-        go.GetComponent<RoleBase>().Myhp += myTreatment;
-        go.GetComponent<RoleBase>().treatmentText.hpText = myTreatment;
+        go.GetComponent<RoleBase>().Myhp += myTreatment[lv-1];
+        go.GetComponent<RoleBase>().treatmentText.hpText = myTreatment[lv-1];
         go.GetComponent<RoleBase>().treatmentAnimator.SetTrigger("Treatment");
     }
 
@@ -159,8 +159,8 @@ public abstract class RoleBase : MonoBehaviour
                 int var = Random.Range(0, roles.Count);
                 GameObject go = roles[var];
                 roles.RemoveAt(var);
-                go.GetComponent<RoleBase>().Myhp += myTreatment;
-                go.GetComponent<RoleBase>().treatmentText.hpText = myTreatment;
+                go.GetComponent<RoleBase>().Myhp += myTreatment[lv-1];
+                go.GetComponent<RoleBase>().treatmentText.hpText = myTreatment[lv-1];
                 go.GetComponent<RoleBase>().treatmentAnimator.SetTrigger("Treatment");
             }
         }
@@ -180,8 +180,8 @@ public abstract class RoleBase : MonoBehaviour
                 int var = Random.Range(0, roles.Count);
                 GameObject go = roles[var];
                 roles.RemoveAt(var);
-                go.GetComponent<RoleBase>().Myhp += myTreatment;
-                go.GetComponent<RoleBase>().treatmentText.hpText = myTreatment;
+                go.GetComponent<RoleBase>().Myhp += myTreatment[lv-1];
+                go.GetComponent<RoleBase>().treatmentText.hpText = myTreatment[lv-1];
                 go.GetComponent<RoleBase>().treatmentAnimator.SetTrigger("Treatment");
             }
         }
