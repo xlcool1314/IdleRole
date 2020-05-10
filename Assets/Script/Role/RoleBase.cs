@@ -28,7 +28,7 @@ public abstract class RoleBase : MonoBehaviour
 
     public int myTreatment;// 治疗量
 
-    public int numberTreatmen;//治疗个数
+    public int numberTreatmens;//治疗个数
 
     public int numberAttack;//攻击目标个数
 
@@ -103,7 +103,7 @@ public abstract class RoleBase : MonoBehaviour
         {
             attackSpeedBar.content.fillAmount = 0;
             attackSpeedBar.currentfill = 0;
-            Treatment();
+            Treatments(numberTreatmens);
             StartCoroutine(AttackCountdown(maxAttackSpeed, attackSpeedBar));
         }
     }
