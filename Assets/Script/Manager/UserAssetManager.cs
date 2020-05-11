@@ -4,8 +4,18 @@ using System.Threading.Tasks;
 using UnityEngine;
 
 
+
 public class UserAsset
 {
+    public struct RoleStatus
+    {
+        public float _speed;
+        public int _lv;
+    }
+
+    [SerializeField]
+    private List<Dictionary<string, RoleStatus>> saveRoleStatus;
+
     [SerializeField]
     private int gold=100;
 
@@ -55,6 +65,8 @@ public class UserAsset
             SetDirty();
         } 
     }
+
+    public List<Dictionary<string, RoleStatus>> SaveRoleStatus { get => saveRoleStatus; set => saveRoleStatus = value; }
 
     private bool CheckIntValid(int min, int max, int val)//约束取值范围
     {
@@ -108,7 +120,7 @@ public class UserAssetManager:SingletonMono<UserAssetManager>{
         return null;
     }
 
-    public void SaveGame()
+    public void SaveGame()//储存相关信息
     {
         asset.Save();
     }
@@ -149,22 +161,22 @@ public class UserAssetManager:SingletonMono<UserAssetManager>{
         return asset.Gold -= val;
     }
 
-    public int UpdateGold()
+    public int UpdateGold()//更新金币数量
     {
         return asset.Gold;
     }
 
-        public int AddLevel()
+        public int AddLevel()//关卡增加
     {
         return asset.Level+= 1;
     }
         
-        public int GetLevel()
+        public int GetLevel()//获得关卡信息
     {
         return asset.Level;
     }
 
-       public bool IsFirstGame()
+       public bool IsFirstGame()//是否第一次进入游戏
     {
         return asset.isFirstGame;
     }
