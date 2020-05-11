@@ -30,7 +30,7 @@ public class MyRoleBuilder : SingletonMono<MyRoleBuilder>
             {
                 var go = await Addressables.InstantiateAsync(item.Key).Task;
                 go.tag = "MyRolePlane";
-                go.name = item.Key;
+                go.name = item.Value._name;
             }
         }
     }
