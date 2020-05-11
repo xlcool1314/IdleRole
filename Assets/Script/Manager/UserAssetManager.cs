@@ -15,7 +15,7 @@ public class UserAsset
     }
 
     [SerializeField]
-    private List<Dictionary<int, RoleStatus>> saveRoleStatus;//当前战斗状态相关数据
+    private List< RoleStatus > saveRoleStatus;//当前战斗状态相关数据
 
     [SerializeField]
     private int gold=100;
@@ -67,7 +67,7 @@ public class UserAsset
         } 
     }
 
-    public List<Dictionary<int, RoleStatus>> SaveRoleStatus { get => saveRoleStatus; set => saveRoleStatus = value; }
+    public List<RoleStatus> SaveRoleStatus { get => saveRoleStatus; set => saveRoleStatus = value; }
 
     private bool CheckIntValid(int min, int max, int val)//约束取值范围
     {
@@ -127,12 +127,12 @@ public class UserAssetManager:SingletonMono<UserAssetManager>{
         {
             for (int i = 0; i < asset.SaveRoleStatus.Count; i++)
             {
-                    asset.SaveRoleStatus[i].Add(i, new UserAsset.RoleStatus() 
-                 { 
-                         _name= BattlefieldMonitor.Instance.allMyRoles[i].GetComponent<RoleBase>().name,
-                         _lv = BattlefieldMonitor.Instance.allMyRoles[i].GetComponent<RoleBase>().lv,
-                         _speed = BattlefieldMonitor.Instance.allMyRoles[i].GetComponent<RoleBase>().maxAttackSpeed
-                 });;
+                asset.SaveRoleStatus.Add(new UserAsset.RoleStatus()
+                {
+                    _lv = BattlefieldMonitor.Instance.allMyRoles[i].GetComponent<RoleBase>().lv,
+                    _name = BattlefieldMonitor.Instance.allMyRoles[i].GetComponent<RoleBase>().name,
+                    _speed = BattlefieldMonitor.Instance.allMyRoles[i].GetComponent<RoleBase>().maxAttackSpeed,
+                });
             }
         }
         
