@@ -135,7 +135,6 @@ public class UserAssetManager:SingletonMono<UserAssetManager>{
                 });
             }
         }
-        
     }
 
     public void SaveGame()//储存相关信息

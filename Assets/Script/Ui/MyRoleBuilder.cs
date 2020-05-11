@@ -26,13 +26,10 @@ public class MyRoleBuilder : SingletonMono<MyRoleBuilder>
         UserAsset asset = new UserAsset();
         for (int i = 0; i < asset.SaveRoleStatus.Count; i++)
         {
-            foreach (var item in asset.SaveRoleStatus[i])
-            {
-                var go = await Addressables.InstantiateAsync(item._name).Task;
+                var go = await Addressables.InstantiateAsync(asset.SaveRoleStatus[i]._name).Task;
                 go.tag = "MyRolePlane";
-                go.name = item._name;
-                go.GetComponent<RoleBase>().lv = item._lv;
-            }
+                go.name = asset.SaveRoleStatus[i]._name;
+                go.GetComponent<RoleBase>().lv = asset.SaveRoleStatus[i]._lv;
         }
     }
 }
