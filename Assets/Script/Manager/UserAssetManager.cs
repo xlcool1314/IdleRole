@@ -9,12 +9,12 @@ public class UserAsset
 {
     public struct RoleStatus
     {
-        public float _speed;
         public int _lv;
+        public float _speed;
     }
 
     [SerializeField]
-    private List<Dictionary<string, RoleStatus>> saveRoleStatus;
+    private List<Dictionary<string, RoleStatus>> saveRoleStatus;//当前战斗状态相关数据
 
     [SerializeField]
     private int gold=100;
@@ -118,6 +118,20 @@ public class UserAssetManager:SingletonMono<UserAssetManager>{
     {
         asset.Save();
         return null;
+    }
+
+    public void SaveRoleStatus()//储存场上角色状态
+    {
+        if (BattlefieldMonitor.Instance.allMyRoles != null)
+        {
+            for (int i = 0; i < asset.SaveRoleStatus.Count; i++)
+            {
+                asset.SaveRoleStatus[i].Add(BattlefieldMonitor.Instance.allMyRoles[i].name, new UserAsset.RoleStatus() 
+                { _lv = BattlefieldMonitor.Instance.allMyRoles[i].GetComponent<RoleBase>().lv,
+                    _speed = BattlefieldMonitor.Instance.allMyRoles[i].GetComponent<RoleBase>().maxAttackSpeed });
+            }
+        }
+        
     }
 
     public void SaveGame()//储存相关信息
