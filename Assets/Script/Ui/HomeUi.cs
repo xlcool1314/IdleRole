@@ -60,6 +60,7 @@ public class HomeUi : UIBaseBehaviour
     public void GoToNextLevel()
     {
         UserAssetManager.Instance.AddLevel();
+        UserAssetManager.Instance.SaveRoleSta();
     }
 
     public void DeleteInfo()

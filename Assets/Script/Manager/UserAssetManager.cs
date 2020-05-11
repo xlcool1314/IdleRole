@@ -67,7 +67,13 @@ public class UserAsset
         } 
     }
 
-    public List<RoleStatus> SaveRoleStatus { get => saveRoleStatus; set => saveRoleStatus = value; }
+    public List<RoleStatus> SaveRoleStatus { get => saveRoleStatus;
+        set
+        {
+            saveRoleStatus = value;
+            SetDirty();
+        }
+    }
 
     private bool CheckIntValid(int min, int max, int val)//约束取值范围
     {
@@ -121,17 +127,17 @@ public class UserAssetManager:SingletonMono<UserAssetManager>{
         return null;
     }
 
-    public void SaveRoleStatus()//储存场上角色状态
+    public void SaveRoleSta()//储存场上角色状态
     {
         if (BattlefieldMonitor.Instance.allMyRoles != null)
         {
-            for (int i = 0; i < asset.SaveRoleStatus.Count; i++)
+            for (int i = 0; i < BattlefieldMonitor.Instance.allMyRoles.Length; i++)
             {
                 asset.SaveRoleStatus.Add(new UserAsset.RoleStatus()
                 {
                     _lv = BattlefieldMonitor.Instance.allMyRoles[i].GetComponent<RoleBase>().lv,
                     _name = BattlefieldMonitor.Instance.allMyRoles[i].GetComponent<RoleBase>().name,
-                    _speed = BattlefieldMonitor.Instance.allMyRoles[i].GetComponent<RoleBase>().maxAttackSpeed,
+                    _speed = BattlefieldMonitor.Instance.allMyRoles[i].GetComponent<RoleBase>().maxAttackSpeed
                 });
             }
         }
