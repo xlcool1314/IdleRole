@@ -15,25 +15,22 @@ public class MyRoleBuilder : SingletonMono<MyRoleBuilder>
 
     public GameObject CreatRole(GameObject thisRole)
     {
-        var go= Instantiate(thisRole, transform);
-        go.tag="MyRolePlane";
+        var go = Instantiate(thisRole, transform);
+        go.tag = "MyRolePlane";
         go.name = thisRole.name;
         return go;
     }
 
     public async Task CreatAllRoles()
     {
-        if (UserAssetManager.Instance.BoolRoles())
+        UserAsset asset = new UserAsset();
+        for (int i = 0; i < asset.SaveRoleStatus.Count; i++)
         {
-            Debug.Log(UserAssetManager.Instance.MyAllRoles().Count);
-            for (int i = 0; i < UserAssetManager.Instance.MyAllRoles().Count; i++)
+            foreach (var item in asset.SaveRoleStatus[i])
             {
-              var go= Addressables.LoadAssetAsync<GameObject>(UserAssetManager.Instance.MyAllRoles()[i]).Task;
-               GameObject roles = await go;
-               var go1= Instantiate(roles, transform);
-               go1.tag= "MyRolePlane";
-               go1.name = UserAssetManager.Instance.MyAllRoles()[i];
-                Debug.Log(1);
+                var go = await Addressables.InstantiateAsync(item.Key).Task;
+                go.tag = "MyRolePlane";
+                go.name = item.Key;
             }
         }
     }

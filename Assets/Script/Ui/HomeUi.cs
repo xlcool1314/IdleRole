@@ -26,7 +26,6 @@ public class HomeUi : UIBaseBehaviour
 
     public override void Init()
     {
-        Testbutton.onClick.AddListener(TestCreatRole);
         button.onClick.AddListener(DeleteInfo);
         shopButton.onClick.AddListener(CreatShopUi);
         nextLevelButton.onClick.AddListener(GoToNextLevel);
@@ -77,10 +76,5 @@ public class HomeUi : UIBaseBehaviour
 
             UserAssetManager.Instance.MyAllRoles().Add(BattlefieldMonitor.Instance.allMyRoles[i].name);
         }
-    }
-
-    public void TestCreatRole()
-    {
-        MyRoleBuilder.Instance.CreatAllRoles();
     }
 }
