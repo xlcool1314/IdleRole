@@ -15,7 +15,7 @@ public class UserAsset
     }
 
     [SerializeField]
-    private List< RoleStatus > saveRoleStatus;//当前战斗状态相关数据
+    private List< RoleStatus > saveRoleStatus=new List<RoleStatus>();//当前战斗状态相关数据
 
     [SerializeField]
     private int gold=100;
