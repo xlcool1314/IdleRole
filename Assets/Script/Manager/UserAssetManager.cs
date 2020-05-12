@@ -103,6 +103,53 @@ public class UserAsset
     }
 }
 
+public class DataStatistics//统计数据
+{
+    private int attacksNumber;//总的攻击次数
+
+    private int treatmentNumber;//总治疗次数
+
+    private int haveRoles;//获得的角色数量
+
+    private int highestLevel;//最高关卡
+
+    private bool isDirty = false;//是否是脏数据
+
+
+
+    public int AttacksNumber { get => attacksNumber; set => attacksNumber = value; }
+    public int HaveRoles { get => haveRoles; set => haveRoles = value; }
+    public int TreatmentNumber { get => treatmentNumber; set => treatmentNumber = value; }
+    public int HighestLevel { get => highestLevel; set => highestLevel = value; }
+
+    private bool CheckIntValid(int min, int max, int val)//约束取值范围
+    {
+        if (min <= val && val <= max)
+        {
+            return true;
+        }
+        Debug.LogError("不符合取值范围");
+        return false;
+    }
+
+    public void SetDirty()//脏数据判断
+    {
+        isDirty = true;
+    }
+
+    public void Save()
+    {
+        if (isDirty)
+        {
+            var json = JsonUtility.ToJson(this);
+            Debug.Log("Save " + json);
+            PlayerPrefs.SetString("DataStatistics", json);
+            PlayerPrefs.Save();
+            isDirty = false;
+        }
+    }
+}
+
 
 public class UserAssetManager:SingletonMono<UserAssetManager>{
 
