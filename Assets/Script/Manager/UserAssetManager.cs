@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class UserAsset
 {
+    [System.Serializable]
     public struct RoleStatus
     {
         public string _name;
@@ -185,7 +186,9 @@ public class UserAssetManager:SingletonMono<UserAssetManager>{
                     _lv = BattlefieldMonitor.Instance.allMyRoles[i].GetComponent<RoleBase>().lv,
                     _name = BattlefieldMonitor.Instance.allMyRoles[i].GetComponent<RoleBase>().name,
                     _speed = BattlefieldMonitor.Instance.allMyRoles[i].GetComponent<RoleBase>().maxAttackSpeed
-                });
+                }); 
+                
+                asset.SetDirty();
             }
         }
     }
