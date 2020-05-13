@@ -362,6 +362,15 @@
     <Reference Include="UnityEngine.XRModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.0f5/Editor/Data/Managed/UnityEngine/UnityEngine.XRModule.dll</HintPath>
     </Reference>
+    <Reference Include="Sirenix.OdinInspector.Attributes">
+      <HintPath>E:/Doooo/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Attributes.dll</HintPath>
+    </Reference>
+    <Reference Include="Sirenix.OdinInspector.Editor">
+      <HintPath>E:/Doooo/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Sirenix.Serialization.Config">
+      <HintPath>E:/Doooo/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.Config.dll</HintPath>
+    </Reference>
     <Reference Include="Sirenix.Serialization">
       <HintPath>E:/Doooo/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.dll</HintPath>
     </Reference>
@@ -370,15 +379,6 @@
     </Reference>
     <Reference Include="Sirenix.Utilities.Editor">
       <HintPath>E:/Doooo/Assets/Plugins/Sirenix/Assemblies/Sirenix.Utilities.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Sirenix.OdinInspector.Editor">
-      <HintPath>E:/Doooo/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Sirenix.OdinInspector.Attributes">
-      <HintPath>E:/Doooo/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Attributes.dll</HintPath>
-    </Reference>
-    <Reference Include="Sirenix.Serialization.Config">
-      <HintPath>E:/Doooo/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.Config.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.0f5/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
@@ -746,13 +746,13 @@
       <Project>{AC9C5495-568F-F89C-D804-F06A89693CDF}</Project>
       <Name>Coffee.UIParticle</Name>
     </ProjectReference>
-    <ProjectReference Include="Coffee.UIParticle.Editor.csproj">
-      <Project>{C7EDF26A-CB4E-C05E-CAC5-02090EEE5C4E}</Project>
-      <Name>Coffee.UIParticle.Editor</Name>
-    </ProjectReference>
     <ProjectReference Include="Sirenix.OdinInspector.CompatibilityLayer.csproj">
       <Project>{1202B988-D353-2B82-F9AF-E49DA090C2C5}</Project>
       <Name>Sirenix.OdinInspector.CompatibilityLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="Coffee.UIParticle.Editor.csproj">
+      <Project>{C7EDF26A-CB4E-C05E-CAC5-02090EEE5C4E}</Project>
+      <Name>Coffee.UIParticle.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Sirenix.OdinInspector.CompatibilityLayer.Editor.csproj">
       <Project>{66E594D1-EC02-AE8B-0349-72AB898929A2}</Project>

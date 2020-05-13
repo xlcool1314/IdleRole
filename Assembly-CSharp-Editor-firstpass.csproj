@@ -351,8 +351,14 @@
     <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/16.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
-    <Reference Include="ICSharpCode.NRefactory">
-      <HintPath>E:/Doooo/Library/PackageCache/com.unity.render-pipelines.core@7.1.8/Editor/ShaderGenerator/ICSharpCode.NRefactory.dll</HintPath>
+    <Reference Include="Sirenix.OdinInspector.Attributes">
+      <HintPath>E:/Doooo/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Attributes.dll</HintPath>
+    </Reference>
+    <Reference Include="Sirenix.OdinInspector.Editor">
+      <HintPath>E:/Doooo/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Sirenix.Serialization.Config">
+      <HintPath>E:/Doooo/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.Config.dll</HintPath>
     </Reference>
     <Reference Include="Sirenix.Serialization">
       <HintPath>E:/Doooo/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.dll</HintPath>
@@ -363,14 +369,8 @@
     <Reference Include="Sirenix.Utilities.Editor">
       <HintPath>E:/Doooo/Assets/Plugins/Sirenix/Assemblies/Sirenix.Utilities.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Sirenix.OdinInspector.Editor">
-      <HintPath>E:/Doooo/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Sirenix.OdinInspector.Attributes">
-      <HintPath>E:/Doooo/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Attributes.dll</HintPath>
-    </Reference>
-    <Reference Include="Sirenix.Serialization.Config">
-      <HintPath>E:/Doooo/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.Config.dll</HintPath>
+    <Reference Include="ICSharpCode.NRefactory">
+      <HintPath>E:/Doooo/Library/PackageCache/com.unity.render-pipelines.core@7.1.8/Editor/ShaderGenerator/ICSharpCode.NRefactory.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>E:/Doooo/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>
@@ -745,13 +745,13 @@
       <Project>{AC9C5495-568F-F89C-D804-F06A89693CDF}</Project>
       <Name>Coffee.UIParticle</Name>
     </ProjectReference>
-    <ProjectReference Include="Coffee.UIParticle.Editor.csproj">
-      <Project>{C7EDF26A-CB4E-C05E-CAC5-02090EEE5C4E}</Project>
-      <Name>Coffee.UIParticle.Editor</Name>
-    </ProjectReference>
     <ProjectReference Include="Sirenix.OdinInspector.CompatibilityLayer.csproj">
       <Project>{1202B988-D353-2B82-F9AF-E49DA090C2C5}</Project>
       <Name>Sirenix.OdinInspector.CompatibilityLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="Coffee.UIParticle.Editor.csproj">
+      <Project>{C7EDF26A-CB4E-C05E-CAC5-02090EEE5C4E}</Project>
+      <Name>Coffee.UIParticle.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Sirenix.OdinInspector.CompatibilityLayer.Editor.csproj">
       <Project>{66E594D1-EC02-AE8B-0349-72AB898929A2}</Project>

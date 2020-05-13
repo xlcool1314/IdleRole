@@ -16,59 +16,61 @@ public class UserAsset
     }
 
     [SerializeField]
-    private List< RoleStatus > saveRoleStatus=new List<RoleStatus>();//当前战斗状态相关数据
+    private List<RoleStatus> saveRoleStatus = new List<RoleStatus>();//当前战斗状态相关数据
 
     [SerializeField]
-    private int gold=100;
+    private int gold = 100;
 
     [SerializeField]
-    private int level=1;
+    private int level = 1;
 
     [SerializeField]
     private List<string> myRoleNames = null;
 
     public bool isFirstGame = true;//是否第一次进入游戏
 
-    private bool isDirty=false;//是否是脏数据
+    private bool isDirty = false;//是否是脏数据
 
-    public int Gold 
+    public int Gold
     {
         get => gold;
         set
         {
-            if(CheckIntValid(0,999999,value))
+            if (CheckIntValid(0, 999999, value))
             {
-                gold = value; 
+                gold = value;
                 SetDirty();
             }
-            
+
         }
     }
 
-        public int Level 
+    public int Level
     {
         get => level;
         set
         {
-            if(CheckIntValid(0,999,value))
+            if (CheckIntValid(0, 999, value))
             {
-                level = value; 
+                level = value;
                 SetDirty();
             }
         }
     }
 
-    public List<string> MyRoleNames 
-    { 
+    public List<string> MyRoleNames
+    {
         get => myRoleNames;
-        set 
-        { 
+        set
+        {
             myRoleNames = value;
             SetDirty();
-        } 
+        }
     }
 
-    public List<RoleStatus> SaveRoleStatus { get => saveRoleStatus;
+    public List<RoleStatus> SaveRoleStatus
+    {
+        get => saveRoleStatus;
         set
         {
             saveRoleStatus = value;
@@ -91,7 +93,7 @@ public class UserAsset
         isDirty = true;
     }
 
-        public void Save()
+    public void Save()
     {
         if (isDirty)
         {
@@ -152,24 +154,25 @@ public class DataStatistics//统计数据
 }
 
 
-public class UserAssetManager:SingletonMono<UserAssetManager>{
+public class UserAssetManager : SingletonMono<UserAssetManager>
+{
 
     UserAsset asset = new UserAsset();//实例化用户资产
 
     bool inited = false;//是否初始化完成
 
-        public override async Task Init()
+    public override async Task Init()
     {
         if (inited)
         {
             return;
         }
         var json = PlayerPrefs.GetString("UserAsset", "{}");
-        asset =JsonUtility.FromJson<UserAsset>(json);
+        asset = JsonUtility.FromJson<UserAsset>(json);
         inited = true;
     }
 
-        public override Task LateUpdateLoop()//保存判断
+    public override Task LateUpdateLoop()//保存判断
     {
         asset.Save();
         return null;
@@ -186,8 +189,8 @@ public class UserAssetManager:SingletonMono<UserAssetManager>{
                     _lv = BattlefieldMonitor.Instance.allMyRoles[i].GetComponent<RoleBase>().lv,
                     _name = BattlefieldMonitor.Instance.allMyRoles[i].GetComponent<RoleBase>().name,
                     _speed = BattlefieldMonitor.Instance.allMyRoles[i].GetComponent<RoleBase>().maxAttackSpeed
-                }); 
-                
+                });
+
                 asset.SetDirty();
             }
         }
@@ -224,12 +227,12 @@ public class UserAssetManager:SingletonMono<UserAssetManager>{
             return true;
         }
     }
-        public int AddGold(int val)//增加金币
+    public int AddGold(int val)//增加金币
     {
         return asset.Gold += val;
     }
 
-       public int ReduceGold(int val)//减少金币
+    public int ReduceGold(int val)//减少金币
     {
         return asset.Gold -= val;
     }
@@ -239,17 +242,17 @@ public class UserAssetManager:SingletonMono<UserAssetManager>{
         return asset.Gold;
     }
 
-        public int AddLevel()//关卡增加
+    public int AddLevel()//关卡增加
     {
-        return asset.Level+= 1;
+        return asset.Level += 1;
     }
-        
-        public int GetLevel()//获得关卡信息
+
+    public int GetLevel()//获得关卡信息
     {
         return asset.Level;
     }
 
-       public bool IsFirstGame()//是否第一次进入游戏
+    public bool IsFirstGame()//是否第一次进入游戏
     {
         return asset.isFirstGame;
     }

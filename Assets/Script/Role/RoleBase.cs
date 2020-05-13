@@ -64,23 +64,25 @@ public abstract class RoleBase : MonoBehaviour
 
     public Image myHpBarImage;//我的血条image
 
-    
-    public int Myhp 
-    { 
+
+    public int Myhp
+    {
         get => myhp;
-        set 
+        set
         {
-            if(value > maxHp[lv-1])
+            if (value > maxHp[lv - 1])
             {
-                myhp=maxHp[lv-1];
+                myhp = maxHp[lv - 1];
             }
-            else if(value < 0){
-                myhp=0;
+            else if (value < 0)
+            {
+                myhp = 0;
             }
-            else{
+            else
+            {
                 myhp = value;
             }
-        }  
+        }
     }//血量属性
 
     public void RoleUpDate()//bar更新
@@ -112,23 +114,23 @@ public abstract class RoleBase : MonoBehaviour
 
     public void InitRoleBase() //初始化
     {
-        Myhp = maxHp[lv-1];
-        allRoles=GameObject.FindObjectOfType<BattlefieldMonitor>();//拿到存着的所有角色
+        Myhp = maxHp[lv - 1];
+        allRoles = GameObject.FindObjectOfType<BattlefieldMonitor>();//拿到存着的所有角色
         attackSpeedBar.currentfill = 0;//初始的攻击速度为0
         hpBar.currentfill = 1;//初始的血条为满
-        hpBar.Initialize(Myhp, maxHp[lv-1]);//初始化血条的显示
+        hpBar.Initialize(Myhp, maxHp[lv - 1]);//初始化血条的显示
         attackSpeedBar.Initialize(maxAttackSpeed, maxAttackSpeed);//初始话攻击速度的显示
         StartCoroutine(AttackCountdown(maxAttackSpeed, attackSpeedBar));//游戏开始进行第一次的攻击频率倒计时
     }
 
     public virtual void Attack(Animator attackAnimator)//单体攻击相关
     {
-        GameObject go=FindTheTarget();//找到要攻击的随机目标
+        GameObject go = FindTheTarget();//找到要攻击的随机目标
         if (go != null)
         {
-            go.GetComponent<RoleBase>().Myhp -= DamageCalculation(damage[lv-1], go.GetComponent<RoleBase>().defense[lv-1]);//计算出伤害然后在血量里面减去
+            go.GetComponent<RoleBase>().Myhp -= DamageCalculation(damage[lv - 1], go.GetComponent<RoleBase>().defense[lv - 1]);//计算出伤害然后在血量里面减去
             go.GetComponent<RoleBase>().lossAnimator.SetTrigger("LossHp");
-            go.GetComponent<RoleBase>().lossHpText.hpText = DamageCalculation(damage[lv-1], go.GetComponent<RoleBase>().defense[lv-1]);
+            go.GetComponent<RoleBase>().lossHpText.hpText = DamageCalculation(damage[lv - 1], go.GetComponent<RoleBase>().defense[lv - 1]);
             attackAnimator.SetTrigger("Attack");
         }
     }
@@ -136,8 +138,8 @@ public abstract class RoleBase : MonoBehaviour
     public void Treatment()//单体治疗
     {
         GameObject go = FindMyRole();
-        go.GetComponent<RoleBase>().Myhp += myTreatment[lv-1];
-        go.GetComponent<RoleBase>().treatmentText.hpText = myTreatment[lv-1];
+        go.GetComponent<RoleBase>().Myhp += myTreatment[lv - 1];
+        go.GetComponent<RoleBase>().treatmentText.hpText = myTreatment[lv - 1];
         go.GetComponent<RoleBase>().treatmentAnimator.SetTrigger("Treatment");
     }
 
@@ -159,8 +161,8 @@ public abstract class RoleBase : MonoBehaviour
                 int var = Random.Range(0, roles.Count);
                 GameObject go = roles[var];
                 roles.RemoveAt(var);
-                go.GetComponent<RoleBase>().Myhp += myTreatment[lv-1];
-                go.GetComponent<RoleBase>().treatmentText.hpText = myTreatment[lv-1];
+                go.GetComponent<RoleBase>().Myhp += myTreatment[lv - 1];
+                go.GetComponent<RoleBase>().treatmentText.hpText = myTreatment[lv - 1];
                 go.GetComponent<RoleBase>().treatmentAnimator.SetTrigger("Treatment");
             }
         }
@@ -180,8 +182,8 @@ public abstract class RoleBase : MonoBehaviour
                 int var = Random.Range(0, roles.Count);
                 GameObject go = roles[var];
                 roles.RemoveAt(var);
-                go.GetComponent<RoleBase>().Myhp += myTreatment[lv-1];
-                go.GetComponent<RoleBase>().treatmentText.hpText = myTreatment[lv-1];
+                go.GetComponent<RoleBase>().Myhp += myTreatment[lv - 1];
+                go.GetComponent<RoleBase>().treatmentText.hpText = myTreatment[lv - 1];
                 go.GetComponent<RoleBase>().treatmentAnimator.SetTrigger("Treatment");
             }
         }
@@ -197,9 +199,10 @@ public abstract class RoleBase : MonoBehaviour
             {
                 if (BattlefieldMonitor.Instance.allMyRoles[i].GetComponent<RoleBase>().hpBar.currentfill <= min)
                 {
-                    min=BattlefieldMonitor.Instance.allMyRoles[i].GetComponent<RoleBase>().hpBar.currentfill;
+                    min = BattlefieldMonitor.Instance.allMyRoles[i].GetComponent<RoleBase>().hpBar.currentfill;
                     go = BattlefieldMonitor.Instance.allMyRoles[i];
-                    if(i==BattlefieldMonitor.Instance.allMyRoles.Length){
+                    if (i == BattlefieldMonitor.Instance.allMyRoles.Length)
+                    {
                         return go;
                     }
                 }
@@ -214,9 +217,9 @@ public abstract class RoleBase : MonoBehaviour
             {
                 if (BattlefieldMonitor.Instance.allEnemys[i].GetComponent<RoleBase>().hpBar.currentfill <= min)
                 {
-                    min=BattlefieldMonitor.Instance.allEnemys[i].GetComponent<RoleBase>().hpBar.currentfill;
+                    min = BattlefieldMonitor.Instance.allEnemys[i].GetComponent<RoleBase>().hpBar.currentfill;
                     go = BattlefieldMonitor.Instance.allEnemys[i];
-                    if(i==BattlefieldMonitor.Instance.allEnemys.Length)
+                    if (i == BattlefieldMonitor.Instance.allEnemys.Length)
                     {
                         return go;
                     }
@@ -234,16 +237,16 @@ public abstract class RoleBase : MonoBehaviour
     public GameObject FindTheTarget()//随机锁定一个攻击对象
     {
         GameObject go;
-        if(gameObject.CompareTag("MyRolePlane")&&allRoles.allEnemys.Length>0)
+        if (gameObject.CompareTag("MyRolePlane") && allRoles.allEnemys.Length > 0)
         {
-            int randomNumber=Random.Range(0,allRoles.allEnemys.Length);
-            go=allRoles.allEnemys[randomNumber];
+            int randomNumber = Random.Range(0, allRoles.allEnemys.Length);
+            go = allRoles.allEnemys[randomNumber];
             return go;
         }
-        else if (gameObject.CompareTag("EnemysPlane")&&allRoles.allMyRoles.Length>0)
+        else if (gameObject.CompareTag("EnemysPlane") && allRoles.allMyRoles.Length > 0)
         {
-            int randomNumber=Random.Range(0,allRoles.allMyRoles.Length);
-            go=allRoles.allMyRoles[randomNumber];
+            int randomNumber = Random.Range(0, allRoles.allMyRoles.Length);
+            go = allRoles.allMyRoles[randomNumber];
             return go;
         }
         else
@@ -252,10 +255,10 @@ public abstract class RoleBase : MonoBehaviour
         }
     }
 
-    public int DamageCalculation(int Dam,int yourDefense)//伤害计算
+    public int DamageCalculation(int Dam, int yourDefense)//伤害计算
     {
         int damag;
-        damag= Dam - yourDefense;
+        damag = Dam - yourDefense;
         if (damag <= 0)
         {
             damag = 1;
@@ -265,26 +268,26 @@ public abstract class RoleBase : MonoBehaviour
 
     public void Dead()//角色死亡
     {
-        if(Myhp<=0&&transform.CompareTag("EnemysPlane"))
+        if (Myhp <= 0 && transform.CompareTag("EnemysPlane"))
         {
             UserAssetManager.Instance.AddGold(5);
             Destroy(this.gameObject);
         }
-        else if(Myhp <= 0 && transform.CompareTag("MyRolePlane"))
+        else if (Myhp <= 0 && transform.CompareTag("MyRolePlane"))
         {
             Destroy(this.gameObject);
         }
-        
+
     }
 
-    public IEnumerator AttackCountdown(float time,Stat myBar)//攻击频率
-    {   
-        float tim=0;
-        while (time>0)
+    public IEnumerator AttackCountdown(float time, Stat myBar)//攻击频率
+    {
+        float tim = 0;
+        while (time > 0)
         {
-            yield return new WaitForSeconds (1);
+            yield return new WaitForSeconds(1);
             tim++;
-            myBar.CurrentValue=tim;
+            myBar.CurrentValue = tim;
             time--;
         }
     }
