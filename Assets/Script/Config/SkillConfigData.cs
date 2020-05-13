@@ -12,7 +12,7 @@ public enum Buff
 [System.Serializable]
 public class SkillDesc
 {
-
+    public int time;
 }
 
 [CreateAssetMenu(menuName = "Config/Create SkillConfig ")]
