@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 public enum Buff
 {
@@ -13,10 +14,12 @@ public enum Buff
 public class SkillDesc
 {
     public int time;
+
+    public Buff buff;
 }
 
 [CreateAssetMenu(menuName = "Config/Create SkillConfig ")]
-public class SkillConfigData : ScriptableObject
+public class SkillConfigData : SerializedScriptableObject
 {
-    public List<SkillDesc> skillConfig;
+    public Dictionary<string, List<SkillDesc>> test;
 }
