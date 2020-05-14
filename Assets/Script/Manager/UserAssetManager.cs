@@ -24,8 +24,6 @@ public class UserAsset
     [SerializeField]
     private int level = 1;
 
-    [SerializeField]
-    private List<string> myRoleNames = null;
 
     public bool isFirstGame = true;//是否第一次进入游戏
 
@@ -55,16 +53,6 @@ public class UserAsset
                 level = value;
                 SetDirty();
             }
-        }
-    }
-
-    public List<string> MyRoleNames
-    {
-        get => myRoleNames;
-        set
-        {
-            myRoleNames = value;
-            SetDirty();
         }
     }
 
@@ -206,27 +194,6 @@ public class UserAssetManager : SingletonMono<UserAssetManager>
         PlayerPrefs.DeleteAll();
     }
 
-    public void AddRole(string val)
-    {
-        asset.MyRoleNames.Add(val);
-    }
-
-    public List<string> MyAllRoles()
-    {
-        return asset.MyRoleNames;
-    }
-
-    public bool BoolRoles()
-    {
-        if (asset.MyRoleNames == null)
-        {
-            return false;
-        }
-        else
-        {
-            return true;
-        }
-    }
     public int AddGold(int val)//增加金币
     {
         return asset.Gold += val;

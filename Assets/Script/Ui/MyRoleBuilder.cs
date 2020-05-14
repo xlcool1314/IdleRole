@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using System.Threading.Tasks;
+using Sirenix.OdinInspector;
 
 public class MyRoleBuilder : SingletonMono<MyRoleBuilder>
 {
@@ -21,6 +22,7 @@ public class MyRoleBuilder : SingletonMono<MyRoleBuilder>
         return go;
     }
 
+    [Button]
     public async Task CreatAllRoles()
     {
         UserAsset asset = new UserAsset();

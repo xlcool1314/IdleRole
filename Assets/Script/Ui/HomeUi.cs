@@ -44,12 +44,7 @@ public class HomeUi : UIBaseBehaviour
 
     private void Update()
     {
-        gold.text = UserAssetManager.Instance.UpdateGold().ToString();
 
-        if (BattlefieldMonitor.Instance.allMyRoles.Length > 0 && BattlefieldMonitor.Instance.allMyRoles != null)
-        {
-            SaveMyRole();
-        }
     }
 
     public void CreatShopUi()
@@ -66,16 +61,5 @@ public class HomeUi : UIBaseBehaviour
     public void DeleteInfo()
     {
         UserAssetManager.Instance.InitInfo();
-    }
-
-    public void SaveMyRole()
-    {
-        UserAssetManager.Instance.MyAllRoles().Clear();
-        BattlefieldMonitor.Instance.FindAllMyRole();
-        for (int i = 0; i < BattlefieldMonitor.Instance.allMyRoles.Length; i++)
-        {
-
-            UserAssetManager.Instance.MyAllRoles().Add(BattlefieldMonitor.Instance.allMyRoles[i].name);
-        }
     }
 }

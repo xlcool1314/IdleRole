@@ -1,10 +1,12 @@
-﻿using System.Collections;
+﻿using Sirenix.OdinInspector;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public abstract class RoleBase : MonoBehaviour
 {
+    [EnumPaging]
     public enum Property//角色属性
     {
         normal,
@@ -13,7 +15,6 @@ public abstract class RoleBase : MonoBehaviour
         earth,
         wind
     }
-
     public Property property;//角色属性
 
     public int lv;//角色等级
