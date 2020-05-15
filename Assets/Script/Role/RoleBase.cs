@@ -129,10 +129,13 @@ public abstract class RoleBase : MonoBehaviour
         GameObject go = FindTheTarget();//找到要攻击的随机目标
         if (go != null)
         {
+            
             go.GetComponent<RoleBase>().Myhp -= DamageCalculation(damage[lv - 1], go.GetComponent<RoleBase>().defense[lv - 1]);//计算出伤害然后在血量里面减去
             go.GetComponent<RoleBase>().lossAnimator.SetTrigger("LossHp");
             go.GetComponent<RoleBase>().lossHpText.hpText = DamageCalculation(damage[lv - 1], go.GetComponent<RoleBase>().defense[lv - 1]);
             attackAnimator.SetTrigger("Attack");
+            go.GetComponent<RoleBase>().myAnimator.SetTrigger("numberAttack");
+            Instantiate(underAttackEffects, go.transform.position, Quaternion.identity, gameObject.transform.parent.parent);
         }
     }
 
@@ -269,9 +272,11 @@ public abstract class RoleBase : MonoBehaviour
 
     public void Dead()//角色死亡
     {
+
         if (Myhp <= 0 && transform.CompareTag("EnemysPlane"))
         {
             UserAssetManager.Instance.AddGold(5);
+            Instantiate(deadEffects, transform.position,Quaternion.identity,gameObject.transform.parent.parent);
             Destroy(this.gameObject);
         }
         else if (Myhp <= 0 && transform.CompareTag("MyRolePlane"))

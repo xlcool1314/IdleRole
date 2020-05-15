@@ -17,6 +17,8 @@ public class EnemysBuilder : MonoBehaviour
 
     private bool isCreat=true;
 
+    public float creatEnemysTime;
+
     private async Task LoadSomeConfigs()
     {
         var taskHpBar = Addressables.LoadAssetAsync<Sprite>("hpred").Task;
@@ -30,13 +32,13 @@ public class EnemysBuilder : MonoBehaviour
     {
         if (enemyData != null&&isCreat==true)
         {
-            for (int i = 0; i < enemyData.enemys.Count; i++)
-            {
-               var go= Instantiate(enemyData.enemys[i].enemy, transform);
-               go.tag="EnemysPlane";
-               go.GetComponent<RoleBase>().myHpBarImage.sprite = enemyHpBar;
-               
-            }
+                for (int i = 0; i < enemyData.enemys.Count; i++)
+                {
+                    var go = Instantiate(enemyData.enemys[i].enemy, transform);
+                    go.tag = "EnemysPlane";
+                    go.GetComponent<RoleBase>().myHpBarImage.sprite = enemyHpBar;
+
+                }
             isCreat = false;
         }
         else
