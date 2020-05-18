@@ -204,7 +204,7 @@ public class UserAssetManager : SingletonMono<UserAssetManager>
         return asset.Gold -= val;
     }
 
-    public int UpdateGold()//更新金币数量
+    public int GetGold()//更新金币数量
     {
         return asset.Gold;
     }

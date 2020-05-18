@@ -44,7 +44,12 @@ public class HomeUi : UIBaseBehaviour
 
     private void Update()
     {
+        UpDateGoldShow();
+    }
 
+    public void UpDateGoldShow()//更新显示金币数量
+    {
+        gold.text = UserAssetManager.Instance.GetGold().ToString();
     }
 
     public void CreatShopUi()

@@ -48,7 +48,7 @@ public class BuyRoleUi : UIBaseBehaviour
 
     public void DetermineBuyRole()//确定购买我的角色
     {
-        if(UserAssetManager.Instance.UpdateGold()>= ShopRoleCell.Instance.myRole.GetComponent<RoleBase>().howMuchMoneys)
+        if(UserAssetManager.Instance.GetGold()>= ShopRoleCell.Instance.myRole.GetComponent<RoleBase>().howMuchMoneys)
         {
             Clean();
             UserAssetManager.Instance.ReduceGold(ShopRoleCell.Instance.myRole.GetComponent<RoleBase>().howMuchMoneys);
