@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class FightUi : UIBaseBehaviour
 {
+
+
     public override void Clean()
     {
         throw new System.NotImplementedException();
