@@ -12,6 +12,8 @@ public class AllRoleData : SerializedScriptableObject
 [System.Serializable]
 public class RoleData
 {
+    [Title("是否解锁")]
+    public bool isUnlock;
     [Title("属性")]
     public PropertyInfo property;
     [Title("等级")]

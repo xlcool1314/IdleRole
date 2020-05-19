@@ -7,7 +7,9 @@ using UnityEngine.AddressableAssets;
 
 public abstract class RoleBase : MonoBehaviour
 {
-    public string roleName;
+    public bool isUnlock;//是否解锁
+
+    public string roleName;//角色姓名
 
     public PropertyInfo property;//角色属性
 
@@ -91,8 +93,10 @@ public abstract class RoleBase : MonoBehaviour
     {
         var task = Addressables.LoadAssetAsync<AllRoleData>("AllRoleInfo").Task;
         roleData = await task;
+        roleName = this.name;
         if (roleData.roles.ContainsKey(roleName))
         {
+            isUnlock = roleData.roles[roleName].isUnlock;
             property = roleData.roles[roleName].property;
             lv = roleData.roles[roleName].lv;
             maxHp = roleData.roles[roleName].myMaxHp;
