@@ -3,19 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.AddressableAssets;
 
 public abstract class RoleBase : MonoBehaviour
 {
-    [EnumPaging]
-    public enum Property//角色属性
-    {
-        normal,
-        fire,
-        water,
-        earth,
-        wind
-    }
-    public Property property;//角色属性
+    public string roleName;
+
+    public PropertyInfo property;//角色属性
 
     public int lv;//角色等级
 
@@ -65,6 +59,8 @@ public abstract class RoleBase : MonoBehaviour
 
     public Image myHpBarImage;//我的血条image
 
+    public AllRoleData roleData;
+
 
     public int Myhp
     {
@@ -85,6 +81,34 @@ public abstract class RoleBase : MonoBehaviour
             }
         }
     }//血量属性
+
+    private void Start()
+    {
+        RoleInitInfo();
+    }
+
+    public async void RoleInitInfo()//初始化角色数据
+    {
+        var task = Addressables.LoadAssetAsync<AllRoleData>("AllRoleInfo").Task;
+        roleData = await task;
+        if (roleData.roles.ContainsKey(roleName))
+        {
+            property = roleData.roles[roleName].property;
+            lv = roleData.roles[roleName].lv;
+            maxHp = roleData.roles[roleName].myMaxHp;
+            defense = roleData.roles[roleName].defense;
+            damage = roleData.roles[roleName].damage;
+            myTreatment = roleData.roles[roleName].myTreatment;
+            numberTreatmens = roleData.roles[roleName].numberTreatmens;
+            numberAttack = roleData.roles[roleName].numberAttack;
+            maxAttackSpeed = roleData.roles[roleName].maxAttackSpeed;
+            howMuchMoneys = roleData.roles[roleName].howMuchMoneys;
+            myAnimator = roleData.roles[roleName].myAnimator;
+            attackEffects = roleData.roles[roleName].attackEffects;
+            underAttackEffects = roleData.roles[roleName].underAttackEffects;
+            deadEffects = roleData.roles[roleName].deadEffects;
+        }
+    }
 
     public void RoleUpDate()//bar更新
     {

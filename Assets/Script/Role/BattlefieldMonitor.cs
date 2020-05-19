@@ -42,46 +42,46 @@ public class BattlefieldMonitor : SingletonMono<BattlefieldMonitor>
     }
 
 
-    public void Combination(GameObject go)//判断是否又三个一样的英雄，如果有就合成
-    {
-        if (allMyRoles.Length >= 3)
-        {
-            int sameNb;
-            sameNb = 0;
-            List<GameObject> allDeleteRole = new List<GameObject>();
-            for (int i = 0; i < allMyRoles.Length; i++)
-            {
-                if (allMyRoles[i].name==go.name)
-                {
-                    sameNb += 1;
-                    allDeleteRole.Add(allMyRoles[i]);
-                    Debug.Log(allDeleteRole.Count);
-                }
-            }
-            if (sameNb >= 3)
-            {
-                Addressables.InstantiateAsync("CombinationUi");
-                FindLv2Role(go,allDeleteRole);
-            }
-        }
-    }
+    //public void Combination(GameObject go)//判断是否又三个一样的英雄，如果有就合成
+    //{
+    //    if (allMyRoles.Length >= 3)
+    //    {
+    //        int sameNb;
+    //        sameNb = 0;
+    //        List<GameObject> allDeleteRole = new List<GameObject>();
+    //        for (int i = 0; i < allMyRoles.Length; i++)
+    //        {
+    //            if (allMyRoles[i].name==go.name)
+    //            {
+    //                sameNb += 1;
+    //                allDeleteRole.Add(allMyRoles[i]);
+    //                Debug.Log(allDeleteRole.Count);
+    //            }
+    //        }
+    //        if (sameNb >= 3)
+    //        {
+    //            Addressables.InstantiateAsync("CombinationUi");
+    //            FindLv2Role(go,allDeleteRole);
+    //        }
+    //    }
+    //}
 
-    public async void FindLv2Role(GameObject go,List<GameObject> goes)//找到要进阶2级的角色是哪一个
-    {
-        var task = Addressables.LoadAssetAsync<AllRoleData>("AllRoleInfo").Task;
-        allRoleData = await task;
-        for (int i = 0; i < allRoleData.AllRoleInfo.Count; i++)
-        {
-            if (go.name == allRoleData.AllRoleInfo[i].name)
-            {
-                levelRole = allRoleData.AllRoleInfo[i].RoleInfo[1].roleObj;
+    //public async void FindLv2Role(GameObject go,List<GameObject> goes)//找到要进阶2级的角色是哪一个
+    //{
+    //    var task = Addressables.LoadAssetAsync<AllRoleData>("AllRoleInfo").Task;
+    //    allRoleData = await task;
+    //    for (int i = 0; i < allRoleData.AllRoleInfo.Count; i++)
+    //    {
+    //        if (go.name == allRoleData.AllRoleInfo[i].name)
+    //        {
+    //            levelRole = allRoleData.AllRoleInfo[i].RoleInfo[1].roleObj;
 
-                MyRoleBuilder.Instance.CreatRole(levelRole);
-                InitLv2CombinationUi(go);//初始化合成UI的表现数据
-                DeleteCombinationRole(goes);
-            }
-        }
-    }
+    //            MyRoleBuilder.Instance.CreatRole(levelRole);
+    //            InitLv2CombinationUi(go);//初始化合成UI的表现数据
+    //            DeleteCombinationRole(goes);
+    //        }
+    //    }
+    //}
 
     public void InitLv2CombinationUi(GameObject go)//初始化进阶UI的数据表现
     {

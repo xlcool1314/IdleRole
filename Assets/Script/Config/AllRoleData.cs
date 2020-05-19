@@ -1,28 +1,56 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 [CreateAssetMenu(menuName = "Config/Create AllRoleData")]
-public class AllRoleData : ScriptableObject
+public class AllRoleData : SerializedScriptableObject
 {
-    public List<RoleData> AllRoleInfo;//所有角色信息
-
+    public Dictionary<string, RoleData> roles;
 }
 
 [System.Serializable]
 public class RoleData
 {
-    public string name;
-    public List<RoleInfo> RoleInfo;//某个角色信息
+    [Title("属性")]
+    public PropertyInfo property;
+    [Title("等级")]
+    public int lv;
+    [Title("最大血量")]
+    public List<int> myMaxHp;
+    [Title("防御")]
+    public List<int> defense;
+    [Title("攻击力")]
+    public List<int> damage;
+    [Title("治疗量")]
+    public List<int> myTreatment;
+    [Title("可以治疗的个数")]
+    public int numberTreatmens;
+    [Title("可以攻击的个数")]
+    public int numberAttack;
+    [Title("攻击间隔")]
+    public float maxAttackSpeed;
+    [Title("购买价格")]
+    public int howMuchMoneys;
+    [Title("动画控制器")]
+    public Animator myAnimator;
+    [Title("攻击特效")]
+    public GameObject attackEffects;
+    [Title("受击特效")]
+    public GameObject underAttackEffects;
+    [Title("死亡特效")]
+    public GameObject deadEffects;
 }
+
 
 [System.Serializable]
-public class RoleInfo
+public enum PropertyInfo
 {
-    public string name;//怪物名称
-
-    public string describe;//描述
-
-    public GameObject roleObj;//怪物预制体
-
+    normal,
+    fire,
+    water,
+    earth,
+    wind
 }
+
+
