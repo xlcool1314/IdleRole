@@ -71,6 +71,7 @@ public class HomeUi : UIBaseBehaviour
     private void Update()
     {
         Clock();
+        gold.text = UserAssetManager.Instance.GetGold().ToString();
     }
 
     public void CreatShopUi()
