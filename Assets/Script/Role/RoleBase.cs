@@ -147,8 +147,50 @@ public abstract class RoleBase : MonoBehaviour
         }
     }
 
+    public int DamageCalculation(int Dam, int yourDefense)//伤害计算
+    {
+        int damag;
+        damag = Dam - yourDefense;
+        if (damag <= 0)
+        {
+            damag = 1;
+        }
+        return damag;
+    }
 
-    #region 技能相关
+    public void Dead()//角色死亡
+    {
+
+        if (Myhp <= 0 && transform.CompareTag("EnemysPlane"))
+        {
+            UserAssetManager.Instance.AddGold(5);
+            Instantiate(deadEffects, transform.position, Quaternion.identity, gameObject.transform.parent.parent);
+            Destroy(this.gameObject);
+        }
+        else if (Myhp <= 0 && transform.CompareTag("MyRolePlane"))
+        {
+            Destroy(this.gameObject);
+        }
+
+    }
+
+    public IEnumerator AttackCountdown(float time, Stat myBar)//攻击频率
+    {
+        float tim = 0;
+        while (time > 0)
+        {
+            yield return new WaitForSeconds(1);
+            tim++;
+            myBar.CurrentValue = tim;
+            time--;
+        }
+    }
+
+
+    #region 攻击技能类型相关
+
+    #region 普通攻击
+
     public void AttackUpDate()//攻击伤害更新
     {
         if (attackSpeedBar.currentfill == 1 && attackSpeedBar.content.fillAmount > 0.99f)
@@ -159,7 +201,26 @@ public abstract class RoleBase : MonoBehaviour
             StartCoroutine(AttackCountdown(maxAttackSpeed, attackSpeedBar));
         }
     }
-
+    public GameObject FindTheTarget()//随机锁定一个攻击对象
+    {
+        GameObject go;
+        if (gameObject.CompareTag("MyRolePlane") && allRoles.allEnemys.Length > 0)
+        {
+            int randomNumber = Random.Range(0, allRoles.allEnemys.Length);
+            go = allRoles.allEnemys[randomNumber];
+            return go;
+        }
+        else if (gameObject.CompareTag("EnemysPlane") && allRoles.allMyRoles.Length > 0)
+        {
+            int randomNumber = Random.Range(0, allRoles.allMyRoles.Length);
+            go = allRoles.allMyRoles[randomNumber];
+            return go;
+        }
+        else
+        {
+            return null;
+        }
+    }
     public virtual void Attack(Animator attackAnimator)//单体攻击相关
     {
         GameObject go = FindTheTarget();//找到要攻击的随机目标
@@ -175,6 +236,10 @@ public abstract class RoleBase : MonoBehaviour
         }
     }
 
+    #endregion
+
+    #region 普通治疗
+
     public void TreatmentUpDate()//治疗更新
     {
         if (attackSpeedBar.currentfill == 1 && attackSpeedBar.content.fillAmount > 0.99f)
@@ -185,15 +250,6 @@ public abstract class RoleBase : MonoBehaviour
             StartCoroutine(AttackCountdown(maxAttackSpeed, attackSpeedBar));
         }
     }
-
-    public void Treatment()//单体治疗
-    {
-        GameObject go = FindMyRole();
-        go.GetComponent<RoleBase>().Myhp += myTreatment[lv - 1];
-        go.GetComponent<RoleBase>().treatmentText.hpText = myTreatment[lv - 1];
-        go.GetComponent<RoleBase>().treatmentAnimator.SetTrigger("Treatment");
-    }
-
     public void Treatments(int numberTreatmen)//群体治疗
     {
         if (gameObject.CompareTag("MyRolePlane"))//我方群体治疗
@@ -239,7 +295,16 @@ public abstract class RoleBase : MonoBehaviour
             }
         }
     }
+    #endregion
 
+    #region 单体治疗一个血量最少的
+    public void Treatment()//单体治疗
+    {
+        GameObject go = FindMyRole();
+        go.GetComponent<RoleBase>().Myhp += myTreatment[lv - 1];
+        go.GetComponent<RoleBase>().treatmentText.hpText = myTreatment[lv - 1];
+        go.GetComponent<RoleBase>().treatmentAnimator.SetTrigger("Treatment");
+    }
     public GameObject FindMyRole()//寻找我方血量最少的一个角色
     {
         if (gameObject.CompareTag("MyRolePlane"))
@@ -284,66 +349,8 @@ public abstract class RoleBase : MonoBehaviour
         }
     }
 
+    #endregion
 
-    public GameObject FindTheTarget()//随机锁定一个攻击对象
-    {
-        GameObject go;
-        if (gameObject.CompareTag("MyRolePlane") && allRoles.allEnemys.Length > 0)
-        {
-            int randomNumber = Random.Range(0, allRoles.allEnemys.Length);
-            go = allRoles.allEnemys[randomNumber];
-            return go;
-        }
-        else if (gameObject.CompareTag("EnemysPlane") && allRoles.allMyRoles.Length > 0)
-        {
-            int randomNumber = Random.Range(0, allRoles.allMyRoles.Length);
-            go = allRoles.allMyRoles[randomNumber];
-            return go;
-        }
-        else
-        {
-            return null;
-        }
-    }
-
-    public int DamageCalculation(int Dam, int yourDefense)//伤害计算
-    {
-        int damag;
-        damag = Dam - yourDefense;
-        if (damag <= 0)
-        {
-            damag = 1;
-        }
-        return damag;
-    }
-
-    public void Dead()//角色死亡
-    {
-
-        if (Myhp <= 0 && transform.CompareTag("EnemysPlane"))
-        {
-            UserAssetManager.Instance.AddGold(5);
-            Instantiate(deadEffects, transform.position,Quaternion.identity,gameObject.transform.parent.parent);
-            Destroy(this.gameObject);
-        }
-        else if (Myhp <= 0 && transform.CompareTag("MyRolePlane"))
-        {
-            Destroy(this.gameObject);
-        }
-
-    }
-
-    public IEnumerator AttackCountdown(float time, Stat myBar)//攻击频率
-    {
-        float tim = 0;
-        while (time > 0)
-        {
-            yield return new WaitForSeconds(1);
-            tim++;
-            myBar.CurrentValue = tim;
-            time--;
-        }
-    }
 
     #endregion
 }
