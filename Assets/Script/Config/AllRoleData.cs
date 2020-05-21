@@ -59,8 +59,9 @@ public enum PropertyInfo
 
 public enum SkillType
 {
-    NormalAttack,
-    NormalTreatmens
+        NormalAttack,//普通攻击
+        NormalTreatmens,//群体治疗
+        TreatmenLowHp//治疗血量最低
 }
 
 

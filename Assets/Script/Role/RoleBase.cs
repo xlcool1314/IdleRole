@@ -144,6 +144,12 @@ public abstract class RoleBase : MonoBehaviour
                 TreatmentUpDate();
 
                 break;
+
+            case SkillType.TreatmenLowHp:
+
+                Treatment();
+
+                break;
         }
     }
 
