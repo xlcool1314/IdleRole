@@ -16,6 +16,8 @@ public class RoleData
     public bool isUnlock;
     [Title("属性")]
     public PropertyInfo property;
+    [Title("攻击方式")]
+    public SkillType skillType;
     [Title("等级")]
     public int lv;
     [Title("最大血量")]
@@ -53,6 +55,12 @@ public enum PropertyInfo
     water,
     earth,
     wind
+}
+
+public enum SkillType
+{
+    NormalAttack,
+    NormalTreatmens
 }
 
 

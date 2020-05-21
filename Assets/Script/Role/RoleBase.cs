@@ -13,6 +13,8 @@ public abstract class RoleBase : MonoBehaviour
 
     public PropertyInfo property;//角色属性
 
+    public SkillType skillType;//角色技能
+
     public int lv;//角色等级
 
     [SerializeField]
@@ -35,6 +37,7 @@ public abstract class RoleBase : MonoBehaviour
 
     public int howMuchMoneys;//需要的金币数量
 
+    [HideInInspector]
     public Animator myAnimator;//动画控制器
 
     public GameObject attackEffects;//攻击特效
@@ -63,7 +66,6 @@ public abstract class RoleBase : MonoBehaviour
     [HideInInspector]
     public AllRoleData roleData;
 
-
     public int Myhp
     {
         get => myhp;
@@ -84,21 +86,27 @@ public abstract class RoleBase : MonoBehaviour
         }
     }//血量属性
 
-    private void Start()
-    {
-        RoleInitInfo();
-    }
-
     public async void RoleInitInfo()//初始化角色数据
     {
+        Myhp = maxHp[lv - 1];
+        allRoles = GameObject.FindObjectOfType<BattlefieldMonitor>();//拿到存着的所有角色
+        attackSpeedBar.currentfill = 0;//初始的攻击速度为0
+        hpBar.currentfill = 1;//初始的血条为满
+        hpBar.Initialize(Myhp, maxHp[lv - 1]);//初始化血条的显示
+        attackSpeedBar.Initialize(maxAttackSpeed, maxAttackSpeed);//初始话攻击速度的显示
+        StartCoroutine(AttackCountdown(maxAttackSpeed, attackSpeedBar));//游戏开始进行第一次的攻击频率倒计时
+
         var task = Addressables.LoadAssetAsync<AllRoleData>("AllRoleInfo").Task;
         roleData = await task;
-        roleName = this.name;
-        if (roleData.roles.ContainsKey(roleName))
+        if (roleData.roles.ContainsKey(roleName))//角色数据初始化
         {
             isUnlock = roleData.roles[roleName].isUnlock;
             property = roleData.roles[roleName].property;
             lv = roleData.roles[roleName].lv;
+            for (int i = 0; i < roleData.roles[roleName].myMaxHp.Count; i++)
+            {
+                maxHp.Add(roleData.roles[roleName].myMaxHp[i]);
+            }
             maxHp = roleData.roles[roleName].myMaxHp;
             defense = roleData.roles[roleName].defense;
             damage = roleData.roles[roleName].damage;
@@ -107,11 +115,13 @@ public abstract class RoleBase : MonoBehaviour
             numberAttack = roleData.roles[roleName].numberAttack;
             maxAttackSpeed = roleData.roles[roleName].maxAttackSpeed;
             howMuchMoneys = roleData.roles[roleName].howMuchMoneys;
-            myAnimator = roleData.roles[roleName].myAnimator;
+            myAnimator = transform.Find("Skin").GetComponent<Animator>();
             attackEffects = roleData.roles[roleName].attackEffects;
             underAttackEffects = roleData.roles[roleName].underAttackEffects;
             deadEffects = roleData.roles[roleName].deadEffects;
+            skillType = roleData.roles[roleName].skillType;
         }
+
     }
 
     public void RoleUpDate()//bar更新
@@ -119,6 +129,26 @@ public abstract class RoleBase : MonoBehaviour
         hpBar.CurrentValue = Myhp;
     }
 
+    public void UseSkill(SkillType skill)//使用技能
+    {
+        switch (skill)
+        {
+            case SkillType.NormalAttack:
+
+                AttackUpDate();
+
+                break;
+
+            case SkillType.NormalTreatmens:
+
+                TreatmentUpDate();
+
+                break;
+        }
+    }
+
+
+    #region 技能相关
     public void AttackUpDate()//攻击伤害更新
     {
         if (attackSpeedBar.currentfill == 1 && attackSpeedBar.content.fillAmount > 0.99f)
@@ -130,6 +160,21 @@ public abstract class RoleBase : MonoBehaviour
         }
     }
 
+    public virtual void Attack(Animator attackAnimator)//单体攻击相关
+    {
+        GameObject go = FindTheTarget();//找到要攻击的随机目标
+        if (go != null)
+        {
+
+            go.GetComponent<RoleBase>().Myhp -= DamageCalculation(damage[lv - 1], go.GetComponent<RoleBase>().defense[lv - 1]);//计算出伤害然后在血量里面减去
+            go.GetComponent<RoleBase>().lossAnimator.SetTrigger("LossHp");
+            go.GetComponent<RoleBase>().lossHpText.hpText = DamageCalculation(damage[lv - 1], go.GetComponent<RoleBase>().defense[lv - 1]);
+            attackAnimator.SetTrigger("Attack");
+            go.GetComponent<RoleBase>().myAnimator.SetTrigger("numberAttack");
+            Instantiate(underAttackEffects, go.transform.position, Quaternion.identity, gameObject.transform.parent.parent);
+        }
+    }
+
     public void TreatmentUpDate()//治疗更新
     {
         if (attackSpeedBar.currentfill == 1 && attackSpeedBar.content.fillAmount > 0.99f)
@@ -138,32 +183,6 @@ public abstract class RoleBase : MonoBehaviour
             attackSpeedBar.currentfill = 0;
             Treatments(numberTreatmens);
             StartCoroutine(AttackCountdown(maxAttackSpeed, attackSpeedBar));
-        }
-    }
-
-    public void InitRoleBase() //初始化
-    {
-        Myhp = maxHp[lv - 1];
-        allRoles = GameObject.FindObjectOfType<BattlefieldMonitor>();//拿到存着的所有角色
-        attackSpeedBar.currentfill = 0;//初始的攻击速度为0
-        hpBar.currentfill = 1;//初始的血条为满
-        hpBar.Initialize(Myhp, maxHp[lv - 1]);//初始化血条的显示
-        attackSpeedBar.Initialize(maxAttackSpeed, maxAttackSpeed);//初始话攻击速度的显示
-        StartCoroutine(AttackCountdown(maxAttackSpeed, attackSpeedBar));//游戏开始进行第一次的攻击频率倒计时
-    }
-
-    public virtual void Attack(Animator attackAnimator)//单体攻击相关
-    {
-        GameObject go = FindTheTarget();//找到要攻击的随机目标
-        if (go != null)
-        {
-            
-            go.GetComponent<RoleBase>().Myhp -= DamageCalculation(damage[lv - 1], go.GetComponent<RoleBase>().defense[lv - 1]);//计算出伤害然后在血量里面减去
-            go.GetComponent<RoleBase>().lossAnimator.SetTrigger("LossHp");
-            go.GetComponent<RoleBase>().lossHpText.hpText = DamageCalculation(damage[lv - 1], go.GetComponent<RoleBase>().defense[lv - 1]);
-            attackAnimator.SetTrigger("Attack");
-            go.GetComponent<RoleBase>().myAnimator.SetTrigger("numberAttack");
-            Instantiate(underAttackEffects, go.transform.position, Quaternion.identity, gameObject.transform.parent.parent);
         }
     }
 
@@ -325,4 +344,6 @@ public abstract class RoleBase : MonoBehaviour
             time--;
         }
     }
+
+    #endregion
 }

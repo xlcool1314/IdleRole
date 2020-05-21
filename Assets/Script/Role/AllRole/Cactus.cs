@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class Cactus : RoleBase
 {
-    private void Start()
+
+    private void Awake()
     {
-        base.InitRoleBase();
-        
+        base.RoleInitInfo();
     }
 
     private void Update() 
     {
         base.RoleUpDate();
-        base.AttackUpDate();
+        base.UseSkill(skillType);
         base.Dead();
     }
     

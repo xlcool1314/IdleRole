@@ -6,13 +6,13 @@ public class TreeMan : RoleBase
 {
     private void Start()
     {
-        base.InitRoleBase();
+        base.RoleInitInfo();
     }
 
     private void Update() 
     {
         base.RoleUpDate();
-        base.TreatmentUpDate();
+        base.UseSkill(skillType);
         base.Dead();
     }
     
