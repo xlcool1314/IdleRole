@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class FightUi : UIBaseBehaviour
 {
+    public EnemysBuilder enemysBuilder;
 
+    public TextMeshProUGUI countDown;
 
     public override void Clean()
     {
@@ -25,12 +28,12 @@ public class FightUi : UIBaseBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        countDown.text = enemysBuilder.creatEnemysTimes.ToString("f0");
     }
 }

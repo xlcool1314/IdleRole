@@ -18,6 +18,8 @@ public class ResourcesManager : SingletonMono<ResourcesManager>
 
     public GameObject shopUi;
 
+    public GameObject mushroom;
+
 
 
 
@@ -40,6 +42,9 @@ public class ResourcesManager : SingletonMono<ResourcesManager>
 
         var task006 = Addressables.LoadAssetAsync<GameObject>("ShopRoleCell").Task;
         shopUi = await task006;
+
+        var task007 = Addressables.LoadAssetAsync<GameObject>("Mushroom").Task;
+        mushroom = await task007;
 
 
 

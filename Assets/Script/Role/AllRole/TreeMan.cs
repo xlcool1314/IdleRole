@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TreeMan : RoleBase
 {
-    private void Start()
+    private void Awake()
     {
         base.RoleInitInfo();
     }

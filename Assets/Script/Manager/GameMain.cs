@@ -8,9 +8,6 @@ public class GameMain : SingletonMono<GameMain>
 {
     private async void Awake()
     {
-       await ResourcesManager.Instance.InitResources();
-        Debug.Log(ResourcesManager.Instance.shopRoleCell);
-
        Application.targetFrameRate = 60;
 
        await UserAssetManager.Instance.Init();

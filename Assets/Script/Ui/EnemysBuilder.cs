@@ -17,7 +17,7 @@ public class EnemysBuilder : MonoBehaviour
 
     private bool isCreat=true;
 
-    public float creatEnemysTime;
+    public float creatEnemysTimes =2;
 
     private async Task LoadSomeConfigs()
     {
@@ -28,24 +28,10 @@ public class EnemysBuilder : MonoBehaviour
         enemysData = await task;
     }
 
-    public void CreatEnemys(EnemysData enemyData)//刷新怪物
-    {
-        if (enemyData != null&&isCreat==true)
-        {
-                for (int i = 0; i < enemyData.enemys.Count; i++)
-                {
-                    var go = Instantiate(enemyData.enemys[i].enemy, transform);
-                    go.tag = "EnemysPlane";
-                    go.GetComponent<RoleBase>().myHpBarImage.sprite = enemyHpBar;
-
-                }
-            isCreat = false;
-        }
-        else
-        {
-            return;
-        }
-    }
+    //public void CreatEnemys(EnemysData enemyData)//刷新怪物
+    //{
+       
+    //}
 
     void AllEnemysIsDead()//所有这轮的怪物全部死亡，生成新的一批怪物
     {
@@ -61,9 +47,26 @@ public class EnemysBuilder : MonoBehaviour
         return nm;
     }
 
-    private async void Awake()
+    public IEnumerator CreatEnemys(EnemysData enemyData)//攻击频率
     {
-        await LoadSomeConfigs();
+           creatEnemysTimes -= Time.deltaTime;
+            yield return new WaitForSeconds(3);
+            if (enemyData != null && isCreat == true)
+            {
+                creatEnemysTimes = 3;
+                for (int i = 0; i < enemyData.enemys.Count; i++)
+                {
+                    var go = Instantiate(enemyData.enemys[i].enemy, transform);
+                    go.tag = "EnemysPlane";
+                    go.GetComponent<RoleBase>().myHpBarImage.sprite = enemyHpBar;
+                }
+                isCreat = false;
+            }
+            else
+            {
+            yield break;
+            }
+        
     }
 
     private async void Update()
@@ -72,7 +75,7 @@ public class EnemysBuilder : MonoBehaviour
         if (isCreat)
         {
             await LoadSomeConfigs();
-            CreatEnemys(enemysData);
+            StartCoroutine(CreatEnemys( enemysData));
         }
     }
 }

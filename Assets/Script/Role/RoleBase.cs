@@ -110,8 +110,9 @@ public abstract class RoleBase : MonoBehaviour
             Myhp = maxHp[lv - 1];
             allRoles = GameObject.FindObjectOfType<BattlefieldMonitor>();//拿到存着的所有角色
             attackSpeedBar.currentfill = 0;//初始的攻击速度为0
-            hpBar.currentfill = 1;//初始的血条为满
+            
             hpBar.Initialize(Myhp, maxHp[lv - 1]);//初始化血条的显示
+            hpBar.currentfill = 1;//初始的血条为满
             attackSpeedBar.Initialize(maxAttackSpeed, maxAttackSpeed);//初始话攻击速度的显示
             StartCoroutine(AttackCountdown(maxAttackSpeed, attackSpeedBar));//游戏开始进行第一次的攻击频率倒计时
         }
@@ -166,11 +167,11 @@ public abstract class RoleBase : MonoBehaviour
         {
             UserAssetManager.Instance.AddGold(5);
             Instantiate(deadEffects, transform.position, Quaternion.identity, gameObject.transform.parent.parent);
-            Destroy(this.gameObject);
+            Destroy(this.gameObject,0.5f);
         }
         else if (Myhp <= 0 && transform.CompareTag("MyRolePlane"))
         {
-            Destroy(this.gameObject);
+            Destroy(this.gameObject,0.5f);
         }
 
     }
