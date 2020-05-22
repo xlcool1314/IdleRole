@@ -75,6 +75,7 @@
     <Compile Include="Assets\Script\Manager\GameMain.cs" />
     <Compile Include="Assets\Script\Manager\GameManager.cs" />
     <Compile Include="Assets\Script\Manager\GameSaveManager.cs" />
+    <Compile Include="Assets\Script\Manager\ResourcesManager.cs" />
     <Compile Include="Assets\Script\Manager\UIBaseBehaviour.cs" />
     <Compile Include="Assets\Script\Manager\UIParticle.cs" />
     <Compile Include="Assets\Script\Manager\UiManager.cs" />

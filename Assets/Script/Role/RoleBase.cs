@@ -143,6 +143,7 @@ public abstract class RoleBase : MonoBehaviour
 
                 TreatmentOneUpDate();
 
+
                 break;
         }
     }
