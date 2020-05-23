@@ -14,7 +14,7 @@ public class RoleWindowInfo : MonoBehaviour
 
     public void LvUp()
     {
-        Instantiate(ResourcesManager.Instance.roleInfo, transform.position,Quaternion.identity,gameObject.transform.parent);
+        Instantiate(ResourcesManager.Instance.roleInfo, transform.position,Quaternion.identity,GameObject.Find("GameMain").transform);
     }
 
     // Update is called once per frame
