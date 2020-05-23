@@ -35,6 +35,7 @@ public class EnemysBuilder : MonoBehaviour
 
     void AllEnemysIsDead()//所有这轮的怪物全部死亡，生成新的一批怪物
     {
+        BattlefieldMonitor.Instance.FindAllEnemys();
         if (BattlefieldMonitor.Instance.allEnemys.Length <= 0&&isCreat==false)
         {
             isCreat = true;
@@ -59,8 +60,10 @@ public class EnemysBuilder : MonoBehaviour
                     var go = Instantiate(enemyData.enemys[i].enemy, transform);
                     go.tag = "EnemysPlane";
                     go.GetComponent<RoleBase>().myHpBarImage.sprite = enemyHpBar;
+                    go.GetComponent<RoleBase>().RoleInitInfo();
                 }
                 isCreat = false;
+            UserAssetManager.Instance.NoFirstGame();
             }
             else
             {

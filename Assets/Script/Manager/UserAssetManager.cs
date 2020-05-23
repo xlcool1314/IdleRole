@@ -223,4 +223,9 @@ public class UserAssetManager : SingletonMono<UserAssetManager>
     {
         return asset.isFirstGame;
     }
+
+    public void NoFirstGame()
+    {
+        asset.isFirstGame = false;
+    }
 }

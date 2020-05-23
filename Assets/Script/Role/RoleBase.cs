@@ -35,7 +35,9 @@ public abstract class RoleBase : MonoBehaviour
 
     public float maxAttackSpeed;//最大的的攻击间隔
 
-    public int howMuchMoneys;//需要的金币数量
+    public int howMuchMoneys;//购买需要的金币数量
+
+    public int dropMoneys;//掉落金币数量
 
     public Animator myAnimator;//动画控制器
 
@@ -102,6 +104,7 @@ public abstract class RoleBase : MonoBehaviour
             numberAttack = roleData.roles[roleName].numberAttack;
             maxAttackSpeed = roleData.roles[roleName].maxAttackSpeed;
             howMuchMoneys = roleData.roles[roleName].howMuchMoneys;
+            dropMoneys = roleData.roles[roleName].dropMoneys;
             myAnimator = transform.Find("Skin").GetComponent<Animator>();
             attackEffects = roleData.roles[roleName].attackEffects;
             underAttackEffects = roleData.roles[roleName].underAttackEffects;
@@ -163,9 +166,9 @@ public abstract class RoleBase : MonoBehaviour
     public void Dead()//角色死亡
     {
 
-        if (Myhp <= 0 && transform.CompareTag("EnemysPlane"))
+        if (Myhp <= 0 && transform.CompareTag("EnemysPlane")&&UserAssetManager.Instance.IsFirstGame()==false)
         {
-            UserAssetManager.Instance.AddGold(5);
+            UserAssetManager.Instance.AddGold(dropMoneys);
             Instantiate(deadEffects, transform.position, Quaternion.identity, gameObject.transform.parent.parent);
             Destroy(this.gameObject,0.5f);
         }

@@ -36,6 +36,8 @@ public class RoleData
     public float maxAttackSpeed;
     [Title("购买价格")]
     public int howMuchMoneys;
+    [Title("掉落金币")]
+    public int dropMoneys;
     [Title("动画控制器")]
     public Animator myAnimator;
     [Title("攻击特效")]
