@@ -48,6 +48,8 @@ public class ResourcesManager : SingletonMono<ResourcesManager>
         var task007 = Addressables.LoadAssetAsync<GameObject>("RoleInfo").Task;
         roleInfo = await task007;
 
+        Debug.Log(roleInfo);
+
 
 
     }
