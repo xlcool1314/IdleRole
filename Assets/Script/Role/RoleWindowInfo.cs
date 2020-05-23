@@ -14,7 +14,7 @@ public class RoleWindowInfo : MonoBehaviour
 
     public void LvUp()
     {
-        transform.GetComponent<RoleBase>().lv += 1;
+        Instantiate(ResourcesManager.Instance.roleInfo, transform);
     }
 
     // Update is called once per frame

@@ -13,6 +13,8 @@ public class GameMain : SingletonMono<GameMain>
        await UserAssetManager.Instance.Init();
        
        await GameInit();
+
+        await ResourcesManager.Instance.InitResources();
     }
 
     private async Task GameInit()
