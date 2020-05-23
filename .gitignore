@@ -4,3 +4,4 @@ Temp/
 logs/
 .vs/
 .vscode/
+*.csproj
