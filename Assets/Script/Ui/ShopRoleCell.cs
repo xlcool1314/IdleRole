@@ -31,7 +31,12 @@ public class ShopRoleCell : SingletonMono<ShopRoleCell>
 
     public void CreatBuyRoleUi()//创建确定购买的UI
     {
+        if (ShopUi.Instance.isOpenBuyRoleUi == true)
+        {
+            Destroy(GameObject.Find("BuyRoleUi(Clone)").gameObject);
+        }
         ShopRoleCell.Instance.myRole=this.myRole;
         Addressables.InstantiateAsync("BuyRoleUi");
+        ShopUi.Instance.isOpenBuyRoleUi = true;
     }
 }

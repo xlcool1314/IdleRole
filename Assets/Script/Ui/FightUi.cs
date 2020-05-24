@@ -10,6 +10,8 @@ public class FightUi : UIBaseBehaviour
 
     public TextMeshProUGUI countDown;
 
+    public TextMeshProUGUI level;
+
     public override void Clean()
     {
         throw new System.NotImplementedException();
@@ -34,6 +36,8 @@ public class FightUi : UIBaseBehaviour
     // Update is called once per frame
     void Update()
     {
+        level.text = UserAssetManager.Instance.GetLevel().ToString();
+
         countDown.text = enemysBuilder.creatEnemysTimes.ToString("f0");
     }
 }

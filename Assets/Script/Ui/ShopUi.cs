@@ -7,6 +7,8 @@ public class ShopUi : SingletonMono<ShopUi>
 {
     public Button closeButton;
 
+    public bool isOpenBuyRoleUi = false;
+
     private void Awake()
     {
         closeButton.onClick.AddListener(CloseShopUi);
@@ -14,6 +16,10 @@ public class ShopUi : SingletonMono<ShopUi>
     public void CloseShopUi()
     {
         closeButton.onClick.RemoveAllListeners();
+        if (ShopUi.Instance.isOpenBuyRoleUi == true)
+        {
+            Destroy(GameObject.Find("BuyRoleUi(Clone)").gameObject);
+        }
         Destroy(gameObject);
     }
 }

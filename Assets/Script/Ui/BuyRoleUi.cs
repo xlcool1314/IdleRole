@@ -17,6 +17,10 @@ public class BuyRoleUi : UIBaseBehaviour
 
     public TextMeshProUGUI defenseText;//显示防御力
 
+    public TextMeshProUGUI hpText;//显示血量
+
+    public TextMeshProUGUI TreatmentTex;//显示治疗量
+
     public Image skin;
 
     private void Awake()
@@ -30,8 +34,12 @@ public class BuyRoleUi : UIBaseBehaviour
         noButton.onClick.AddListener(CloseBuyRoleUi);
         nameText.text = ShopRoleCell.Instance.myRole.name;
         skin.sprite = ShopRoleCell.Instance.myRole.GetComponent<RoleBase>().mySkin.sprite;
+        skin.SetNativeSize();
         damageText.text = ShopRoleCell.Instance.myRole.GetComponent<RoleBase>().damage[ShopRoleCell.Instance.myRole.GetComponent<RoleBase>().lv - 1].ToString();
         defenseText.text = ShopRoleCell.Instance.myRole.GetComponent<RoleBase>().defense[ShopRoleCell.Instance.myRole.GetComponent<RoleBase>().lv - 1].ToString();
+        hpText.text = ShopRoleCell.Instance.myRole.GetComponent<RoleBase>().maxHp[ShopRoleCell.Instance.myRole.GetComponent<RoleBase>().lv - 1].ToString();
+        TreatmentTex.text = ShopRoleCell.Instance.myRole.GetComponent<RoleBase>().myTreatment[ShopRoleCell.Instance.myRole.GetComponent<RoleBase>().lv - 1].ToString();
+
     }
 
     public override void UpdateInfo(float deltaTime)

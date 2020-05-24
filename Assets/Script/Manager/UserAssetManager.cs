@@ -170,6 +170,7 @@ public class UserAssetManager : SingletonMono<UserAssetManager>
     {
         if (BattlefieldMonitor.Instance.allMyRoles != null)
         {
+            asset.SaveRoleStatus.Clear();
             for (int i = 0; i < BattlefieldMonitor.Instance.allMyRoles.Length; i++)
             {
                 asset.SaveRoleStatus.Add(new UserAsset.RoleStatus()
@@ -182,6 +183,11 @@ public class UserAssetManager : SingletonMono<UserAssetManager>
                 asset.SetDirty();
             }
         }
+    }
+
+    public List<UserAsset.RoleStatus> CreatRoleSta()
+    {
+            return asset.SaveRoleStatus;
     }
 
     public void SaveGame()//储存相关信息

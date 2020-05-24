@@ -11,7 +11,7 @@ public class MyRoleBuilder : SingletonMono<MyRoleBuilder>
 
     private void Start()
     {
-        //CreatAllRoles();
+        CreatAllRoles();
     }
 
     public GameObject CreatRole(GameObject thisRole)
@@ -21,17 +21,15 @@ public class MyRoleBuilder : SingletonMono<MyRoleBuilder>
         go.name = thisRole.name;
         return go;
     }
-
-    [Button]
     public async Task CreatAllRoles()
     {
-        UserAsset asset = new UserAsset();
-        for (int i = 0; i < asset.SaveRoleStatus.Count; i++)
+        for (int i = 0; i < UserAssetManager.Instance.CreatRoleSta().Count; i++)
         {
-                var go = await Addressables.InstantiateAsync(asset.SaveRoleStatus[i]._name).Task;
+                var go = await Addressables.InstantiateAsync(UserAssetManager.Instance.CreatRoleSta()[i]._name,transform).Task;
                 go.tag = "MyRolePlane";
-                go.name = asset.SaveRoleStatus[i]._name;
-                go.GetComponent<RoleBase>().lv = asset.SaveRoleStatus[i]._lv;
+                go.name = UserAssetManager.Instance.CreatRoleSta()[i]._name;
+                go.GetComponent<RoleBase>().lv = UserAssetManager.Instance.CreatRoleSta()[i]._lv;
+            Debug.Log(go);
         }
     }
 }
