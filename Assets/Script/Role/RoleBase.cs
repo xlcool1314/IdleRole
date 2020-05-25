@@ -64,6 +64,9 @@ public abstract class RoleBase : MonoBehaviour
     public Image mySkin;//我的皮肤
 
     public Image myHpBarImage;//我的血条image
+
+    public string describe;//角色描述
+
     [HideInInspector]
     public AllRoleData roleData;
 
@@ -110,6 +113,7 @@ public abstract class RoleBase : MonoBehaviour
             attackEffects = roleData.roles[roleName].attackEffects;
             underAttackEffects = roleData.roles[roleName].underAttackEffects;
             deadEffects = roleData.roles[roleName].deadEffects;
+            describe = roleData.roles[roleName].describe;
             skillType = roleData.roles[roleName].skillType;
             Myhp = maxHp[lv-1];
             allRoles = GameObject.FindObjectOfType<BattlefieldMonitor>();//拿到存着的所有角色

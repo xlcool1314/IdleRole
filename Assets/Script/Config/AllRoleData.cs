@@ -46,6 +46,8 @@ public class RoleData
     public GameObject underAttackEffects;
     [Title("死亡特效")]
     public GameObject deadEffects;
+    [Title("技能描述")]
+    public string describe;
 }
 
 

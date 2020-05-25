@@ -19,7 +19,9 @@ public class BuyRoleUi : UIBaseBehaviour
 
     public TextMeshProUGUI hpText;//显示血量
 
-    public TextMeshProUGUI TreatmentTex;//显示治疗量
+    public TextMeshProUGUI treatmentTex;//显示治疗量
+
+    public TextMeshProUGUI describeText;//显示描述
 
     public Image skin;
 
@@ -38,7 +40,8 @@ public class BuyRoleUi : UIBaseBehaviour
         damageText.text = ShopRoleCell.Instance.myRole.GetComponent<RoleBase>().damage[ShopRoleCell.Instance.myRole.GetComponent<RoleBase>().lv - 1].ToString();
         defenseText.text = ShopRoleCell.Instance.myRole.GetComponent<RoleBase>().defense[ShopRoleCell.Instance.myRole.GetComponent<RoleBase>().lv - 1].ToString();
         hpText.text = ShopRoleCell.Instance.myRole.GetComponent<RoleBase>().maxHp[ShopRoleCell.Instance.myRole.GetComponent<RoleBase>().lv - 1].ToString();
-        TreatmentTex.text = ShopRoleCell.Instance.myRole.GetComponent<RoleBase>().myTreatment[ShopRoleCell.Instance.myRole.GetComponent<RoleBase>().lv - 1].ToString();
+        treatmentTex.text = ShopRoleCell.Instance.myRole.GetComponent<RoleBase>().myTreatment[ShopRoleCell.Instance.myRole.GetComponent<RoleBase>().lv - 1].ToString();
+        describeText.text = ShopRoleCell.Instance.myRole.GetComponent<RoleBase>().describe.ToString();
 
     }
 
