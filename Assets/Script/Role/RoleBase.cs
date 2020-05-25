@@ -146,6 +146,11 @@ public abstract class RoleBase : MonoBehaviour
 
                 TreatmentOneUpDate();
 
+                break;
+
+            case SkillType.AttackBackHp:
+
+                AttackBackHp();
 
                 break;
         }
@@ -366,6 +371,20 @@ public abstract class RoleBase : MonoBehaviour
 
     #endregion
 
+    #region 攻击治疗一个友方血量最小的角色
+    public void AttackBackHp()//攻击单体回血
+    {
+        if (attackSpeedBar.currentfill == 1 && attackSpeedBar.content.fillAmount > 0.99f)
+        {
+            attackSpeedBar.content.fillAmount = 0;
+            attackSpeedBar.currentfill = 0;
+            Attack(myAnimator);
+            Treatment();
+            StartCoroutine(AttackCountdown(maxAttackSpeed, attackSpeedBar));
+        }
+    }
+
+    #endregion
 
     #endregion
 }

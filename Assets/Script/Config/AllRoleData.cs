@@ -63,7 +63,8 @@ public enum SkillType
 {
         NormalAttack,//普通攻击
         NormalTreatmens,//群体治疗
-        TreatmenLowHp//治疗血量最低
+        TreatmenLowHp,//治疗血量最低
+        AttackBackHp//攻击时，随机治疗一个友方角色
 }
 
 
