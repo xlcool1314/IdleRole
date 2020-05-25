@@ -93,6 +93,7 @@ public abstract class RoleBase : MonoBehaviour
         roleData = await task;
         if (roleData.roles.ContainsKey(roleName))//角色数据初始化
         {
+            hpBar.currentfill = 1;//初始的血条为满
             isUnlock = roleData.roles[roleName].isUnlock;
             property = roleData.roles[roleName].property;
             lv = roleData.roles[roleName].lv;
@@ -110,12 +111,10 @@ public abstract class RoleBase : MonoBehaviour
             underAttackEffects = roleData.roles[roleName].underAttackEffects;
             deadEffects = roleData.roles[roleName].deadEffects;
             skillType = roleData.roles[roleName].skillType;
-            Myhp = maxHp[lv - 1];
+            Myhp = maxHp[lv-1];
             allRoles = GameObject.FindObjectOfType<BattlefieldMonitor>();//拿到存着的所有角色
             attackSpeedBar.currentfill = 0;//初始的攻击速度为0
-            
             hpBar.Initialize(Myhp, maxHp[lv - 1]);//初始化血条的显示
-            hpBar.currentfill = 1;//初始的血条为满
             attackSpeedBar.Initialize(maxAttackSpeed, maxAttackSpeed);//初始话攻击速度的显示
             StartCoroutine(AttackCountdown(maxAttackSpeed, attackSpeedBar));//游戏开始进行第一次的攻击频率倒计时
         }

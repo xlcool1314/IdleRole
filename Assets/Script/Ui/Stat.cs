@@ -32,7 +32,6 @@ public class Stat : MonoBehaviour
             {
               currentValue=value;
             }
-
             currentfill=currentValue/MyMaxValue;//进度数值换算成小数
         }
     }
