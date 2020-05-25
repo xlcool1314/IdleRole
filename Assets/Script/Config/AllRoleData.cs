@@ -64,7 +64,8 @@ public enum SkillType
         NormalAttack,//普通攻击
         NormalTreatmens,//群体治疗
         TreatmenLowHp,//治疗血量最低
-        AttackBackHp//攻击时，随机治疗一个友方角色
+        AttackBackHp,//攻击时，随机治疗一个友方角色
+        AttackReduceSpeed//攻击时，随机减少一个对方敌人的攻击进度条
 }
 
 

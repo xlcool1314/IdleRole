@@ -153,6 +153,12 @@ public abstract class RoleBase : MonoBehaviour
                 AttackBackHp();
 
                 break;
+
+            case SkillType.AttackReduceSpeed:
+
+                AttackReduceSpeed();
+
+                break;
         }
     }
 
@@ -384,6 +390,35 @@ public abstract class RoleBase : MonoBehaviour
         }
     }
 
+    #endregion
+
+    #region 攻击时有几率减少对方速度条
+    public void AttackReduceSpeed()//攻击伤害更新
+    {
+        if (attackSpeedBar.currentfill == 1 && attackSpeedBar.content.fillAmount > 0.99f)
+        {
+            attackSpeedBar.content.fillAmount = 0;
+            attackSpeedBar.currentfill = 0;
+            AttackReduceSpeedPerformance(myAnimator);
+        }
+    }
+
+    public void AttackReduceSpeedPerformance(Animator attackAnimator)//单体攻击相关
+    {
+        GameObject go = FindTheTarget();//找到要攻击的随机目标
+        if (go != null)
+        {
+
+            go.GetComponent<RoleBase>().Myhp -= DamageCalculation(damage[lv - 1], go.GetComponent<RoleBase>().defense[lv - 1]);//计算出伤害然后在血量里面减去
+            go.GetComponent<RoleBase>().lossAnimator.SetTrigger("LossHp");
+            go.GetComponent<RoleBase>().lossHpText.hpText = DamageCalculation(damage[lv - 1], go.GetComponent<RoleBase>().defense[lv - 1]);
+            go.GetComponent<RoleBase>().attackSpeedBar.CurrentValue -= 1;
+            StartCoroutine(AttackCountdown(maxAttackSpeed, attackSpeedBar));
+            attackAnimator.SetTrigger("Attack");
+            go.GetComponent<RoleBase>().myAnimator.SetTrigger("numberAttack");
+            Instantiate(underAttackEffects, go.transform.position, Quaternion.identity, gameObject.transform.parent.parent);
+        }
+    }
     #endregion
 
     #endregion
