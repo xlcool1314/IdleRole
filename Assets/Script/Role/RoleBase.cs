@@ -70,6 +70,9 @@ public abstract class RoleBase : MonoBehaviour
     [HideInInspector]
     public AllRoleData roleData;
 
+    [HideInInspector]
+    public bool isDead=false;
+
     public int Myhp
     {
         get => myhp;
@@ -179,18 +182,18 @@ public abstract class RoleBase : MonoBehaviour
 
     public void Dead()//角色死亡
     {
-
-        if (Myhp <= 0 && transform.CompareTag("EnemysPlane")&&UserAssetManager.Instance.IsFirstGame()==false)
+        if (Myhp <= 0 && transform.CompareTag("EnemysPlane")&&UserAssetManager.Instance.IsFirstGame()==false&&isDead==false)
         {
             UserAssetManager.Instance.AddGold(dropMoneys);
             Instantiate(deadEffects, transform.position, Quaternion.identity, gameObject.transform.parent.parent);
             Destroy(this.gameObject,0.5f);
+            isDead = true;
         }
-        else if (Myhp <= 0 && transform.CompareTag("MyRolePlane"))
+        else if (Myhp <= 0 && transform.CompareTag("MyRolePlane")&&isDead==false)
         {
             Destroy(this.gameObject,0.5f);
+            isDead = true;
         }
-
     }
 
     public IEnumerator AttackCountdown(float time, Stat myBar)//攻击频率

@@ -16,10 +16,4 @@ public class RoleWindowInfo : MonoBehaviour
     {
         Instantiate(ResourcesManager.Instance.roleInfo, transform.position,Quaternion.identity,GameObject.Find("GameMain").transform);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
