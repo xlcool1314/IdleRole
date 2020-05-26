@@ -51,7 +51,7 @@ public class EnemysBuilder : MonoBehaviour
     public IEnumerator CreatEnemys(EnemysData enemyData)//攻击频率
     {
            creatEnemysTimes -= Time.deltaTime;
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(3);
             if (enemyData != null && isCreat == true)
             {
                 creatEnemysTimes = 3;

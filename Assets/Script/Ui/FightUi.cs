@@ -30,14 +30,22 @@ public class FightUi : UIBaseBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        countDown.gameObject.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+
+    private void FixedUpdate()
     {
         level.text = UserAssetManager.Instance.GetLevel().ToString();
-
+        if (enemysBuilder.creatEnemysTimes >= 3)
+        {
+            countDown.gameObject.SetActive(false);
+        }
+        else if (enemysBuilder.creatEnemysTimes < 3 && enemysBuilder.creatEnemysTimes >= 0)
+        {
+            countDown.gameObject.SetActive(true);
+        }
         countDown.text = enemysBuilder.creatEnemysTimes.ToString("f0");
     }
 }
+
