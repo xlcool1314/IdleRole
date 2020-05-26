@@ -418,12 +418,20 @@ public abstract class RoleBase : MonoBehaviour
             go.GetComponent<RoleBase>().Myhp -= DamageCalculation(damage[lv - 1], go.GetComponent<RoleBase>().defense[lv - 1]);//计算出伤害然后在血量里面减去
             go.GetComponent<RoleBase>().lossAnimator.SetTrigger("LossHp");
             go.GetComponent<RoleBase>().lossHpText.hpText = DamageCalculation(damage[lv - 1], go.GetComponent<RoleBase>().defense[lv - 1]);
-            go.GetComponent<RoleBase>().attackSpeedBar.CurrentValue -= 0.3f;
+            if (Percent(25))
+            {
+                go.GetComponent<RoleBase>().attackSpeedBar.CurrentValue -= 0.3f;
+            }
             StartCoroutine(AttackCountdown(maxAttackSpeed, attackSpeedBar));
             attackAnimator.SetTrigger("Attack");
             go.GetComponent<RoleBase>().myAnimator.SetTrigger("numberAttack");
             Instantiate(underAttackEffects, go.transform.position, Quaternion.identity, gameObject.transform.parent.parent);
         }
+    }
+
+    public static bool Percent(int percent)//随机概率判断
+    {
+        return Random.Range(0, 100) <= percent;
     }
     #endregion
 

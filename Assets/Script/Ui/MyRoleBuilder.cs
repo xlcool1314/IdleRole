@@ -19,6 +19,7 @@ public class MyRoleBuilder : SingletonMono<MyRoleBuilder>
         var go = Instantiate(thisRole, transform);
         go.tag = "MyRolePlane";
         go.name = thisRole.name;
+        go.GetComponent<RoleBase>().myAnimator.SetTrigger("appear");
         return go;
     }
     public async Task CreatAllRoles()
