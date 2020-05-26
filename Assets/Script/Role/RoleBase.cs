@@ -254,7 +254,7 @@ public abstract class RoleBase : MonoBehaviour
             go.GetComponent<RoleBase>().lossHpText.hpText = DamageCalculation(damage[lv - 1], go.GetComponent<RoleBase>().defense[lv - 1]);
             attackAnimator.SetTrigger("Attack");
             go.GetComponent<RoleBase>().myAnimator.SetTrigger("numberAttack");
-            Instantiate(underAttackEffects, go.transform.position, Quaternion.identity, gameObject.transform.parent.parent);
+            Instantiate(underAttackEffects, go.transform.position, Quaternion.identity, transform.parent.parent);
         }
     }
 
@@ -293,6 +293,7 @@ public abstract class RoleBase : MonoBehaviour
                 go.GetComponent<RoleBase>().Myhp += myTreatment[lv - 1];
                 go.GetComponent<RoleBase>().treatmentText.hpText = myTreatment[lv - 1];
                 go.GetComponent<RoleBase>().treatmentAnimator.SetTrigger("Treatment");
+                Instantiate(attackEffects, go.transform.position, Quaternion.identity, transform.parent.parent);
             }
         }
         else if (gameObject.CompareTag("EnemysPlane"))
@@ -337,6 +338,7 @@ public abstract class RoleBase : MonoBehaviour
         go.GetComponent<RoleBase>().Myhp += myTreatment[lv - 1];
         go.GetComponent<RoleBase>().treatmentText.hpText = myTreatment[lv - 1];
         go.GetComponent<RoleBase>().treatmentAnimator.SetTrigger("Treatment");
+        Instantiate(attackEffects, go.transform.position, Quaternion.identity, transform.parent.parent);
     }
     public GameObject FindMyRole()//寻找我方血量最少的一个角色
     {

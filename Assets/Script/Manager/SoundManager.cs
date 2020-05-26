@@ -7,11 +7,10 @@ using UnityEngine.AddressableAssets;
 public class SoundManager : SingletonMono<SoundManager>
 {
     AudioSource audioSource;
-    public override Task Init()
+
+    private void Start()
     {
-        audioSource = gameObject.AddComponent<AudioSource>();
-        PlayBGM("Happy_new_year");
-        return null;
+        audioSource = gameObject.GetComponent<AudioSource>();
     }
 
     public async void Play(string name, Vector3 pos)

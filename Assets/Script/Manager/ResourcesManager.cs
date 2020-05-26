@@ -22,6 +22,8 @@ public class ResourcesManager : SingletonMono<ResourcesManager>
 
     public GameObject roleInfo;
 
+    public AudioClip combatBackground;
+
 
 
 
@@ -47,6 +49,9 @@ public class ResourcesManager : SingletonMono<ResourcesManager>
 
         var task007 = Addressables.LoadAssetAsync<GameObject>("RoleInfo").Task;
         roleInfo = await task007;
+
+        var task008 = Addressables.LoadAssetAsync<AudioClip>("CombatBackground").Task;
+        combatBackground = await task008;
 
 
 

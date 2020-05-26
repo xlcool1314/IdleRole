@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Sirenix.OdinInspector;
 
 public class FightUi : UIBaseBehaviour
 {
@@ -27,9 +28,11 @@ public class FightUi : UIBaseBehaviour
         throw new System.NotImplementedException();
     }
 
+
     // Start is called before the first frame update
     void Start()
     {
+        SoundManager.Instance.PlayBGM("CombatBackground");
         countDown.gameObject.SetActive(false);
     }
 
