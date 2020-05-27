@@ -168,6 +168,7 @@ public class UserAssetManager : SingletonMono<UserAssetManager>
 
     public void SaveRoleSta()//储存场上角色状态
     {
+        BattlefieldMonitor.Instance.FindAllMyRole();
         if (BattlefieldMonitor.Instance.allMyRoles != null)
         {
             asset.SaveRoleStatus.Clear();
@@ -179,9 +180,12 @@ public class UserAssetManager : SingletonMono<UserAssetManager>
                     _name = BattlefieldMonitor.Instance.allMyRoles[i].GetComponent<RoleBase>().name,
                     _speed = BattlefieldMonitor.Instance.allMyRoles[i].GetComponent<RoleBase>().maxAttackSpeed
                 });
-
                 asset.SetDirty();
             }
+        }
+        else
+        {
+            Debug.Log("没有角色储存");
         }
     }
 

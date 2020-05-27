@@ -83,22 +83,22 @@ public class BattlefieldMonitor : SingletonMono<BattlefieldMonitor>
     //    }
     //}
 
-    public void InitLv2CombinationUi(GameObject go)//初始化进阶UI的数据表现
-    {
-        combinationUi = GameObject.FindObjectOfType<CombinationUi>();
-        combinationUi.betterRole.sprite = levelRole.GetComponent<RoleBase>().mySkin.sprite;
-        combinationUi.role01_Skin.sprite=go.GetComponent<RoleBase>().mySkin.sprite;
-        combinationUi.role02_Skin.sprite = go.GetComponent<RoleBase>().mySkin.sprite;
-        combinationUi.role03_Skin.sprite = go.GetComponent<RoleBase>().mySkin.sprite;
-    }
+    //public void InitLv2CombinationUi(GameObject go)//初始化进阶UI的数据表现
+    //{
+    //    combinationUi = GameObject.FindObjectOfType<CombinationUi>();
+    //    combinationUi.betterRole.sprite = levelRole.GetComponent<RoleBase>().mySkin.sprite;
+    //    combinationUi.role01_Skin.sprite=go.GetComponent<RoleBase>().mySkin.sprite;
+    //    combinationUi.role02_Skin.sprite = go.GetComponent<RoleBase>().mySkin.sprite;
+    //    combinationUi.role03_Skin.sprite = go.GetComponent<RoleBase>().mySkin.sprite;
+    //}
 
-    public void DeleteCombinationRole(List<GameObject> go)
-    {
-        for (int i = 0; i < go.Count; i++)
-        {
-            Destroy(go[i]);
-        }
-    }
+    //public void DeleteCombinationRole(List<GameObject> go)
+    //{
+    //    for (int i = 0; i < go.Count; i++)
+    //    {
+    //        Destroy(go[i]);
+    //    }
+    //}
 
     void GameOver()//游戏结束
     {

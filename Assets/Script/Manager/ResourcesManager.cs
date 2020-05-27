@@ -24,6 +24,8 @@ public class ResourcesManager : SingletonMono<ResourcesManager>
 
     public AudioClip combatBackground;
 
+    //public List<UserAsset.RoleStatus> InitializeRolesName;
+
 
 
 
@@ -53,8 +55,11 @@ public class ResourcesManager : SingletonMono<ResourcesManager>
         var task008 = Addressables.LoadAssetAsync<AudioClip>("CombatBackground").Task;
         combatBackground = await task008;
 
-
-
+        //for (int i = 0; i < UserAssetManager.Instance.CreatRoleSta().Count; i++)
+        //{
+        //    InitializeRolesName.Add(UserAssetManager.Instance.CreatRoleSta()[i]);
+        //    Debug.Log(UserAssetManager.Instance.CreatRoleSta()[i]._name);
+        //}
     }
 
 

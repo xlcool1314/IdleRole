@@ -64,9 +64,9 @@ public class BuyRoleUi : UIBaseBehaviour
             Clean();
             UserAssetManager.Instance.ReduceGold(ShopRoleCell.Instance.myRole.GetComponent<RoleBase>().howMuchMoneys);
             var go = MyRoleBuilder.Instance.CreatRole(ShopRoleCell.Instance.myRole);
+            UserAssetManager.Instance.SaveRoleSta();
             BattlefieldMonitor.Instance.FindAllMyRole();
             BattlefieldMonitor.Instance.isFirstGame = false;
-            //BattlefieldMonitor.Instance.Combination(go);
             ShopUi.Instance.CloseShopUi();
             Destroy(gameObject);
         }

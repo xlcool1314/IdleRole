@@ -26,11 +26,11 @@ public class MyRoleBuilder : SingletonMono<MyRoleBuilder>
     {
         for (int i = 0; i < UserAssetManager.Instance.CreatRoleSta().Count; i++)
         {
-                var go = await Addressables.InstantiateAsync(UserAssetManager.Instance.CreatRoleSta()[i]._name,transform).Task;
+                GameObject go = await Addressables.InstantiateAsync(UserAssetManager.Instance.CreatRoleSta()[i]._name, transform.position,Quaternion.identity,transform).Task;
                 go.tag = "MyRolePlane";
                 go.name = UserAssetManager.Instance.CreatRoleSta()[i]._name;
                 go.GetComponent<RoleBase>().lv = UserAssetManager.Instance.CreatRoleSta()[i]._lv;
-            Debug.Log(go);
+                Debug.Log(go);
         }
     }
 }
