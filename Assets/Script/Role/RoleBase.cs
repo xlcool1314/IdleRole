@@ -255,7 +255,7 @@ public abstract class RoleBase : MonoBehaviour
             go.GetComponent<RoleBase>().lossAnimator.SetTrigger("LossHp");
             go.GetComponent<RoleBase>().lossHpText.hpText = DamageCalculation(damage[lv - 1], go.GetComponent<RoleBase>().defense[lv - 1]);
             attackAnimator.SetTrigger("Attack");
-            SoundManager.Instance.PlaySound("Hit");
+            SoundManager.Instance.PlaySound("Hit02");
             go.GetComponent<RoleBase>().myAnimator.SetTrigger("numberAttack");
             Instantiate(underAttackEffects, go.transform.position, Quaternion.identity, transform.parent.parent);
         }
@@ -318,6 +318,7 @@ public abstract class RoleBase : MonoBehaviour
                 go.GetComponent<RoleBase>().Myhp += myTreatment[lv - 1];
                 go.GetComponent<RoleBase>().treatmentText.hpText = myTreatment[lv - 1];
                 go.GetComponent<RoleBase>().treatmentAnimator.SetTrigger("Treatment");
+                Instantiate(attackEffects, go.transform.position, Quaternion.identity, transform.parent.parent);
             }
         }
     }
