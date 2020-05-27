@@ -18,9 +18,20 @@ public class RoleInfo : MonoBehaviour
 
     public GameObject infoRole;
 
+    private void Start()
+    {
+        lvUpButton.onClick.AddListener(LvUp);
+        Debug.Log(infoRole);
+    }
+
+    public void LvUp()
+    {
+
+    }
+
     private void Update()
     {
-        describeText.text = infoRole.GetComponent<RoleBase>().describe;
+        describeText.text = infoRole.GetComponent<RoleBase>().describe.ToString();
         damageText.text = infoRole.GetComponent<RoleBase>().damage[infoRole.GetComponent<RoleBase>().lv - 1].ToString();
         treatmentText.text = infoRole.GetComponent<RoleBase>().myTreatment[infoRole.GetComponent<RoleBase>().lv - 1].ToString();
         DefenseText.text = infoRole.GetComponent<RoleBase>().defense[infoRole.GetComponent<RoleBase>().lv - 1].ToString();

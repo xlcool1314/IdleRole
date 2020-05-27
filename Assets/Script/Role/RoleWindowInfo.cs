@@ -15,6 +15,6 @@ public class RoleWindowInfo : MonoBehaviour
     public void LvUp()
     {
         GameObject go= Instantiate(ResourcesManager.Instance.roleInfo, transform.position,Quaternion.identity,GameObject.Find("GameMain").transform);
-        go.GetComponent<RoleInfo>().infoRole = transform.gameObject;
+        go.GetComponent<RoleInfo>().infoRole = gameObject;
     }
 }
