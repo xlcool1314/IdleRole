@@ -6,11 +6,11 @@ using UnityEngine.AddressableAssets;
 
 public class SoundManager : SingletonMono<SoundManager>
 {
-    AudioSource audioSource;
+    AudioSource[] audioSources;
 
     private void Start()
     {
-        audioSource = gameObject.GetComponent<AudioSource>();
+        audioSources = gameObject.GetComponents<AudioSource>();
     }
 
     public async void Play(string name, Vector3 pos)
@@ -21,13 +21,20 @@ public class SoundManager : SingletonMono<SoundManager>
 
     public async void PlayBGM(string name)
     {
-        audioSource.clip = await Addressables.LoadAssetAsync<AudioClip>(name).Task;
-        audioSource.Play();
-        audioSource.loop = true;
+        audioSources[0].clip = await Addressables.LoadAssetAsync<AudioClip>(name).Task;
+        audioSources[0].Play();
+        audioSources[0].loop = true;
+    }
+
+    public async void PlaySound(string name)
+    {
+        audioSources[1].clip = await Addressables.LoadAssetAsync<AudioClip>(name).Task;
+        audioSources[1].Play();
+        audioSources[1].loop = false;
     }
 
     public void Mute(bool val)
     {
-        audioSource.mute = val;
+        audioSources[0].mute = val;
     }
 }

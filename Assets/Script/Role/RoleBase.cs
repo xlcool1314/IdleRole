@@ -248,11 +248,11 @@ public abstract class RoleBase : MonoBehaviour
         GameObject go = FindTheTarget();//找到要攻击的随机目标
         if (go != null)
         {
-
             go.GetComponent<RoleBase>().Myhp -= DamageCalculation(damage[lv - 1], go.GetComponent<RoleBase>().defense[lv - 1]);//计算出伤害然后在血量里面减去
             go.GetComponent<RoleBase>().lossAnimator.SetTrigger("LossHp");
             go.GetComponent<RoleBase>().lossHpText.hpText = DamageCalculation(damage[lv - 1], go.GetComponent<RoleBase>().defense[lv - 1]);
             attackAnimator.SetTrigger("Attack");
+            SoundManager.Instance.PlaySound("Hit");
             go.GetComponent<RoleBase>().myAnimator.SetTrigger("numberAttack");
             Instantiate(underAttackEffects, go.transform.position, Quaternion.identity, transform.parent.parent);
         }

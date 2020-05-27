@@ -17,7 +17,7 @@ public class EnemysBuilder : MonoBehaviour
 
     private bool isCreat=true;
 
-    public float creatEnemysTimes =2;
+    public float creatEnemysTimes =3f;
 
     private async Task LoadSomeConfigs()
     {
@@ -27,11 +27,6 @@ public class EnemysBuilder : MonoBehaviour
         var task = Addressables.LoadAssetAsync<EnemysData>(enemysDataName).Task;
         enemysData = await task;
     }
-
-    //public void CreatEnemys(EnemysData enemyData)//刷新怪物
-    //{
-       
-    //}
 
     void AllEnemysIsDead()//所有这轮的怪物全部死亡，生成新的一批怪物
     {
