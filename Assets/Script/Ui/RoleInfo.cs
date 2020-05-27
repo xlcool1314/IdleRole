@@ -21,12 +21,22 @@ public class RoleInfo : MonoBehaviour
     private void Start()
     {
         lvUpButton.onClick.AddListener(LvUp);
+        sellButton.onClick.AddListener(SellRole);
         Debug.Log(infoRole);
     }
 
     public void LvUp()
     {
+        infoRole.GetComponent<RoleBase>().lv += 1;
+        UserAssetManager.Instance.ReduceGold(infoRole.GetComponent<RoleBase>().lvUpMoney[infoRole.GetComponent<RoleBase>().lv - 1]);
+        Destroy(gameObject);
+    }
 
+    public void SellRole()
+    {
+        UserAssetManager.Instance.AddGold(Mathf.RoundToInt(infoRole.GetComponent<RoleBase>().howMuchMoneys / 2));
+        Destroy(infoRole.gameObject);
+        Destroy(gameObject);
     }
 
     private void Update()

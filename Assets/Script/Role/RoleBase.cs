@@ -29,13 +29,15 @@ public abstract class RoleBase : MonoBehaviour
 
     public List<int> myTreatment;// 治疗量
 
+    public List<int> lvUpMoney;//升级所需要的金币
+
     public int numberTreatmens;//治疗个数
 
     public int numberAttack;//攻击目标个数
 
-    public float maxAttackSpeed;//最大的的攻击间隔
-
     public int howMuchMoneys;//购买需要的金币数量
+
+    public float maxAttackSpeed;//最大的的攻击间隔
 
     public int dropMoneys;//掉落金币数量
 
@@ -103,6 +105,7 @@ public abstract class RoleBase : MonoBehaviour
             isUnlock = roleData.roles[roleName].isUnlock;
             property = roleData.roles[roleName].property;
             lv = roleData.roles[roleName].lv;
+            lvUpMoney = roleData.roles[roleName].lvUpMoney;
             maxHp = roleData.roles[roleName].myMaxHp;
             defense = roleData.roles[roleName].defense;
             damage = roleData.roles[roleName].damage;

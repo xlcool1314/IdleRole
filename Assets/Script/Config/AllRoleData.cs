@@ -20,6 +20,8 @@ public class RoleData
     public SkillType skillType;
     [Title("等级")]
     public int lv;
+    [Title("升级消耗的金币")]
+    public List<int> lvUpMoney;
     [Title("最大血量")]
     public List<int> myMaxHp;
     [Title("防御")]
