@@ -52,6 +52,7 @@ public class HomeUi : UIBaseBehaviour
 
     public override void Init()
     {
+        m_Timer = UserAssetManager.Instance.GetTime();
         button.onClick.AddListener(DeleteInfo);
         shopButton.onClick.AddListener(CreatShopUi);
         nextLevelButton.onClick.AddListener(GoToNextLevel);
@@ -66,6 +67,7 @@ public class HomeUi : UIBaseBehaviour
     void Start()
     {
         Init();
+        InvokeRepeating("TimerInterval", 5f, 10f);
     }
 
     private void Update()
@@ -87,5 +89,11 @@ public class HomeUi : UIBaseBehaviour
     public void DeleteInfo()
     {
         UserAssetManager.Instance.InitInfo();
+    }
+
+    public void TimerInterval()//储存计时器间隔
+    {
+            UserAssetManager.Instance.SaveTime(m_Timer);
+
     }
 }

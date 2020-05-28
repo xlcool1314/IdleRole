@@ -24,6 +24,8 @@ public class UserAsset
     [SerializeField]
     private int level = 1;
 
+    [SerializeField]
+    private float second=0;//计时器
 
     public bool isFirstGame = true;//是否第一次进入游戏
 
@@ -53,6 +55,16 @@ public class UserAsset
                 level = value;
                 SetDirty();
             }
+        }
+    }
+
+    public float Second
+    {
+        get => second;
+        set
+        {
+                second = value;
+                SetDirty();
         }
     }
 
@@ -237,5 +249,14 @@ public class UserAssetManager : SingletonMono<UserAssetManager>
     public void NoFirstGame()
     {
         asset.isFirstGame = false;
+    }
+
+    public float GetTime()
+    {
+        return asset.Second;
+    }
+    public void SaveTime(float val)
+    {
+        asset.Second = val;
     }
 }
