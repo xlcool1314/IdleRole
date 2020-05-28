@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using UnityEngine.UI;
 
-public enum Buff
+
+public enum BuffType
 {
-    damageUp,
-    attackSpeedUp
-
+    poisoning,
+    bleeding
 }
 
 [System.Serializable]
@@ -15,11 +16,15 @@ public class SkillDesc
 {
     public int time;
 
-    public Buff buff;
+    public BuffType buff;
+
+    public Image iocn;
+
+    public string desc;
 }
 
 [CreateAssetMenu(menuName = "Config/Create SkillConfig ")]
 public class SkillConfigData : SerializedScriptableObject
 {
-    public Dictionary<string, List<SkillDesc>> test;
+    public List<SkillDesc> skills;
 }
