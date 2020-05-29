@@ -139,6 +139,7 @@ public class RoleBase : MonoBehaviour
         hpBar.CurrentValue = Myhp;
     }
 
+
     public void UseSkill(SkillType skill)//使用技能
     {
         switch (skill)
@@ -163,7 +164,7 @@ public class RoleBase : MonoBehaviour
 
             case SkillType.AttackBackHp:
 
-                attackType=new AttackBackHp();
+                attackType=
 
                 break;
 
