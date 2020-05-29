@@ -75,7 +75,7 @@ public class RoleBase : MonoBehaviour
     [HideInInspector]
     public bool isDead=false;
 
-    public AttackBase attackType;
+    public AttackBase attackType=null;//攻击方式
 
     public int Myhp
     {
@@ -145,35 +145,35 @@ public class RoleBase : MonoBehaviour
         {
             case SkillType.NormalAttack:
 
-                attackType.AttackUpDate();
+                attackType = new NormalAttack();
 
                 break;
 
             case SkillType.NormalTreatmens:
 
-                attackType.TreatmentUpDate();
+                attackType=new NormalTreatmens();
 
                 break;
 
             case SkillType.TreatmenLowHp:
 
-                attackType.TreatmentOneUpDate();
+                attackType = new TreatmenLowHp();
 
                 break;
 
             case SkillType.AttackBackHp:
 
-                attackType.AttackBackHp();
+                attackType=new AttackBackHp();
 
                 break;
 
             case SkillType.AttackReduceSpeed:
 
-                attackType.AttackReduceSpeed();
+                attackType=new AttackReduceSpeed();
 
                 break;
         }
+        attackType.UseSkill();
     }
 
-  
 }
