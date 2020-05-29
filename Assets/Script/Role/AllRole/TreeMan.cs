@@ -13,7 +13,7 @@ public class TreeMan : RoleBase
     {
         base.RoleUpDate();
         base.UseSkill(skillType);
-        base.Dead();
+        base.attackType.Dead();
     }
     
 }

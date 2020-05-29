@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AddressableAssets;
 
-public abstract class RoleBase : MonoBehaviour
+public class RoleBase : MonoBehaviour
 {
     public bool isUnlock;//是否解锁
 
@@ -75,6 +75,8 @@ public abstract class RoleBase : MonoBehaviour
     [HideInInspector]
     public bool isDead=false;
 
+    public AttackBase attackType;
+
     public int Myhp
     {
         get => myhp;
@@ -97,6 +99,7 @@ public abstract class RoleBase : MonoBehaviour
 
     public async void RoleInitInfo()//初始化角色数据
     {
+        attackType = transform.GetComponent<AttackBase>();
         var task = Addressables.LoadAssetAsync<AllRoleData>("AllRoleInfo").Task;
         roleData = await task;
         if (roleData.roles.ContainsKey(roleName))//角色数据初始化
@@ -126,7 +129,7 @@ public abstract class RoleBase : MonoBehaviour
             attackSpeedBar.currentfill = 0;//初始的攻击速度为0
             hpBar.Initialize(Myhp, maxHp[lv - 1]);//初始化血条的显示
             attackSpeedBar.Initialize(maxAttackSpeed, maxAttackSpeed);//初始话攻击速度的显示
-            StartCoroutine(AttackCountdown(maxAttackSpeed, attackSpeedBar));//游戏开始进行第一次的攻击频率倒计时
+            StartCoroutine(attackType.AttackCountdown(maxAttackSpeed, attackSpeedBar));//游戏开始进行第一次的攻击频率倒计时
         }
 
     }
@@ -142,304 +145,35 @@ public abstract class RoleBase : MonoBehaviour
         {
             case SkillType.NormalAttack:
 
-                AttackUpDate();
+                attackType.AttackUpDate();
 
                 break;
 
             case SkillType.NormalTreatmens:
 
-                TreatmentUpDate();
+                attackType.TreatmentUpDate();
 
                 break;
 
             case SkillType.TreatmenLowHp:
 
-                TreatmentOneUpDate();
+                attackType.TreatmentOneUpDate();
 
                 break;
 
             case SkillType.AttackBackHp:
 
-                AttackBackHp();
+                attackType.AttackBackHp();
 
                 break;
 
             case SkillType.AttackReduceSpeed:
 
-                AttackReduceSpeed();
+                attackType.AttackReduceSpeed();
 
                 break;
         }
     }
 
-    public int DamageCalculation(int Dam, int yourDefense)//伤害计算
-    {
-        int damag;
-        damag = Dam - yourDefense;
-        if (damag <= 0)
-        {
-            damag = 1;
-        }
-        return damag;
-    }
-
-    public void Dead()//角色死亡
-    {
-        if (Myhp <= 0 && transform.CompareTag("EnemysPlane")&&UserAssetManager.Instance.IsFirstGame()==false&&isDead==false)
-        {
-            UserAssetManager.Instance.AddGold(dropMoneys);
-            Instantiate(deadEffects, transform.position, Quaternion.identity, gameObject.transform.parent.parent);
-            Destroy(this.gameObject,0.5f);
-            isDead = true;
-        }
-        else if (Myhp <= 0 && transform.CompareTag("MyRolePlane")&&isDead==false)
-        {
-            Destroy(this.gameObject,0.5f);
-            isDead = true;
-        }
-    }
-
-    public IEnumerator AttackCountdown(float time, Stat myBar)//攻击频率
-    {
-        float tim = 0;
-        while (time > 0)
-        {
-            yield return new WaitForSeconds(1);
-            tim++;
-            myBar.CurrentValue = tim;
-            time--;
-        }
-    }
-
-
-    #region 攻击技能类型相关
-
-    #region 普通攻击
-
-    public void AttackUpDate()//攻击伤害更新
-    {
-        if (attackSpeedBar.currentfill == 1 && attackSpeedBar.content.fillAmount > 0.99f)
-        {
-            Attack(myAnimator);
-            attackSpeedBar.content.fillAmount = 0;
-            attackSpeedBar.currentfill = 0;
-            StartCoroutine(AttackCountdown(maxAttackSpeed, attackSpeedBar));
-        }
-    }
-    public GameObject FindTheTarget()//随机锁定一个攻击对象
-    {
-        GameObject go;
-        if (gameObject.CompareTag("MyRolePlane") && allRoles.allEnemys.Length > 0)
-        {
-            int randomNumber = Random.Range(0, allRoles.allEnemys.Length);
-            go = allRoles.allEnemys[randomNumber];
-            return go;
-        }
-        else if (gameObject.CompareTag("EnemysPlane") && allRoles.allMyRoles.Length > 0)
-        {
-            int randomNumber = Random.Range(0, allRoles.allMyRoles.Length);
-            go = allRoles.allMyRoles[randomNumber];
-            return go;
-        }
-        else
-        {
-            return null;
-        }
-    }
-    public virtual void Attack(Animator attackAnimator)//单体攻击相关
-    {
-        GameObject go = FindTheTarget();//找到要攻击的随机目标
-        if (go != null)
-        {
-            go.GetComponent<RoleBase>().Myhp -= DamageCalculation(damage[lv - 1], go.GetComponent<RoleBase>().defense[lv - 1]);//计算出伤害然后在血量里面减去
-            go.GetComponent<RoleBase>().lossAnimator.SetTrigger("LossHp");
-            go.GetComponent<RoleBase>().lossHpText.hpText = DamageCalculation(damage[lv - 1], go.GetComponent<RoleBase>().defense[lv - 1]);
-            attackAnimator.SetTrigger("Attack");
-            SoundManager.Instance.PlaySound("Hit02");
-            go.GetComponent<RoleBase>().myAnimator.SetTrigger("numberAttack");
-            Instantiate(underAttackEffects, go.transform.position, Quaternion.identity, transform.parent.parent);
-        }
-    }
-
-    #endregion
-
-    #region 普通治疗
-
-    public void TreatmentUpDate()//治疗更新
-    {
-        if (attackSpeedBar.currentfill == 1 && attackSpeedBar.content.fillAmount > 0.99f)
-        {
-            attackSpeedBar.content.fillAmount = 0;
-            attackSpeedBar.currentfill = 0;
-            Treatments(numberTreatmens);
-            StartCoroutine(AttackCountdown(maxAttackSpeed, attackSpeedBar));
-        }
-    }
-    public void Treatments(int numberTreatmen)//群体治疗
-    {
-        if (gameObject.CompareTag("MyRolePlane"))//我方群体治疗
-        {
-            if (BattlefieldMonitor.Instance.allMyRoles.Length < numberTreatmen)
-            {
-                numberTreatmen = BattlefieldMonitor.Instance.allMyRoles.Length;
-            }
-            List<GameObject> roles = new List<GameObject>();
-            for (int i = 0; i < BattlefieldMonitor.Instance.allMyRoles.Length; i++)
-            {
-                roles.Add(BattlefieldMonitor.Instance.allMyRoles[i]);
-            }
-            for (int i = 0; i < numberTreatmen; i++)
-            {
-                int var = Random.Range(0, roles.Count);
-                GameObject go = roles[var];
-                roles.RemoveAt(var);
-                go.GetComponent<RoleBase>().Myhp += myTreatment[lv - 1];
-                go.GetComponent<RoleBase>().treatmentText.hpText = myTreatment[lv - 1];
-                go.GetComponent<RoleBase>().treatmentAnimator.SetTrigger("Treatment");
-                Instantiate(attackEffects, go.transform.position, Quaternion.identity, transform.parent.parent);
-            }
-        }
-        else if (gameObject.CompareTag("EnemysPlane"))
-        {
-            if (BattlefieldMonitor.Instance.allEnemys.Length < numberTreatmen)
-            {
-                numberTreatmen = BattlefieldMonitor.Instance.allEnemys.Length;
-            }
-            List<GameObject> roles = new List<GameObject>();
-            for (int i = 0; i < BattlefieldMonitor.Instance.allEnemys.Length; i++)
-            {
-                roles.Add(BattlefieldMonitor.Instance.allEnemys[i]);
-            }
-            for (int i = 0; i < numberTreatmen; i++)
-            {
-                int var = Random.Range(0, roles.Count);
-                GameObject go = roles[var];
-                roles.RemoveAt(var);
-                go.GetComponent<RoleBase>().Myhp += myTreatment[lv - 1];
-                go.GetComponent<RoleBase>().treatmentText.hpText = myTreatment[lv - 1];
-                go.GetComponent<RoleBase>().treatmentAnimator.SetTrigger("Treatment");
-                Instantiate(attackEffects, go.transform.position, Quaternion.identity, transform.parent.parent);
-            }
-        }
-    }
-    #endregion
-
-    #region 单体治疗一个血量最少的
-
-    public void TreatmentOneUpDate()//单体治疗更新
-    {
-        if (attackSpeedBar.currentfill == 1 && attackSpeedBar.content.fillAmount > 0.99f)
-        {
-            attackSpeedBar.content.fillAmount = 0;
-            attackSpeedBar.currentfill = 0;
-            Treatment();
-            StartCoroutine(AttackCountdown(maxAttackSpeed, attackSpeedBar));
-        }
-    }
-    public void Treatment()//单体治疗
-    {
-        GameObject go = FindMyRole();
-        go.GetComponent<RoleBase>().Myhp += myTreatment[lv - 1];
-        go.GetComponent<RoleBase>().treatmentText.hpText = myTreatment[lv - 1];
-        go.GetComponent<RoleBase>().treatmentAnimator.SetTrigger("Treatment");
-        Instantiate(attackEffects, go.transform.position, Quaternion.identity, transform.parent.parent);
-    }
-    public GameObject FindMyRole()//寻找我方血量最少的一个角色
-    {
-        if (gameObject.CompareTag("MyRolePlane"))
-        {
-            GameObject go = BattlefieldMonitor.Instance.allMyRoles[0];
-            float min = BattlefieldMonitor.Instance.allMyRoles[0].GetComponent<RoleBase>().hpBar.currentfill;
-            for (int i = 0; i < BattlefieldMonitor.Instance.allMyRoles.Length; i++)
-            {
-                if (BattlefieldMonitor.Instance.allMyRoles[i].GetComponent<RoleBase>().hpBar.currentfill <= min)
-                {
-                    min = BattlefieldMonitor.Instance.allMyRoles[i].GetComponent<RoleBase>().hpBar.currentfill;
-                    go = BattlefieldMonitor.Instance.allMyRoles[i];
-                    if (i == BattlefieldMonitor.Instance.allMyRoles.Length)
-                    {
-                        return go;
-                    }
-                }
-            }
-            return go;
-        }
-        else if (gameObject.CompareTag("EnemysPlane"))
-        {
-            GameObject go = BattlefieldMonitor.Instance.allEnemys[0];
-            float min = BattlefieldMonitor.Instance.allEnemys[0].GetComponent<RoleBase>().hpBar.currentfill;
-            for (int i = 0; i < BattlefieldMonitor.Instance.allEnemys.Length; i++)
-            {
-                if (BattlefieldMonitor.Instance.allEnemys[i].GetComponent<RoleBase>().hpBar.currentfill <= min)
-                {
-                    min = BattlefieldMonitor.Instance.allEnemys[i].GetComponent<RoleBase>().hpBar.currentfill;
-                    go = BattlefieldMonitor.Instance.allEnemys[i];
-                    if (i == BattlefieldMonitor.Instance.allEnemys.Length)
-                    {
-                        return go;
-                    }
-                }
-            }
-            return go;
-        }
-        else
-        {
-            return null;
-        }
-    }
-
-    #endregion
-
-    #region 攻击治疗一个友方血量最小的角色
-    public void AttackBackHp()//攻击单体回血
-    {
-        if (attackSpeedBar.currentfill == 1 && attackSpeedBar.content.fillAmount > 0.99f)
-        {
-            attackSpeedBar.content.fillAmount = 0;
-            attackSpeedBar.currentfill = 0;
-            Attack(myAnimator);
-            Treatment();
-            StartCoroutine(AttackCountdown(maxAttackSpeed, attackSpeedBar));
-        }
-    }
-
-    #endregion
-
-    #region 攻击时有几率减少对方速度条
-    public void AttackReduceSpeed()//攻击伤害更新
-    {
-        if (attackSpeedBar.currentfill == 1 && attackSpeedBar.content.fillAmount > 0.99f)
-        {
-            AttackReduceSpeedPerformance(myAnimator);
-            attackSpeedBar.content.fillAmount = 0;
-            attackSpeedBar.currentfill = 0;
-        }
-    }
-
-    public void AttackReduceSpeedPerformance(Animator attackAnimator)//单体攻击相关
-    {
-        GameObject go = FindTheTarget();//找到要攻击的随机目标
-        if (go != null)
-        {
-            go.GetComponent<RoleBase>().Myhp -= DamageCalculation(damage[lv - 1], go.GetComponent<RoleBase>().defense[lv - 1]);//计算出伤害然后在血量里面减去
-            go.GetComponent<RoleBase>().lossAnimator.SetTrigger("LossHp");
-            go.GetComponent<RoleBase>().lossHpText.hpText = DamageCalculation(damage[lv - 1], go.GetComponent<RoleBase>().defense[lv - 1]);
-            if (Percent(25))
-            {
-                go.GetComponent<RoleBase>().attackSpeedBar.CurrentValue -= 0.3f;
-            }
-            StartCoroutine(AttackCountdown(maxAttackSpeed, attackSpeedBar));
-            attackAnimator.SetTrigger("Attack");
-            go.GetComponent<RoleBase>().myAnimator.SetTrigger("numberAttack");
-            Instantiate(underAttackEffects, go.transform.position, Quaternion.identity, gameObject.transform.parent.parent);
-        }
-    }
-
-    public static bool Percent(int percent)//随机概率判断
-    {
-        return Random.Range(0, 100) <= percent;
-    }
-    #endregion
-
-    #endregion
+  
 }

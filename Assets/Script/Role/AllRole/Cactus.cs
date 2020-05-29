@@ -14,7 +14,7 @@ public class Cactus : RoleBase
     {
         base.RoleUpDate();
         base.UseSkill(skillType);
-        base.Dead();
+        base.attackType.Dead();
     }
     
 }
