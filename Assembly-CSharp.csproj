@@ -64,11 +64,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Script\Attack\AttackBase.cs" />
-    <Compile Include="Assets\Script\Attack\AttackType\AttackBackHp.cs" />
-    <Compile Include="Assets\Script\Attack\AttackType\AttackReduceSpeed.cs" />
-    <Compile Include="Assets\Script\Attack\AttackType\NormalAttack.cs" />
-    <Compile Include="Assets\Script\Attack\AttackType\NormalTreatmens.cs" />
-    <Compile Include="Assets\Script\Attack\AttackType\TreatmenLowHp.cs" />
+    <Compile Include="Assets\Script\Attack\SkillType\AttackBackHp.cs" />
+    <Compile Include="Assets\Script\Attack\SkillType\AttackReduceSpeed.cs" />
+    <Compile Include="Assets\Script\Attack\SkillType\NormalAttack.cs" />
+    <Compile Include="Assets\Script\Attack\SkillType\NormalTreatmens.cs" />
+    <Compile Include="Assets\Script\Attack\SkillType\TreatmenLowHp.cs" />
     <Compile Include="Assets\Script\Config\AllRoleData.cs" />
     <Compile Include="Assets\Script\Config\EnemysData.cs" />
     <Compile Include="Assets\Script\Config\LevelData.cs" />
