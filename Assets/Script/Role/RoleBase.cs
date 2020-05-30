@@ -75,7 +75,7 @@ public class RoleBase : MonoBehaviour
     [HideInInspector]
     public bool isDead=false;
 
-    public AttackBase attackType=null;//攻击方式
+    public AttackBase attackType;//攻击方式
 
     public int Myhp
     {
@@ -99,7 +99,7 @@ public class RoleBase : MonoBehaviour
 
     public async void RoleInitInfo()//初始化角色数据
     {
-        attackType = transform.GetComponent<AttackBase>();
+        UseSkill(skillType);//初始化角色使用的技能
         var task = Addressables.LoadAssetAsync<AllRoleData>("AllRoleInfo").Task;
         roleData = await task;
         if (roleData.roles.ContainsKey(roleName))//角色数据初始化
@@ -139,42 +139,41 @@ public class RoleBase : MonoBehaviour
         hpBar.CurrentValue = Myhp;
     }
 
-
     public void UseSkill(SkillType skill)//使用技能
     {
         switch (skill)
         {
             case SkillType.NormalAttack:
 
-                attackType = new NormalAttack();
+                attackType = gameObject.AddComponent<NormalAttack>();
 
                 break;
 
             case SkillType.NormalTreatmens:
 
-                attackType=new NormalTreatmens();
+                attackType = gameObject.AddComponent<NormalTreatmens>();
 
                 break;
 
             case SkillType.TreatmenLowHp:
 
-                attackType = new TreatmenLowHp();
+                attackType = gameObject.AddComponent<TreatmenLowHp>();
 
                 break;
 
             case SkillType.AttackBackHp:
 
-                attackType=
+                attackType = gameObject.AddComponent<AttackBackHp>();
 
                 break;
 
             case SkillType.AttackReduceSpeed:
 
-                attackType=new AttackReduceSpeed();
+                attackType = gameObject.AddComponent<AttackReduceSpeed>();
 
                 break;
         }
-        attackType.UseSkill();
+             
     }
 
 }

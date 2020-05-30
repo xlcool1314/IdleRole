@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class AttackBase : SingletonMono<AttackBase>
+public abstract class AttackBase : MonoBehaviour
 {
     public RoleBase role;//实例化角色信息
-
     public abstract void UseSkill();
     private void Awake()
     {
@@ -49,5 +48,4 @@ public abstract class AttackBase : SingletonMono<AttackBase>
             time--;
         }
     }
-
 }
