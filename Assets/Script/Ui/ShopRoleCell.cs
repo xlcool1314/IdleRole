@@ -17,9 +17,11 @@ public class ShopRoleCell : SingletonMono<ShopRoleCell>
 
     public TextMeshProUGUI nameText;
 
+    public Image select;
+
     public void ShopRoleCellInit()
     {
-
+        select.gameObject.SetActive(false);
         myButton = this.transform.GetComponent<Button>();
         myButton.onClick.AddListener(CreatBuyRoleUi);
     }
@@ -37,6 +39,7 @@ public class ShopRoleCell : SingletonMono<ShopRoleCell>
         }
         ShopRoleCell.Instance.myRole=this.myRole;
         Addressables.InstantiateAsync("BuyRoleUi");
+        select.gameObject.SetActive(true);
         ShopUi.Instance.isOpenBuyRoleUi = true;
     }
 }

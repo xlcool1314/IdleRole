@@ -8,6 +8,7 @@ public class RoleInfo : MonoBehaviour
 {
     public Button lvUpButton;
     public Button sellButton;
+    public Button closePlane;
 
     public TextMeshProUGUI describeText;
     public TextMeshProUGUI damageText;
@@ -22,6 +23,7 @@ public class RoleInfo : MonoBehaviour
     {
         lvUpButton.onClick.AddListener(LvUp);
         sellButton.onClick.AddListener(SellRole);
+        closePlane.onClick.AddListener(CloseWindow);
         Debug.Log(infoRole);
     }
 
@@ -36,6 +38,11 @@ public class RoleInfo : MonoBehaviour
     {
         UserAssetManager.Instance.AddGold(Mathf.RoundToInt(infoRole.GetComponent<RoleBase>().howMuchMoneys / 2));
         Destroy(infoRole.gameObject);
+        Destroy(gameObject);
+    }
+
+    public void CloseWindow()
+    {
         Destroy(gameObject);
     }
 
