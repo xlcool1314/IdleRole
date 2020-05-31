@@ -37,7 +37,7 @@ public class ShopRoleCell : SingletonMono<ShopRoleCell>
         {
             Destroy(GameObject.Find("BuyRoleUi(Clone)").gameObject);
         }
-        ShopRoleCell.Instance.myRole=this.myRole;
+        ShopRoleCell.Instance.myRole = this.myRole;
         Addressables.InstantiateAsync("BuyRoleUi");
         select.gameObject.SetActive(true);
         ShopUi.Instance.isOpenBuyRoleUi = true;

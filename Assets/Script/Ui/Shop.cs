@@ -11,6 +11,7 @@ public class Shop : SingletonMono<Shop>
 {
     public MyRoleData rolesData;
 
+    public AllRoleData allRoleData;
 
     public TextMeshProUGUI howMuchRoleMoney;
 
@@ -19,6 +20,10 @@ public class Shop : SingletonMono<Shop>
     {
         var task = Addressables.LoadAssetAsync<MyRoleData>("MyRoleData").Task;
         rolesData = await task;
+
+        var task01 = Addressables.LoadAssetAsync<AllRoleData>("AllRoleInfo").Task;
+        allRoleData = await task01;
+
     }
 
     public async void CreatAllShopRoles()//生成商店的角色以及数据同步
@@ -28,14 +33,14 @@ public class Shop : SingletonMono<Shop>
             for (int i = 0; i < rolesData.myRoles.Count; i++)
             {
                 var go = rolesData.myRoles[i];
-                if (go.isUnlock==true)
+                if (go.isUnlock==true&& allRoleData.roles.ContainsKey(go.myRole.name))
                 {
                   var go2= await Addressables.InstantiateAsync("ShopRoleCell", transform).Task;
-                  go2.GetComponent<ShopRoleCell>().myRole=go.myRole;
-                  go2.GetComponent<ShopRoleCell>().nameText.text = go.myRole.name.ToString();
-                    go2.GetComponent<ShopRoleCell>().moneyText.text = go.myRole.GetComponent<RoleBase>().howMuchMoneys.ToString();
-                  go2.GetComponent<ShopRoleCell>().skin.sprite = go.myRole.GetComponent<RoleBase>().mySkin.sprite;
-                  go2.GetComponent<ShopRoleCell>().skin.SetNativeSize();
+                    go2.GetComponent<ShopRoleCell>().myRole=go.myRole;
+                    go2.GetComponent<ShopRoleCell>().nameText.text = go.myRole.name;
+                    go2.GetComponent<ShopRoleCell>().moneyText.text = allRoleData.roles[go.myRole.name].howMuchMoneys.ToString();
+                    go2.GetComponent<ShopRoleCell>().skin.sprite = allRoleData.roles[go.myRole.name].mySkin;
+                    go2.GetComponent<ShopRoleCell>().skin.SetNativeSize();
                 } 
             }
         }

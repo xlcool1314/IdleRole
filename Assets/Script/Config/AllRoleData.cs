@@ -14,6 +14,8 @@ public class RoleData
 {
     [Title("是否解锁")]
     public bool isUnlock;
+    [Title("皮肤")]
+    public Sprite mySkin;
     [Title("属性")]
     public PropertyInfo property;
     [Title("攻击方式")]
