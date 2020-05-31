@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.AddressableAssets;
+using System.Threading.Tasks;
 
 public class BuyRoleUi : UIBaseBehaviour
 {
     public Button yesButton;
-    public Button noButton;
 
     public ShopRoleCell buyMyRole;
 
@@ -23,26 +24,39 @@ public class BuyRoleUi : UIBaseBehaviour
 
     public TextMeshProUGUI describeText;//显示描述
 
+    public TextMeshProUGUI attckSpeedText;//频率显示
+
     public Image skin;
+
+    public AllRoleData roleData;
 
     private void Awake()
     {
+        InitInfo();
+    }
+
+    public async Task InitInfo()
+    {
+        var task = Addressables.LoadAssetAsync<AllRoleData>("AllRoleInfo").Task;
+        roleData = await task;
         Init();
     }
     
     public override void Init()
     {
         yesButton.onClick.AddListener(DetermineBuyRole);
-        noButton.onClick.AddListener(CloseBuyRoleUi);
-        nameText.text = ShopRoleCell.Instance.myRole.name;
-        skin.sprite = ShopRoleCell.Instance.myRole.GetComponent<RoleBase>().mySkin.sprite;
-        skin.SetNativeSize();
-        damageText.text = ShopRoleCell.Instance.myRole.GetComponent<RoleBase>().damage[ShopRoleCell.Instance.myRole.GetComponent<RoleBase>().lv - 1].ToString();
-        defenseText.text = ShopRoleCell.Instance.myRole.GetComponent<RoleBase>().defense[ShopRoleCell.Instance.myRole.GetComponent<RoleBase>().lv - 1].ToString();
-        hpText.text = ShopRoleCell.Instance.myRole.GetComponent<RoleBase>().maxHp[ShopRoleCell.Instance.myRole.GetComponent<RoleBase>().lv - 1].ToString();
-        treatmentTex.text = ShopRoleCell.Instance.myRole.GetComponent<RoleBase>().myTreatment[ShopRoleCell.Instance.myRole.GetComponent<RoleBase>().lv - 1].ToString();
-        describeText.text = ShopRoleCell.Instance.myRole.GetComponent<RoleBase>().describe.ToString();
-
+        if (roleData.roles.ContainsKey(ShopRoleCell.Instance.myRole.name))//角色数据初始化
+        {
+            nameText.text = ShopRoleCell.Instance.myRole.name;
+            skin.sprite = roleData.roles[ShopRoleCell.Instance.myRole.name].mySkin;
+            skin.SetNativeSize();
+            damageText.text = roleData.roles[ShopRoleCell.Instance.myRole.name].damage[ShopRoleCell.Instance.myRole.GetComponent<RoleBase>().lv - 1].ToString();
+            defenseText.text = roleData.roles[ShopRoleCell.Instance.myRole.name].defense[ShopRoleCell.Instance.myRole.GetComponent<RoleBase>().lv - 1].ToString();
+            hpText.text = roleData.roles[ShopRoleCell.Instance.myRole.name].myMaxHp[ShopRoleCell.Instance.myRole.GetComponent<RoleBase>().lv - 1].ToString();
+            treatmentTex.text = roleData.roles[ShopRoleCell.Instance.myRole.name].myTreatment[ShopRoleCell.Instance.myRole.GetComponent<RoleBase>().lv - 1].ToString();
+            describeText.text = roleData.roles[ShopRoleCell.Instance.myRole.name].describe.ToString();
+            attckSpeedText.text= roleData.roles[ShopRoleCell.Instance.myRole.name].maxAttackSpeed.ToString();
+        }
     }
 
     public override void UpdateInfo(float deltaTime)
@@ -53,7 +67,6 @@ public class BuyRoleUi : UIBaseBehaviour
     public override void Clean()//清除所有的监听
     {
         yesButton.onClick.RemoveAllListeners();
-        noButton.onClick.RemoveAllListeners();
     }
 
 
@@ -75,11 +88,5 @@ public class BuyRoleUi : UIBaseBehaviour
             Debug.Log("金币不够");
         }
         
-    }
-
-    public void CloseBuyRoleUi()//关闭购买UI
-    {
-        Clean();
-        Destroy(gameObject);
     }
 }

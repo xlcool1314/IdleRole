@@ -23,6 +23,11 @@ public class BattlefieldMonitor : SingletonMono<BattlefieldMonitor>
 
     public bool isCombination = false;
 
+    private void Start()
+    {
+        isFirstGame = UserAssetManager.Instance.IsFirstGame();
+    }
+
     void Update()
     {
         FindAllMyRole();

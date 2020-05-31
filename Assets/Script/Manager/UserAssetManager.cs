@@ -19,7 +19,7 @@ public class UserAsset
     private List<RoleStatus> saveRoleStatus = new List<RoleStatus>();//当前战斗状态相关数据
 
     [SerializeField]
-    private int gold = 100;
+    private int gold = 20;
 
     [SerializeField]
     private int level = 1;
@@ -27,7 +27,7 @@ public class UserAsset
     [SerializeField]
     private float second=0;//计时器
 
-    public bool isFirstGame = true;//是否第一次进入游戏
+    private bool isFirstGame = true;//是否第一次进入游戏
 
     private bool isDirty = false;//是否是脏数据
 
@@ -74,6 +74,16 @@ public class UserAsset
         set
         {
             saveRoleStatus = value;
+            SetDirty();
+        }
+    }
+
+    public bool IsFirstGame
+    {
+        get => isFirstGame;
+        set
+        {
+            isFirstGame = value;
             SetDirty();
         }
     }
@@ -243,12 +253,17 @@ public class UserAssetManager : SingletonMono<UserAssetManager>
 
     public bool IsFirstGame()//是否第一次进入游戏
     {
-        return asset.isFirstGame;
+        return asset.IsFirstGame;
+    }
+
+    public void YesFirstGame()
+    {
+        asset.IsFirstGame = true;
     }
 
     public void NoFirstGame()
     {
-        asset.isFirstGame = false;
+        asset.IsFirstGame = false;
     }
 
     public float GetTime()
