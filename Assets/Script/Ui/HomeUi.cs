@@ -84,6 +84,12 @@ public class HomeUi : UIBaseBehaviour
     public void GoToNextLevel()
     {
         UserAssetManager.Instance.AddLevel();
+        BattlefieldMonitor.Instance.FindAllEnemys();
+        for (int i = 0; i < BattlefieldMonitor.Instance.allEnemys.Length; i++)
+        {
+            Destroy(BattlefieldMonitor.Instance.allEnemys[i].gameObject, 1f);
+        }
+        Addressables.InstantiateAsync("PassUi");
     }
 
     public void DeleteInfo()
