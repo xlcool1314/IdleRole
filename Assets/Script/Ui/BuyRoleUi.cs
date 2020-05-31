@@ -75,8 +75,8 @@ public class BuyRoleUi : UIBaseBehaviour
         if(UserAssetManager.Instance.GetGold()>= ShopRoleCell.Instance.myRole.GetComponent<RoleBase>().howMuchMoneys)
         {
             Clean();
-            UserAssetManager.Instance.ReduceGold(ShopRoleCell.Instance.myRole.GetComponent<RoleBase>().howMuchMoneys);
-            var go = MyRoleBuilder.Instance.CreatRole(ShopRoleCell.Instance.myRole);
+            UserAssetManager.Instance.ReduceGold(roleData.roles[ShopRoleCell.Instance.myRole.name].howMuchMoneys);
+            MyRoleBuilder.Instance.CreatRole(ShopRoleCell.Instance.myRole);
             UserAssetManager.Instance.SaveRoleSta();
             BattlefieldMonitor.Instance.FindAllMyRole();
             BattlefieldMonitor.Instance.isFirstGame = false;

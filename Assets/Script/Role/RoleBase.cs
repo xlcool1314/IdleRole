@@ -111,6 +111,7 @@ public class RoleBase : MonoBehaviour
             lvUpMoney = roleData.roles[roleName].lvUpMoney;
             maxHp = roleData.roles[roleName].myMaxHp;
             defense = roleData.roles[roleName].defense;
+            mySkin.sprite = roleData.roles[roleName].mySkin;
             damage = roleData.roles[roleName].damage;
             myTreatment = roleData.roles[roleName].myTreatment;
             numberTreatmens = roleData.roles[roleName].numberTreatmens;
