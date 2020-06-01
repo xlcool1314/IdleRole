@@ -29,7 +29,7 @@ public class UserAsset//角色资产
 
     private bool isFirstGame = true;//是否第一次进入游戏
 
-    private bool isOpenNextLevel;//是否开启下一关卡
+    private bool isOpenNextLevel=false;//是否开启下一关卡
 
     private bool isDirty = false;//是否是脏数据
 
@@ -287,8 +287,18 @@ public class UserAssetManager : SingletonMono<UserAssetManager>
         asset.Second = val;
     }
 
-    public bool IsOpenNextLevel()
+    public bool OpenNextLevel()//切换是否可以打开门
     {
-        return !asset.IsFirstGame;
+        return asset.IsOpenNextLevel=true;
+    }
+
+    public bool NoOpenNextLevel()//切换是否可以打开门
+    {
+        return asset.IsOpenNextLevel = false;
+    }
+
+    public bool GetMyOpenNextLevelBool()//切换是否可以打开门
+    {
+        return asset.IsOpenNextLevel;
     }
 }

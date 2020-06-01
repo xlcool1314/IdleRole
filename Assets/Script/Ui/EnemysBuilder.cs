@@ -34,6 +34,7 @@ public class EnemysBuilder : MonoBehaviour
         if (BattlefieldMonitor.Instance.allEnemys.Length <= 0&&isCreat==false)
         {
             isCreat = true;
+            UserAssetManager.Instance.OpenNextLevel();
         }
     }
 
@@ -43,7 +44,7 @@ public class EnemysBuilder : MonoBehaviour
         return nm;
     }
 
-    public IEnumerator CreatEnemys(EnemysData enemyData)//攻击频率
+    public IEnumerator CreatEnemys(EnemysData enemyData)//生成怪物频率
     {
            creatEnemysTimes -= Time.deltaTime;
             yield return new WaitForSeconds(3);

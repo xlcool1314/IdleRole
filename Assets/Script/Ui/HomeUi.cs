@@ -79,13 +79,21 @@ public class HomeUi : UIBaseBehaviour
 
     public void GoToNextLevel()
     {
-        UserAssetManager.Instance.AddLevel();
-        BattlefieldMonitor.Instance.FindAllEnemys();
-        for (int i = 0; i < BattlefieldMonitor.Instance.allEnemys.Length; i++)
+        if (UserAssetManager.Instance.GetMyOpenNextLevelBool() == true)
         {
-            Destroy(BattlefieldMonitor.Instance.allEnemys[i].gameObject, 0.5f);
+            UserAssetManager.Instance.AddLevel();
+            BattlefieldMonitor.Instance.FindAllEnemys();
+            for (int i = 0; i < BattlefieldMonitor.Instance.allEnemys.Length; i++)
+            {
+                Destroy(BattlefieldMonitor.Instance.allEnemys[i].gameObject, 0.5f);
+            }
+            UserAssetManager.Instance.NoOpenNextLevel();//锁门
+            Addressables.InstantiateAsync("PassUi");
         }
-        Addressables.InstantiateAsync("PassUi");
+        else
+        {
+            Debug.Log("门锁了");
+        }
     }
 
     public void DeleteInfo()
@@ -97,5 +105,10 @@ public class HomeUi : UIBaseBehaviour
     {
             UserAssetManager.Instance.SaveTime(m_Timer);
 
+    }
+
+    public override void Clean()
+    {
+        throw new System.NotImplementedException();
     }
 }
