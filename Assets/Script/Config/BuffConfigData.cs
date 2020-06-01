@@ -24,7 +24,7 @@ public class BuffDesc
 }
 
 [CreateAssetMenu(menuName = "Config/Create BufflConfig ")]
-public class SkillConfigData : SerializedScriptableObject
+public class BuffConfigData : SerializedScriptableObject
 {
-    public List<BuffDesc> buffs;
+    public Dictionary<string, List<BuffDesc>> buffs;
 }

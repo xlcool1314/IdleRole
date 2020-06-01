@@ -69,11 +69,13 @@
     <Compile Include="Assets\Script\Attack\SkillType\NormalAttack.cs" />
     <Compile Include="Assets\Script\Attack\SkillType\NormalTreatmens.cs" />
     <Compile Include="Assets\Script\Attack\SkillType\TreatmenLowHp.cs" />
+    <Compile Include="Assets\Script\Buff\BuffBase.cs" />
+    <Compile Include="Assets\Script\Buff\BuffType\Poisoning.cs" />
     <Compile Include="Assets\Script\Config\AllRoleData.cs" />
+    <Compile Include="Assets\Script\Config\BuffConfigData.cs" />
     <Compile Include="Assets\Script\Config\EnemysData.cs" />
     <Compile Include="Assets\Script\Config\LevelData.cs" />
     <Compile Include="Assets\Script\Config\MyRoleData.cs" />
-    <Compile Include="Assets\Script\Config\SkillConfigData.cs" />
     <Compile Include="Assets\Script\Effect\DeleteEffect.cs" />
     <Compile Include="Assets\Script\Framework\SingletonMono.cs" />
     <Compile Include="Assets\Script\Manager\BuffManager.cs" />

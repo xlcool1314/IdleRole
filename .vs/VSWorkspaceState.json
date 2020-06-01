@@ -8,12 +8,12 @@
     "\\Assets\\Plugins\\Sirenix\\Demos\\Custom Attribute Processors",
     "\\Assets\\Plugins\\Sirenix\\Demos\\Custom Attribute Processors\\Scripts",
     "\\Assets\\Script",
-    "\\Assets\\Script\\Manager",
+    "\\Assets\\Script\\Buff",
+    "\\Assets\\Script\\Config",
     "\\Assets\\Script\\Role",
     "\\Assets\\Script\\Role\\AllRole",
-    "\\Assets\\Script\\Skill",
-    "\\Assets\\Script\\Ui"
+    "\\Assets\\Script\\Skill"
   ],
-  "SelectedNode": "\\Assets\\Script\\Ui\\HomeUi.cs",
+  "SelectedNode": "\\Assets\\Script\\Config\\MyRoleData.cs",
   "PreviewInSolutionExplorer": false
 }
