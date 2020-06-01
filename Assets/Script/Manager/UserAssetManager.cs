@@ -5,7 +5,7 @@ using UnityEngine;
 
 
 
-public class UserAsset
+public class UserAsset//角色资产
 {
     [System.Serializable]
     public struct RoleStatus
@@ -13,7 +13,7 @@ public class UserAsset
         public string _name;
         public int _lv;
         public float _speed;
-    }
+    }//储存角色相关信息
 
     [SerializeField]
     private List<RoleStatus> saveRoleStatus = new List<RoleStatus>();//当前战斗状态相关数据
@@ -28,6 +28,8 @@ public class UserAsset
     private float second=0;//计时器
 
     private bool isFirstGame = true;//是否第一次进入游戏
+
+    private bool isOpenNextLevel;//是否开启下一关卡
 
     private bool isDirty = false;//是否是脏数据
 
@@ -84,6 +86,16 @@ public class UserAsset
         set
         {
             isFirstGame = value;
+            SetDirty();
+        }
+    }
+
+    public bool IsOpenNextLevel
+    {
+        get => isOpenNextLevel;
+        set
+        {
+            isOpenNextLevel = value;
             SetDirty();
         }
     }
@@ -273,5 +285,10 @@ public class UserAssetManager : SingletonMono<UserAssetManager>
     public void SaveTime(float val)
     {
         asset.Second = val;
+    }
+
+    public bool IsOpenNextLevel()
+    {
+        return !asset.IsFirstGame;
     }
 }

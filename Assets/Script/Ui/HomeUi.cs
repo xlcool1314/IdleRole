@@ -25,7 +25,7 @@ public class HomeUi : UIBaseBehaviour
     private int m_Hour;//时
     private int m_Minute;//分
     private int m_Second;//秒
-    public void Clock()
+    public void Clock()//计时器
     {
         m_Timer += Time.deltaTime;
         m_Second = (int)m_Timer;
@@ -44,10 +44,6 @@ public class HomeUi : UIBaseBehaviour
             m_Timer = 0;
         }
         m_ClockText.text = string.Format("{0:d2}:{1:d2}:{2:d2}", m_Hour, m_Minute, m_Second);
-    }
-    public override void Clean()
-    {
-
     }
 
     public override void Init()
@@ -87,7 +83,7 @@ public class HomeUi : UIBaseBehaviour
         BattlefieldMonitor.Instance.FindAllEnemys();
         for (int i = 0; i < BattlefieldMonitor.Instance.allEnemys.Length; i++)
         {
-            Destroy(BattlefieldMonitor.Instance.allEnemys[i].gameObject, 1f);
+            Destroy(BattlefieldMonitor.Instance.allEnemys[i].gameObject, 0.5f);
         }
         Addressables.InstantiateAsync("PassUi");
     }
