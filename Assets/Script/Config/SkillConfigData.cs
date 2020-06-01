@@ -12,7 +12,7 @@ public enum BuffType
 }
 
 [System.Serializable]
-public class SkillDesc
+public class BuffDesc
 {
     public int time;
 
@@ -23,8 +23,8 @@ public class SkillDesc
     public string desc;
 }
 
-[CreateAssetMenu(menuName = "Config/Create SkillConfig ")]
+[CreateAssetMenu(menuName = "Config/Create BufflConfig ")]
 public class SkillConfigData : SerializedScriptableObject
 {
-    public List<SkillDesc> skills;
+    public List<BuffDesc> buffs;
 }

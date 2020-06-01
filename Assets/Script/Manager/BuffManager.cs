@@ -6,14 +6,14 @@ using UnityEngine.AddressableAssets;
 
 public class BuffManager : SingletonMono<BuffManager>
 {
-    public Dictionary<BuffType, SkillDesc> skillDic = new Dictionary<BuffType, SkillDesc>();
+    public Dictionary<BuffType, BuffDesc> skillDic = new Dictionary<BuffType, BuffDesc>();
 
     public SkillConfigData skillconfigData;
 
     public async override Task Init()
     {
         skillconfigData = await Addressables.LoadAssetAsync<SkillConfigData>("SkillConfigData").Task;
-        foreach (var skill in skillconfigData.skills)
+        foreach (var skill in skillconfigData.buffs)
         {
                 skillDic.Add(skill.buff, skill);
         }
